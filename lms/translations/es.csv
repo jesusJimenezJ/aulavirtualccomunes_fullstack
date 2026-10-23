@@ -1,0 +1,1735 @@
+Chapter,Capítulo,
+Lesson,Lección,
+Quiz,Cuestionario,
+Interest,Interés,
+Course,Curso,
+All Live Courses,Todos los Cursos Disponibles,
+All Live Courses ({0}),Todos los Cursos Disponibles ({0}),
+All Courses,Todos los Cursos,
+Instructors,Instructores,
+Completed,Completado,
+Evaluation On: ,Evaluación en: ,
+Under Review,Bajo Revisión,
+Edit,Editar,
+"You have exceeded the maximum number of attempts allowed to appear for evaluations of this course.","Ha superado el número máximo de intentos permitidos para presentarse a las evaluaciones de este curso.",
+"Your course is currently under review. Once the review is complete, the System Admins will publish it on the website.","Su curso está actualmente en revisión. Una vez completada la revisión, los administradores del sistema lo publicarán en el sitio web.",
+Enrolled,Inscritos,
+Lessons,Lecciones,
+Get Certified,Obtenga la certificación,
+Other Courses,Otros Cursos,
+Reviews,Reseñas,
+Write a review,Escribe una reseña,
+Review the course,Reseña el curso,
+Help us improve our course material.,Ayúdenos a mejorar el material del curso.,
+Add Chapter,Añadir Capítulo,
+Add Lesson,Añadir Lección,
+Start Learning,Comenzar a Aprender,
+Checkout Course,Ver Curso,
+Have a doubt?,¿Tiene una duda?,
+"Post it here, our mentors will help you out.","Publícalo aquí, nuestros mentores te ayudarán.",
+Questions,Preguntas,
+Ask a Question,Haga una pregunta,
+Submit for Review,Someter a revisión,
+Notify me when available,Avísame cuando esté disponible,
+Manage the course,Gestionar el curso,
+Continue Learning,Continuar Aprendiendo,
+Apply for Certificate,Aplicar para certificación,
+Get Certificate,Obtener el certificado,
+Pick a Slot,Elija una franja horaria,
+"This course requires you to complete an evaluation to get certified. Please pick a slot based on your convenience for the evaluations. ","Este curso requiere que usted complete una evaluación para obtener la certificación. Por favor, elija un espacio basado en su conveniencia para las evaluaciones. ",
+"Slots","Horarios",
+There are no slots available on this day.,No hay horarios disponibles para este día,
+Submit,Enviar,
+Course Creators,Creadores de cursos,
+Mark as Complete,Marcar como completo,
+Mark as Incomplete,Marcar como incompleto,
+Mark as complete on moving to the next lesson,Marcar como completo al pasar a la siguiente lección,
+"This lesson is not available for preview. Please join the course to access it.","Esta lección no está disponible para la vista previa. Por favor, únase al curso para acceder a ella.",
+"This lesson is not available for preview. As you are the Instructor of the course only you can see it.","Esta lección no está disponible para la vista previa. Como usted es el instructor del curso, sólo usted puede verla.",
+COMPLETED,COMPLETADO,
+Type title,Escriba el título,
+Type here. Use markdown to format.,Escriba aquí. Utilice markdown para formatear.,
+Press Cmd+Enter to post your comment,Pulse Cmd+Enter para publicar su comentario,
+Cancel,Cancelar,
+Post,Publicar,
+other,otro,
+others,otros,
+Search,Buscar,
+taken,realizados,
+Creator,Creador,
+Courses Created,Cursos Creados,
+Courses Mentored,Cursos con tutoría,
+Edit Profile,Editar Perfil,
+Open Network,Red abierta,
+Course List,Lista de cursos,
+Profile,Perfil,
+About,Información,
+"Hey, my name is ","Hola, mi nombre es",
+Save,Guardar,
+Profile,Perfil,
+Attach,Adjuntar,
+Cover Image,Imagen de fondo,
+Headline,Encabezado,
+Log out,Salir,
+Manage your apps,Gestionar las aplicaciones,
+Manage third party apps,Gestionar aplicaciones de terceros,
+To manage your authorized third party apps,Gestionar las aplicaciones de terceros autorizadas,
+Reset the password for your account,Restablecer la contraseña de la cuenta,
+Statistics,Estadísticas,
+People,Gente,
+Classes,Clases,
+No Classes,No hay clases,
+Nothing to see here.,No hay nada para ver.,
+All Classes,Todas las clases,
+No Live Courses,No hay cursos,
+There are no live courses on this site.,No hay cursos en este sitio.,
+Upcoming,Por venir,
+Live,Activos,
+You haven't completed your profile.,No has completado tu perfil,
+Complete your {0} to access the courses.,Completa tu {0} para acceder a los cursos,
+Profilee,Perfil,
+Not Saved,No guardado,
+ Please evaluate and grade it., Evalúala y califícala.
+"<a href=""/app/lms-settings/LMS%20Settings"">LMS Settings</a>","<a href=""/app/lms-settings/LMS%20Settings"">Configuración del LMS</a>"
+"<a href=""/app/web-page/new-web-page-1"">Setup a Home Page</a>","<a href=""/app/web-page/new-web-page-1"">Configurar una página de inicio</a>"
+"<a href=""/lms/courses"">Visit LMS Portal</a>","<a href=""/lms/courses"">Visita el portal LMS</a>"
+"<a href=""/lms/courses/new/edit"">Create a Course</a>","<a href=""/lms/courses/new/edit"">Crear un curso</a>"
+"<a href=""https://docs.frappe.io/learning"">Documentation</a>","<a href=""https://docs.frappe.io/learning"">Documentación</a>"
+"<span class=""h4""><b>Get Started</b></span>","<span class=""h4""><b>Primeros pasos</b></span>"
+"<span class=""h4""><b>Master</b></span>","<span class=""h4""><b>Maestros</b></span>"
+"<span style=""font-size: 18px;""><b>Statistics</b></span>","<span style=""font-size: 18px;""><b>Estadísticas</b></span>"
+Acceptance for Terms and/or Policies,Aceptación de términos y/o políticas
+Account,Cuenta
+Account ID,ID de la cuenta
+Account Name,Nombre de la Cuenta
+Achievements,Logros
+Actions,Acciones
+Active,Activo
+Active Members,Miembros activos
+Activity,Actividad
+Add,Agregar
+Add Row,Añadir Fila
+Add Slot,Añadir franja horaria
+Add a Chapter,Añadir un capítulo
+Add a Lesson,Añadir una lección
+Add a chapter,Añadir un capítulo
+Add a condition,Añadir una condición
+Add a lesson,Añadir una lección
+Add a quiz to your lesson,Añade un cuestionario a tu lección
+Add an assessment,Añadir una evaluación
+Add at least one possible answer for this question: {0},Añade al menos una respuesta posible para esta pregunta: {0}
+Add one to get started,Añade uno para empezar
+Address,Dirección
+Address Line 1,Dirección línea 1
+Address Line 2,Dirección línea 2
+Address Title,Dirección
+Address Type,Tipo de dirección
+Admin,Admin
+Administrator,Administrador
+All,Todos
+All questions should have the same marks if the limit is set.,Todas las preguntas deben tener la misma puntuación si se establece el límite.
+Allow Self Enrollment,Permitir la autoinscripción
+Allow accessing future dates,Permitir acceder a fechas futuras
+Already Registered,Ya está Registrado
+Amount,Importe
+Amount (USD),Importe (USD)
+Amount with GST,Importe con GST
+Announcement,Anuncio
+Announcements,Anuncios
+Answer,Respuesta
+Answer:,Respuesta:
+Appears in the left sidebar. Recommended size is 32x32 px in PNG or SVG,Aparece en la barra lateral izquierda. El tamaño recomendado es 32x32 píxeles en formato PNG o SVG
+Appears next to the title in your browser tab. Recommended size is 32x32 px in PNG or ICO,Aparece junto al título en la pestaña de su navegador. El tamaño es recomendado 32x32 píxeles en formato PNG o ICO
+Applicable For,Aplicable para
+Applied On,Aplicado en
+Apply,Aplicar
+Apply GST for India,Aplicar GST para India
+Apply Rounding on Equivalent,Aplicar redondeo al equivalente
+Approved,Aprobado
+Apps,Apps
+Archived,Archivado
+Are you sure you want to login to your Frappe Cloud dashboard?,¿Seguro que quieres iniciar sesión en tu panel de Frappe Cloud?
+Assessment,Evaluación
+Assessment Name,Nombre de la evaluación
+Assessment Type,Tipo de evaluación
+Assessment added successfully,Evaluación añadida correctamente
+Assessment {0} has already been added to this batch.,La evaluación {0} ya se ha añadido a este lote.
+Assessments,Evaluaciones
+Assign,Asignar
+Assignment,Tarea
+Assignment Attachment,Adjunto de la tarea
+Assignment Title,Título de la tarea
+Assignment will appear at the bottom of the lesson.,La tarea aparecerá al final de la lección.
+Assignments,Asignaciones
+At least one option must be correct for this question.,Al menos una opción debe ser correcta para esta pregunta.
+Attendees,Asistentes
+Attire Preference,Preferencia de vestimenta
+Author,Autor
+Authorize Google Calendar Access,Autorizar acceso a Google Calendar
+Authors,Autores
+Auto,Auto
+Auto Recording,Grabación automática
+Average Rating,Puntuación media
+Back,Atrás
+Back to Course,Volver al curso
+Back to Home,De vuelta a casa
+Badge,Insignia
+Badge Description,Descripción de la insignia
+Badge Image,Imagen de la insignia
+Batch,Lote
+Batch Confirmation Template,Plantilla de confirmación de lote
+Batch Course,Curso del lote
+Batch Details,Detalles del lote
+Batch Details Raw,Detalles del lote en bruto
+Batch Evaluator,Evaluador de lote
+Batch Name,Nombre del lote
+Batch Settings,Configuración de lotes
+Batch Start Date,Fecha de inicio del lote
+Batch Start Date:,Fecha de inicio del lote:
+Batch Title,Título del lote
+Batch end date cannot be before the batch start date,La fecha de fin del lote no puede ser anterior a su fecha de inicio
+Batch:,Lote:
+Batches,Lotes
+Best Regards,Un saludo
+Billing Address,Dirección de Facturación
+Billing Details,Detalles de facturación
+Billing Name,Nombre de facturación
+Bio,Biografía
+Blue,Azul
+Body,Cuerpo
+Both Individual and Team Work,Trabajo individual y en equipo
+Brand Logo,Logo de la marca
+Brand Name,Marca
+Business Owner,Propietario de empresa
+Buy this course,Comprar este curso
+By,Por
+CGPA/4,CGPA/4
+Cancelled,Cancelado
+Career Preference Details,Detalles de preferencia profesional
+Casual Wear,Ropa informal
+Category,Categoría
+Certificate,Certificado
+Certificate Email Template,Plantilla de correo electrónico del certificado
+Certificate Link,Enlace de certificado
+Certificate saved successfully,Certificado guardado correctamente
+Certificates,Certificados
+Certification,Certificación
+Certification Details,Detalles de certificación
+Certification Name,Nombre de la certificación
+Certified Participants,Participantes certificados
+Change,Cambio
+Channel,Canal
+Channels,Canales
+Chapter Reference,Referencia del capítulo
+Chapters,Capítulos
+Check,Marcar
+Check Discussion,Ver el debate
+Check out the {0} to know more about certification.,Consulta {0} para saber más sobre la certificación.
+Checkout Courses,Ver cursos
+Choices,Opciones
+Choose all answers that apply,Elige todas las respuestas correctas
+Choose an icon,Elegir icono
+Choose one answer,Elige una respuesta
+City,Ciudad
+Clear,Quitar
+Clearly Defined Role,Rol claramente definido
+Click here,Click aquí
+Client ID,Id del cliente
+Client Secret,Secreto del cliente
+Close,Cerrar
+Closed,Cerrado
+Cloud,Nube
+Code,Código
+Collaboration Preference,Preferencia de colaboración
+Collapse,Colapso
+College Name,Nombre del centro de estudios
+Color,Color
+Comma separated keywords for SEO,Palabras clave separadas por comas para SEO
+Comments,Comentarios
+Common keywords that will be used for all pages,Palabras clave comunes que se usarán en todas las páginas
+Community,Comunidad
+Company,Empresa
+Company Details,Detalles de la empresa
+Company Email Address,Correo electrónico de la empresa
+Company Logo,Logo de la Compañía
+Company Name,Nombre de compañía
+Company Type,Tipo de empresa
+Company Website,Sitio web de la empresa
+Complete,Completo
+Complete Sign Up,Completar registro
+Completion Certificate,Certificado de finalización
+Condition,Condición
+Condition must be in valid JSON format.,La condición debe estar en formato JSON válido.
+Condition must be valid python code.,La condición debe ser un código Python válido.
+Configuration,Configuración
+Confirm,Confirmar
+Confirmation Email Sent,Correo de confirmación enviado
+Confirmation Email Template,Plantilla de correo electrónico de confirmación
+Congratulations on getting certified!,¡Felicidades por obtener la certificación!
+Console,Consola
+Contact Us,Contáctanos
+Contact the Administrator to enroll for this course,Contacta con el administrador para inscribirte en este curso
+Contact the Administrator to enroll for this course.,Contacta con el administrador para inscribirte en este curso.
+Content,Contenido
+Contract,Contrato
+Corporate Organization,Organización empresarial
+Correct,Correcto
+Country,País
+Coupon Code,Código promocional
+Course Chapter,Capítulo del curso
+Course Completed,Curso completado
+Course Creator,Creador del curso
+Course Data,Datos del curso
+Course Description,Descripción del curso
+Course Evaluator,Evaluador del curso
+Course Instructor,Instructor del curso
+Course Lesson,Lección del curso
+Course Name,Nombre del curso
+Course Progress Summary,Resumen del progreso del curso
+Course Settings,Configuración del curso
+Course Stats,Estadísticas del curso
+Course Title,Título del curso
+Course {0} has already been added to this batch.,El curso {0} ya se ha añadido a este lote.
+Courses,Cursos
+Courses Completed,Cursos completados
+Courses deleted successfully,Cursos eliminados correctamente
+Create,Crear
+Create New,Crear
+Create a Course,Crear un curso
+Create a Live Class,Crear una clase en directo
+Created,Creado
+Currency,Divisa
+Current Lesson,Lección actual
+Custom HTML,HTML Personalizado
+Custom Script (JavaScript),Script personalizado (JavaScript)
+Custom Signup Content,Contenido de registro personalizado
+Customisations,Personalizaciones
+Cyan,Cian
+Dark,Oscuro
+Dashboard,Tablero
+Data Import,Importación de Datos
+Date,Fecha
+Date:,Fecha:
+Day,Día
+Dear,Estimado
+Dear ,Hola 
+"Dear {{ member_name }},\n\nYou have been enrolled in our upcoming batch {{ batch_name }}.\n\nThanks,\nFrappe Learning","Hola, {{ member_name }}:\n\nSe te ha inscrito en nuestro próximo lote {{ batch_name }}.\n\nGracias,\nFrappe Learning"
+Default Currency,Moneda predeterminada
+Default Incoming,Por defecto entrante
+Default Outgoing,Predeterminar Saliente
+Degree Type,Tipo de titulación
+Delete,Eliminar
+Delete {0}?,¿Eliminar {0}?
+Deleting the course will also delete all its chapters and lessons. Are you sure you want to delete this course?,Al eliminar el curso también se eliminarán todos sus módulos y lecciones. ¿Seguro que quieres eliminarlo?
+Description,Descripción
+Desk,Escritorio
+Details,Detalles
+Disable Self Learning,Desactivar autoaprendizaje
+Disabled,Deshabilitado
+Discard,Descartar
+Discard changes?,¿Descartar cambios?
+Discount,Descuento
+Discount Amount,Descuento
+Discount Percentage,Porcentaje de descuento
+Discount Type,Tipo de descuento
+Discussions,Debates
+Document,Documento
+Dream Companies,Empresas soñadas
+Duplicate,Duplicar
+Duplicate options found for this question.,Se han encontrado opciones duplicadas en esta pregunta.
+Duration,Duración
+Duration (in minutes),Duración (en minutos)
+Edit Chapter,Editar capítulo
+Education,Educación
+Education Detail,Detalle de formación
+Education Details,Detalles de formación
+Email,Correo electrónico
+Email Account,Cuentas de correo electrónico
+Email Address,Dirección de correo electrónico
+Email ID,ID de correo electrónico
+Email Sent,Correo Electrónico Enviado
+Email Templates,Plantillas de correo
+Email account created,Cuenta de correo electrónico creada
+Email account updated successfully,Cuenta de correo electrónico actualizada correctamente
+Email sent successfully,Correo electrónico enviado correctamente
+Emails,Correos
+Employee,Empleado
+Enable,Habilitar
+Enable Google API in Google Settings to send calendar invites for evaluations.,Activa la API de Google en la configuración de Google para enviar invitaciones de calendario para las evaluaciones.
+Enabled,Habilitado
+End Date,Fecha Final
+End Date (or expected),Fecha de fin (o prevista)
+End Time,Hora de finalización
+Enroll Now,Inscribirse ahora
+Enroll a Student,Matricular estudiante
+Enrolled Students,Estudiantes inscritos
+Enrollment Count,Recuento de inscripciones
+Enrollments,Inscripciones
+Enter Client Id and Client Secret in Google Settings to send calendar invites for evaluations.,Introduce el ID de cliente y el secreto de cliente en la configuración de Google para enviar invitaciones de calendario para las evaluaciones.
+Enter a URL,Introduce una URL
+Error,Error
+Evaluation,Evaluación
+Evaluation Details,Detalles de evaluación
+Evaluation End Date,Fecha de fin de la evaluación
+Evaluation Request,Solicitud de evaluación
+Evaluation end date cannot be less than the batch end date.,La fecha de fin de la evaluación no puede ser anterior a la fecha de fin del lote.
+Evaluation saved successfully,Evaluación guardada correctamente
+Evaluator,Evaluador
+Evaluator Name,Nombre del evaluador
+Evaluator Schedule,Horario del evaluador
+Event,Evento
+Event Type,Tipo de Evento
+Exercise,Ejercicio
+Exercise Title,Título del ejercicio
+Expand,Expandir
+Expected,Esperado
+Expiration Date,Fecha de caducidad
+Expires On,Expira el
+Expiry Date,Fecha de caducidad
+Explanation,Explicación
+Explanation ,Explicación 
+Explore More,Explorar más
+Export,Exportar
+External,Externo
+Fail,Falla
+Failed,Falló
+"Failed to create email account, Invalid credentials","Falló al crear cuenta de correo, credenciales inválidas"
+Failed to refresh session,No se pudo actualizar la sesión.
+"Failed to update email account, Invalid credentials","Falló al actualizar cuenta de correo, credenciales inválidas"
+Featured,Destacados
+Feedback,Retroalimentación
+Feel free to make edits to your submission if needed.,"Si lo necesitas, puedes modificar tu entrega."
+Field To Check,Campo para verificar
+Field of Major/Study,Campo de estudio/especialidad
+File Type,Tipo de Archivo
+File not found,Archivo no encontrado
+Filters,Filtros
+First Name,Primer Nombre
+Fixed 9-5,Horario fijo de 9 a 5
+Flexible Time,Horario flexible
+Formal Wear,Ropa formal
+Free,Gratis
+Freelance,Freelance
+Freelancer/Just looking,Freelance/Solo estoy mirando
+French (e.g. Distinction),"Francés (p. ej., Distinction)"
+Friday,Viernes
+From,Desde
+From ,Desde 
+From Date,Desde la fecha
+Full Name,Nombre completo
+Full Time,Jornada completa
+Full name is required.,El nombre completo es obligatorio.
+Function,Función
+GST Amount,Importe del GST
+GST Number,Número de GST
+GSTIN,GSTIN
+General,General
+Generate Google Meet Link,Generar enlace de Google Meet
+Get Started,Empezar
+GitHub,GitHub
+GitHub ID,ID de GitHub
+Github ID,ID de GitHub
+Go,Go
+Google Calendar,Calendario de Google
+Google Drive,Google Drive
+Google Meet Link,Enlace Google Meet
+Grade,Calificación
+Grade Assignment,Calificar tarea
+Grade Type,Tipo de calificación
+Grant only once,Conceder solo una vez
+Gray,Gris
+Green,Verde
+Have an account? Login,¿Tiene una cuenta? Iniciar sesión
+Hello,Hola
+Help,Ayuda
+Help others learn something new by creating a course.,Ayuda a otros a aprender algo nuevo creando un curso.
+Hey,Hola
+Hey {0},Hola {0}
+"Hey,","Hola,"
+Hi,Hola
+"Hi {0},","Hola {0},"
+"Hi,","Hola,"
+Hidden,Oculto
+Hide my Private Information from others,Ocultar mi información privada a los demás
+Highlight,Resaltar
+Home,Inicio
+Host,Anfitrión
+I am currently working here,Actualmente trabajo aquí
+I am delighted to inform you that you have successfully earned your certification for the {0} course. Congratulations!,Me complace comunicarte que has obtenido la certificación del curso {0}. ¡Enhorabuena!
+I am unavailable,No estoy disponible
+Icon,Icono
+If you are not any more interested to mentor the course,Si ya no te interesa ser mentor del curso
+"If you have any questions or require assistance, feel free to contact us.","Si tienes alguna pregunta o necesitas ayuda, no dudes en ponerte en contacto con nosotros."
+"If you set an amount here, then the USD equivalent setting will not get applied.","Si estableces un importe aquí, no se aplicará la configuración del equivalente en USD."
+If you want open ended questions then make sure each question in the quiz is of open ended type.,"Si quieres preguntas abiertas, asegúrate de que todas las preguntas del cuestionario sean de respuesta abierta."
+Image,Imagen
+Image search powered by,Búsqueda de imágenes con la tecnología de
+Image: Corrupted Data Stream,Imagen: Flujo de datos corruptos
+Import,Importar
+In Progress,En Progreso
+Include In Preview,Incluir en la vista previa
+Include in preview,Incluir en la vista previa
+Incomplete,Incompleto
+Incorrect,Incorrecto
+Individual Work,Trabajo individual
+Industry,Industria
+Institution Name,Nombre de la institución
+Instructor,Instructor
+Instructor Content,Contenido del instructor
+Instructor Notes,Notas del instructor
+Instructor notes,Notas del instructor
+Instructors Comments,Comentarios del instructor
+Introduction,Introducción
+Invalid Quiz ID,ID de cuestionario no válido
+Invalid file path,Ruta de archivo no válida
+Is Correct,Es correcta
+Is Standard,Es estándar
+Issue Date,Fecha de emisión
+Issued On,Emitido el
+Issued on,Emitido el
+Items in Sidebar,Elementos en la barra lateral
+Jane Doe,María Pérez
+JavaScript,JavaScript
+Job,Empleo
+Job Details,Detalles del empleo
+Job Openings,Ofertas de empleo
+Job Opportunity,Oportunidad de empleo
+Job Title,Título del trabajo
+Jobs,Trabajos
+Join,Unirse
+Join Meeting,Unirse a la reunión
+Join URL,URL para unirse
+LMS Assessment,Evaluación LMS
+LMS Assignment,Tarea LMS
+LMS Assignment Submission,Entrega de tarea LMS
+LMS Badge,Insignia LMS
+LMS Badge Assignment,Asignación de insignia LMS
+LMS Batch,Lote LMS
+LMS Batch Timetable,Horario de lote LMS
+LMS Category,Categoría LMS
+LMS Certificate,Certificado LMS
+LMS Certificate Evaluation,Evaluación del certificado LMS
+LMS Certificate Request,Solicitud de certificado LMS
+LMS Course,Curso LMS
+LMS Course Interest,Interés en curso LMS
+LMS Course Mentor Mapping,Asignación de mentores de curso LMS
+LMS Course Progress,Progreso de curso LMS
+LMS Course Review,Reseña de curso LMS
+LMS Enrollment,Inscripción LMS
+LMS Job Application,Solicitud de empleo LMS
+LMS Live Class,Clase en directo LMS
+LMS Option,Opción LMS
+LMS Payment,Pago LMS
+LMS Question,Pregunta LMS
+LMS Quiz,Cuestionario LMS
+LMS Quiz Question,Pregunta del cuestionario LMS
+LMS Quiz Result,Resultado del cuestionario LMS
+LMS Quiz Submission,Entrega de cuestionario LMS
+LMS Settings,Configuración de LMS
+LMS Sidebar Item,Elemento de la barra lateral de LMS
+LMS Source,Fuente LMS
+LMS Student,Estudiante LMS
+LMS Timetable Legend,Leyenda del horario del LMS
+LMS Timetable Template,Plantilla de horario LMS
+Label,Etiqueta
+Language,Idioma
+Last Name,Apellido
+Leave,Salir
+Lesson Reference,Referencia de la lección
+Lesson Title,Título de la lección
+Lesson content could not be read,No se pudo leer el contenido de la lección.
+Lesson created successfully,Lección creada correctamente.
+Lesson details,Detalles de la lección
+Lesson title,Título de la lección
+Lessons Completed,Lecciones completadas
+Lets start setting up your content on the LMS so that you can reclaim time and focus on growth.,Empecemos a configurar tu contenido en el LMS para que puedas ganar tiempo y centrarte en crecer.
+"Letter Grade (e.g. A, B-)","Calificación con letras (p. ej., A, B-)"
+Light,Claro
+Limit Questions To,Limitar preguntas a
+Limit cannot be greater than or equal to the number of questions in the quiz.,El límite no puede ser mayor o igual que el número de preguntas del cuestionario.
+Link,Enlace
+LinkedIn,Linkedin
+LinkedIn ID,ID de LinkedIn
+Live Class,Clase en directo
+LiveCode URL,URL de LiveCode
+Load More,Carga más
+Loading...,Cargando...
+Loading…,Cargando…
+Local,Local
+Location,Ubicación
+Location Preference,Preferencia de ubicación
+Locked,Bloqueado
+Login,Iniciar sesión
+Login to Frappe Cloud?,¿Iniciar sesión en Frappe Cloud?
+Login to apply,Inicia sesión para presentar tu solicitud
+Looking for new work or hiring talent?,¿Buscas nuevas oportunidades laborales o talento?
+Main,Principal
+Make LMS the default home,Convertir LMS en la página de inicio predeterminada
+Make an Announcement,Publicar un anuncio
+Manager (Sales/Marketing/Customer),Responsable (ventas/marketing/atención al cliente)
+Mark,Marcar
+Mark all as read,Marcar todo como leídas
+Marks,Puntos
+Marks for question number {0} cannot be greater than the marks allotted for that question.,La puntuación de la pregunta {0} no puede ser mayor que la puntuación asignada a esa pregunta.
+Marks out of,Puntos sobre
+Marks:,Puntos:
+Max Attempts,Número máximo de intentos
+Medium,Medio
+Medium ID,ID de Medium
+Medium:,Medio:
+Member,Miembro
+Member Name,Nombre del miembro
+Member Type,Tipo de miembro
+Members,Miembros
+Mentor,Mentor
+Mentor Name,Nombre del mentor
+Mentor Request,Solicitud de mentor
+Mentor Request Creation Template,Plantilla de creación de solicitud de mentor
+Mentor Request Status Update Template,Plantilla de actualización del estado de la solicitud de mentor
+Message,Mensaje
+Meta Description,Metadescripción
+Meta Image,Meta imagen
+Meta Tags,Metaetiquetas
+Meta description,Meta descripción
+Milestone,Evento importante
+Mobile No,Nº Móvil
+Moderator,Moderador
+Modified By,Modificado por
+Module Name is incorrect or does not exist.,El nombre del módulo es incorrecto o no existe.
+Module is incorrect.,Módulo incorrecto.
+Monday,Lunes
+More actions,Más acciones
+Multiple Correct Answers,Varias respuestas correctas
+My Profile,Mi Perfil
+My availability,Mi disponibilidad
+My calendar,Mi calendario
+Name,Nombre
+New,Nuevo
+New Address,Nueva Dirección
+New Batch,Nuevo lote
+New Course,Nuevo curso
+New Job,Nuevo empleo
+New Job Applicant,Nuevo solicitante de empleo
+New Quiz,Nuevo cuestionario
+New Sign Up,Nuevo registro
+New Workspace,Nueva Área de Trabajo
+New comment in batch {0},Nuevo comentario en el lote {0}
+New reply on the topic {0} in course {1},Nueva respuesta en el tema {0} del curso {1}
+New {0},Nuevo/a: {0}
+Next,Siguiente
+No,No
+No Assessments,Sin evaluaciones
+No Notifications,No hay notificaciones
+No Recording,Sin grabación
+No Upcoming Evaluations,No hay próximas evaluaciones
+No certificates,No hay certificados
+No changes to save,No hay cambios que guardar
+No courses created,No hay cursos creados
+No courses under review,No hay cursos en revisión
+No file attached,No hay archivos adjuntos
+No introduction,No hay introducción
+No live classes scheduled,No hay clases en directo programadas
+No members found.,No se han encontrado miembros.
+No {0},No {0}
+No {0} Found,Ningún {0} encontrado
+None,Ninguna
+Not Allowed,No permitido
+Not Applicable,No aplicable
+Not Attempted,Sin responder
+Not Available for Preview,No disponible para la vista previa
+Not Graded,Sin calificar
+Not Permitted,No permitido
+Note,Nota
+Notes,Notas
+Notifications,Notificaciones
+Number of seats available,Número de plazas disponibles
+OAuth Client ID,ID de cliente OAuth
+Office close to Home,Oficina cerca de casa
+Offline,Desconectado
+"Once again, congratulations on this significant accomplishment.","Una vez más, enhorabuena por este importante logro."
+"Once the moderator grades your submission, you'll find the details here.","Cuando el moderador califique tu entrega, verás los detalles aquí."
+Online,En línea
+Only files of type {0} will be accepted.,Solo se aceptarán archivos de tipo {0}.
+Only image file is allowed.,Solo se permiten archivos de imagen.
+Open,Abrir
+Open Assignment,Abrir tarea
+Open Course,Abrir curso
+Open Ended,Respuesta abierta
+Open to,Disponible para
+Option,Opción
+Option 1,Opción 1
+Option 10,Opción 10
+Option 2,Opción 2
+Option 3,Opción 3
+Option 4,Opción 4
+Option 5,Opción 5
+Option 6,Opción 6
+Option 7,Opción 7
+Option 8,Opción 8
+Option 9,Opción 9
+Options,Opciones
+Orange,Naranja
+Order ID,ID de pedido
+Organization,Organización
+Original Amount,Importe original
+Other,Otro
+Others,Otros
+Output,Salida
+Overview,Resumen
+Owner,Propietario
+PAN,PAN
+PAN Number,Número PAN
+PDF,PDF
+Page not found,Página no encontrada
+Paid Batch,Lote de pago
+Paid Course,Curso de pago
+Part Time,Jornada parcial
+Partially Complete,Parcialmente completado
+Pass,Aprobado
+Passed,Aprobado
+Passing Percentage,Porcentaje de aprobación
+Password,Contraseña
+Pause,Pausa
+Paused,Pausado
+Payment,Pago
+Payment Country,País de pago
+Payment Details,Detalles de pago
+Payment Gateway,Pasarela de Pago
+Payment ID,ID del pago
+Payment Received,Pago recibido
+Payment Settings,Configuración de pagos
+Payment for Document,Pago del documento
+Payment for Document Type,Tipo de documento de pago
+Payments app is not installed,La aplicación Payments no está instalada
+Pending,Pendiente
+Percentage,Porcentaje
+Percentage (e.g. 70%),"Porcentaje (p. ej., 70 %)"
+Percentage/Status,Porcentaje/Estado
+Phone,Teléfono
+Phone Number,Número de teléfono
+Pink,Rosa
+Please add <a href='{0}'>{1}</a> for <a href='{2}'>{3}</a> to send calendar invites for evaluations.,Añade <a href='{0}'>{1}</a> para <a href='{2}'>{3}</a> para enviar invitaciones de calendario para las evaluaciones.
+Please click on the following button to set your new password,Haz clic en el siguiente botón para establecer tu nueva contraseña
+Please enter a valid URL.,Introduce una URL válida.
+Please enter a valid email.,Introduce un correo electrónico válido.
+Please fill the mandatory fields: {0},Completa los campos obligatorios: {0}
+Please let us know where you heard about us from.,Cuéntanos cómo nos has conocido.
+Please login to access the quiz.,Inicia sesión para acceder al cuestionario.
+Please login to access this page.,Inicia sesión para acceder a esta página.
+Please login to continue with payment.,Inicia sesión para continuar con el pago.
+Please prepare well and be on time for the evaluations.,Prepárate bien y sé puntual en las evaluaciones.
+Please select a payment for the purchased certificate.,Selecciona un pago para el certificado comprado.
+Please select a student to enroll.,Selecciona un estudiante para matricular.
+Please take appropriate action at {0},Toma las medidas oportunas en {0}
+Point of Score (e.g. 70),"Puntuación (p. ej., 70)"
+Possible Answer 1,Respuesta posible 1
+Possible Answer 10,Respuesta posible 10
+Possible Answer 2,Respuesta posible 2
+Possible Answer 3,Respuesta posible 3
+Possible Answer 4,Respuesta posible 4
+Possible Answer 5,Respuesta posible 5
+Possible Answer 6,Respuesta posible 6
+Possible Answer 7,Respuesta posible 7
+Possible Answer 8,Respuesta posible 8
+Possible Answer 9,Respuesta posible 9
+Postal Code,Código postal
+Preferred Function,Función preferida
+Preferred Functions,Funciones preferidas
+Preferred Industries,Sectores preferidos
+Preferred Industry,Sector preferido
+Preferred Location,Ubicación preferida
+Preview,Vista Previa
+Preview Image,Previsualizar imagen
+Preview Video,Vídeo de vista previa
+Previous,Anterior
+Pricing,Precios
+Primary,Primario
+Primary Countries,Países principales
+Private Information includes your Grade and Work Environment Preferences,La información privada incluye tu calificación y tus preferencias de entorno laboral
+Problem,Problema
+Proceed to Payment,Continuar con el pago
+Profession,Profesión
+Profile Image,Imagen de perfil
+Profile updated successfully,Perfil actualizado con éxito
+Progress,Progreso
+Progress (%),Progreso (%)
+Provider,Proveedor
+Publish,Publicar
+Publish on Participant Page,Publicar en la página del participante
+Published,Publicado
+Published Courses,Cursos publicados
+Published On,Publicado el
+Purchased Certificate,Certificado comprado
+Purple,Morado
+Python,Python
+Question,Pregunta
+Question Detail,Detalle de la pregunta
+Question Name,Nombre de la pregunta
+Question updated successfully,Pregunta actualizada correctamente
+Question {0},Pregunta {0}
+Question {0} of {1},Pregunta {0} de {1}
+Quiz ID,ID del cuestionario
+Quiz Submission,Entrega de cuestionario
+Quiz Submissions,Entregas de cuestionarios
+Quiz Summary,Resumen del cuestionario
+Quiz Title,Título del cuestionario
+Quiz is not available to Guest users. Please login to continue.,El cuestionario no está disponible para usuarios invitados. Inicia sesión para continuar.
+Quiz updated successfully,Cuestionario actualizado correctamente
+Quiz will appear at the bottom of the lesson.,El cuestionario aparecerá al final de la lección.
+Quizzes,Cuestionarios
+Rating,Clasificación
+Rating cannot be 0,La valoración no puede ser 0
+Read,Leer
+Ready,Listo
+Received,Recibido
+Red,Rojo
+Reference DocName,DocName de referencia
+Reference DocType,DocType de referencia
+Reference Document Type,Tipo de documento de referencia
+Reference Name,Nombre de Referencia
+Refresh session,Actualizar sesión
+Regards,Un saludo
+Register Now,Regístrate ahora
+Registered but disabled,Registrado pero discapacitados
+Related Courses,Cursos relacionados
+Remove,Eliminar
+Replace,Reemplazar
+Reply To,Responder a
+Request Invite,Solicitar invitación
+Request for Mentorship,Solicitud de mentoría
+Reset,Reiniciar
+Result,Resultado
+Resume,Reanudar
+Retry,Reintentar
+Review,revisión
+Role,Rol
+Role Preference,Preferencia de rol
+Roles,Roles
+Route,Ruta
+Row #{0} Date cannot be outside the batch duration.,Fila #{0}: la fecha no puede quedar fuera de la duración del lote.
+Row #{0} End time cannot be outside the batch duration.,Fila #{0}: la hora de fin no puede quedar fuera de la duración del lote.
+Row #{0} Start time cannot be greater than or equal to end time.,Fila #{0}: la hora de inicio no puede ser posterior o igual a la hora de fin.
+Row #{0} Start time cannot be outside the batch duration.,Fila #{0}: la hora de inicio no puede quedar fuera de la duración del lote.
+Rows {0} have the duplicate questions.,Las filas {0} tienen preguntas duplicadas.
+Running,En ejecución
+Saturday,Sábado
+Saved,Guardado
+Schedule,Calendario
+Scheduled Flow,Flujo programado
+Scheduling,Planificación
+Score,Puntuación
+Score Out Of,Puntuación sobre
+Search for an icon,Buscar un icono
+Seat Count,Número de plazas
+Seat Left,Plaza restante
+Seats Left,Plazas restantes
+Select a quiz,Selecciona un cuestionario
+Select all,Seleccionar todo
+Select currency,Seleccionar moneda
+Select {0},Seleccionar {0}
+Send,Enviar
+Send Email,Enviar correo electronico
+Send calendar invite for evaluations,Enviar invitación de calendario para las evaluaciones
+Services,Servicios
+Session refreshed successfully,Sesión actualizada correctamente.
+Set your Password,Establece tu contraseña
+Setting up,Configurando
+Settings,Configuración
+Share on,Compartir en
+Short Introduction,Breve introducción
+Short description of the batch,Breve descripción del lote
+Show Answer,Mostrar respuesta
+Show Answers,Mostrar respuestas
+Show Submission History,Mostrar historial de entregas
+Show Tab in Batch,Mostrar pestaña en el lote
+Show USD Equivalent,Mostrar equivalente en USD
+Show day view in timetable,Mostrar vista diaria en el horario
+Show live class,Mostrar clase en directo
+Shuffle Questions,Preguntas aleatorias
+Sidebar,Barra Lateral
+Sidebar Items,Elementos de barra lateral
+Sign Up is disabled,El registro está desactivado
+Sign up,Regístrate
+Signup Settings,Configuración de registro
+Signups,Registros
+Skill,Habilidad
+Skill Details,Detalles de la habilidad
+Skill Name,nombre de la habilidad
+Skills,Habilidades
+Skip,Omitir
+Slot Times are overlapping for some schedules.,Las franjas horarias de algunos horarios se solapan.
+Sold Out,Agotado
+Source,Fuente
+Staff,Personal
+Start,Iniciar
+Start Date,Fecha de inicio
+Start Date:,Fecha de inicio:
+Start Time,Hora de inicio
+Start Time cannot be greater than End Time,La hora de inicio no puede ser posterior a la hora de fin
+Start URL,URL de inicio
+Startup Organization,Startup
+State/Province,Provincia
+Status,Estado
+Status/Score,Estado/Puntuación
+Student,Estudiante
+Student enrolled successfully,Estudiante matriculado correctamente.
+Students,Estudiantes
+Students will be enrolled in a paid batch once they complete the payment,Los estudiantes se inscribirán en un lote de pago una vez que completen el pago
+Subject,Asunto
+Subject is required,El asunto es obligatorio
+Submission,Entrega
+"Submit your resume to proceed with your application for this position. Upon submission, it will be shared with the job poster.","Envía tu currículum para continuar con tu solicitud para este puesto. Una vez enviado, se compartirá con el anunciante de la oferta."
+Submitted,Validado
+Success,Éxito
+Summary,Resumen
+Sunday,Domingo
+System,Sistema
+System Manager,Administrador del sistema
+Tags,Etiquetas
+Target,Objetivo
+Tasks,Tareas
+Teal,Turquesa
+Team School,El equipo de School
+Team Work,Trabajo en equipo
+Template,Plantilla
+Temporarily Disabled,Desactivado temporalmente
+Text,Texto
+Thanks and Regards,Gracias y un saludo
+The course {0} is now available on {1}.,El curso {0} ya está disponible en {1}.
+The evaluator of this course is unavailable from {0} to {1}. Please select a date after {1},El evaluador de este curso no está disponible desde el {0} hasta el {1}. Selecciona una fecha posterior al {1}
+The slot is already booked by another participant.,La franja horaria ya está reservada por otro participante.
+The status of your application has changed.,El estado de tu solicitud ha cambiado.
+"The stored {0} of this lesson could not be read, so the editor is showing it as empty. It is left untouched and will not be overwritten; anything else you edit still saves. Reload the page; if it still fails, restore the lesson from its version history in Desk.","No se pudo leer el {0} guardado de esta lección, por eso el editor lo muestra vacío. El contenido se conserva y no se sobrescribirá; los demás cambios se guardarán normalmente. Recarga la página. Si el problema continúa, restaura la lección desde su historial de versiones en Desk."
+Theme,Tema
+There are no chapters in this course. Create and manage chapters from here.,No hay capítulos en este curso. Crea y gestiona capítulos desde aquí.
+There are no seats available in this batch.,No hay plazas disponibles en este lote.
+There are no {0} on this site.,No hay {0} en este sitio.
+These customisations will work on the main batch page.,Estas personalizaciones se aplicarán en la página principal del lote.
+This certificate does no expire,Este certificado no caduca
+This course is free.,Este curso es gratuito.
+This lesson is not available for preview. Please enroll in the course to access it.,Esta lección no está disponible en la vista previa. Inscríbete en el curso para acceder a ella.
+This site is in read-only mode.,Este sitio está en modo de solo lectura.
+Thursday,Jueves
+Time,Hora
+Time Preference,Preferencia horaria
+Time must be in 24 hour format (HH:mm). Example 11:30 or 22:00,La hora debe estar en formato de 24 horas (HH:mm). Ejemplo: 11:30 o 22:00
+Time: ,Hora: 
+Timestamp,Marca de tiempo
+Timetable,Horario
+Timetable Legends,Leyendas del horario
+Timetable Template,Plantilla de horario
+Timezone,Zona horaria
+Timings:,Horarios:
+Title,Título
+Title is required,El título es obligatorio
+To,A
+To Date,Hasta la fecha
+"To join this batch, please contact the Administrator.","Para unirte a este lote, contacta con el administrador."
+Today,Hoy
+"Too many users signed up recently, so the registration is disabled. Please try back in an hour","Hay demasiados usuarios se inscribieron recientemente, por lo que el registro está desactivado. Por favor, intente volver en una hora"
+Total,Total
+Total Marks,Puntuación total
+Total Signups,Registros totales
+Training Feedback,Comentarios del entrenamiento
+Transaction,Transacción
+Travel,Viajes
+Try Again,Inténtelo de nuevo
+Tuesday,Martes
+Twitter,Twitter
+Twitter ID,ID de Twitter
+Type,Tipo
+Type your answer,Escribe tu respuesta
+Type your reply here...,Escriba aquí su respuesta...
+"UK Grading  (e.g. 1st, 2:2)","Calificación del Reino Unido (p. ej., 1st, 2:2)"
+URL,URL
+UUID,UUID
+Unavailability,No disponibilidad
+Unavailable From Date cannot be greater than Unavailable To Date,La fecha de inicio de no disponibilidad no puede ser posterior a la fecha de fin de no disponibilidad
+Unpublish,Despublicar
+Unread,No leído
+Unsplash,Unsplash
+Unsplash Access Key,Clave de acceso de Unsplash
+Unstructured Role,Rol poco definido
+Upcoming Batches,Próximos lotes
+Upcoming Evaluations,Próximas evaluaciones
+Update Password,Actualizar contraseña
+Upload,Subir
+Upload File,Subir archivo
+Upload Image,Cargar Imagen
+Uploading,Subiendo
+Uploading {0}%,Subiendo {0} %
+Use HTML,Usar HTML
+User,Usuario
+User Category,Categoría de usuario
+User Field,Campo de usuario
+User Image,Imagen de Usuario
+User Input,Entrada del usuario
+User Skill,Habilidad del usuario
+User {0} does not exist.,El usuario {0} no existe.
+User {0} has reported the job post {1},El usuario {0} ha denunciado la oferta de empleo {1}
+Username,Nombre de usuario
+Users,Usuarios
+Users Response,Respuesta del usuario
+Value,Valor
+Value Change,Cambio de valor
+Video Embed Link,Enlace de incrustación de vídeo
+View Certificate,Ver certificado
+Visibility,Visibilidad
+Visit the following link to view your ,Visita el siguiente enlace para ver tu 
+Volunteering or Internship,Voluntariado o prácticas
+Warning,Advertencia
+We are pleased to inform you that you have been enrolled in our upcoming batch. Congratulations!,Nos complace comunicarte que se te ha inscrito en nuestro próximo lote. ¡Enhorabuena!
+Web Page,Página Web
+Wednesday,Miércoles
+Welcome to {0}!,¡Te damos la bienvenida a {0}!
+"When a course gets submitted for review, it will be listed here.","Cuando un curso se someta a revisión, aparecerá en esta lista."
+"When on, anyone can preview this lesson without enrolling. Otherwise it is visible only to enrolled students.","Si está activado, cualquier persona puede ver una vista previa de esta lección sin matricularse. De lo contrario, solo podrán verla los estudiantes matriculados."
+Where did you hear about us?,¿Cómo nos has conocido?
+"With this certification, you can now showcase your updated skills and share your achievement with your colleagues and on LinkedIn. To access your certificate, please click on the link provided below. Make sure you are logged in to the portal.","Con esta certificación, ya puedes mostrar tus habilidades actualizadas y compartir tu logro con tus compañeros y en LinkedIn. Para acceder a tu certificado, haz clic en el enlace que aparece a continuación. Asegúrate de haber iniciado sesión en el portal."
+Work Environment,Entorno de trabajo
+Work Experience,Experiencia laboral
+Work Experience Details,Detalles de la experiencia laboral
+Workspace,Área de Trabajo
+Workspaces,Áreas de Trabajo
+Write a Review,Escribe una reseña
+Write your answer here,Escribe aquí tu respuesta
+Yellow,Amarillo
+Yes,Si
+You,Usted
+You already have an evaluation on {0} at {1} for the course {2}.,Ya tienes una evaluación el {0} a las {1} para el curso {2}.
+You are already enrolled for this batch.,Ya estás inscrito en este lote.
+You are already enrolled for this course.,Ya estás inscrito en este curso.
+You are not permitted to access this page.,Usted no está autorizado a acceder a esta página.
+You can find their resume attached to this email.,Encontrarás su currículum adjunto a este correo electrónico.
+You can only edit your own profile.,Solo puedes editar tu propio perfil.
+You cannot schedule evaluations after {0}.,No puedes programar evaluaciones después del {0}.
+You cannot schedule evaluations for past slots.,No puedes programar evaluaciones en franjas horarias pasadas.
+You do not have permission to access this page.,No tienes permiso para acceder a esta página.
+You do not have permission to enroll students in this course.,No tienes permiso para matricular estudiantes en este curso.
+You don't have any notifications.,No tienes ninguna notificación.
+You got {0}% correct answers with a score of {1} out of {2},Has obtenido un {0} % de respuestas correctas con una puntuación de {1} sobre {2}
+You have already applied for this job.,Ya has presentado tu solicitud para este empleo.
+You have already reviewed this course,Ya has escrito una reseña de este curso
+You have been enrolled in this batch,Te has inscrito en este lote
+You have been enrolled in this course,Te has inscrito en este curso
+You have opted to be notified for this course. You will receive an email when the course becomes available.,Has optado por recibir notificaciones sobre este curso. Recibirás un correo electrónico cuando el curso esté disponible.
+You need to login first to enroll for this course,Debes iniciar sesión para inscribirte en este curso
+You've applied to become a mentor for this course. Your request is currently under review.,Has solicitado ser mentor de este curso. Tu solicitud está en revisión.
+You've successfully submitted the assignment.,Has enviado la tarea correctamente.
+You've used all {0} {1} for this quiz. Reach out to your instructor if you need to try again.,Has agotado {0} {1} de este cuestionario. Ponte en contacto con tu instructor si necesitas volver a intentarlo.
+YouTube Video URL,URL del vídeo de YouTube
+YouTube Video will appear at the top of the lesson.,El vídeo de YouTube aparecerá en la parte superior de la lección.
+Your Account has been successfully created!,¡Tu cuenta se ha creado correctamente!
+Your calendar is set.,Tu calendario está configurado.
+Your evaluation for the course {0} has been scheduled on {1} at {2} {3}.,Tu evaluación del curso {0} se ha programado para el {1} a las {2} {3}.
+Your evaluation slot has been booked,Se ha reservado tu franja horaria de evaluación
+Your evaluator is {0},Tu evaluador es {0}
+Your request to join us as a mentor for the course,Tu solicitud para unirte como mentor del curso
+"Your submission has been successfully saved. The instructor will review and grade it shortly, and you'll be notified of your final result.",Tu entrega se ha guardado correctamente. El instructor la revisará y calificará en breve y se te notificará el resultado final.
+Zoom Settings,Configuración de Zoom
+and,y
+cancel your application,cancelar tu solicitud
+certificate,certificado
+certificates,certificados
+completed,completado
+course,curso
+courses,cursos
+day streak,día de racha
+days,días
+enrolled,inscrito
+esc,escape
+evaluation,evaluación
+event,evento
+events,eventos
+has been,ha sido
+jane@example.com,juan@example.com
+lesson,lección
+lessons,lecciones
+link,Vinculo
+mark,marcar
+marks,puntos
+member,miembro
+members,miembros
+minutes,minutos
+of,de
+private,privado
+question,pregunta
+questions,preguntas
+saving...,guardando...
+section,sección
+students,estudiantes
+to close,para cerrar
+to navigate,para navegar
+to select,para seleccionar
+warning,advertencia
+you can,puedes
+{0} Settings not found,No se ha encontrado la configuración de {0}
+{0} has applied for the job position {1},{0} ha solicitado el puesto {1}
+{0} has reported a job post for the following reason.,{0} ha denunciado una oferta de empleo por el siguiente motivo.
+{0} has submitted the assignment {1},{0} ha enviado la tarea {1}
+{0} is already a mentor for course {1},{0} ya es mentor del curso {1}
+{0} is already certified for the course {1},{0} ya está certificado para el curso {1}
+{0} is required,{0} es requerido
+{0} is your evaluator,{0} es tu evaluador
+{0} mentioned you in a comment,{0} te ha mencionado en un comentario
+{0} mentioned you in a comment in your batch.,{0} te ha mencionado en un comentario en tu lote.
+{0} mentioned you in a comment in {1},{0} te ha mencionado en un comentario en {1}
+{0} not found,{0} no encontrado
+{0} rows selected,{0} filas seleccionadas
+"{0}, row {1}","{0}, fila {1}"
+{0}s,{0}s
+{} Completed,{} completados
+{} Enrolled,{} inscritos
+{} Granted,{} concedidos
+{} Passed,{} aprobados
+ you are on a, estás en una racha de
+1 result loaded,1 resultado cargado
+A short summary of the course for search results.,Un resumen breve del curso para mostrarlo en los resultados de búsqueda.
+About this course,Acerca de este curso
+Add a program,Agregar un programa
+Add chapter,Agregar módulo
+Add courses to your batch,Agregar cursos a tu grupo
+Add students to your batch,Agregar estudiantes a tu grupo
+Add tag,Agregar etiqueta
+Add your first chapter,Agrega tu primer módulo
+Add your first lesson,Agrega tu primera lección
+"Are you sure you want to clear the demo data? This would delete the course ""A guide  to Frappe Learning"" along with all its associated data. This action cannot be undone.",¿Seguro que quieres borrar los datos de demostración? Se eliminará el curso «A guide to Frappe Learning» y toda la información asociada. Esta acción no se puede deshacer.
+Assignment Progress,Progreso de tareas
+Average Completion Rate,Tasa promedio de finalización
+Certificate price,Precio del certificado
+Certificates render from a Print Format. Build or customize templates from the desk.,Los certificados se generan con un formato de impresión. Puedes crear o personalizar las plantillas desde el escritorio.
+Certification available,Certificación disponible
+Chapter added successfully,Módulo agregado correctamente
+Chapter updated successfully,Módulo actualizado correctamente
+Charge learners to enroll in this course.,Cobra a los estudiantes para que se matriculen en este curso.
+Complete your profile,Completa tu perfil
+Completion Rate,Tasa de finalización
+Completion certificate,Certificado de finalización
+Confirm clearing demo data?,¿Confirmas que quieres borrar los datos de demostración?
+Could not count the list,No se pudo contar la lista
+Could not load this certification.,No se pudo cargar esta certificación.
+Could not update publish status,No se pudo actualizar el estado de publicación
+Course Progress,Progreso del curso
+Course content,Contenido del curso
+Course content coming soon!,El contenido de este curso estará disponible pronto.
+Course created successfully,Curso creado correctamente
+Course deleted successfully,Curso eliminado correctamente
+Course description,Descripción del curso
+Course details,Detalles del curso
+Course editor,Editor del curso
+Course options,Opciones del curso
+Course overview,Resumen del curso
+Course price,Precio del curso
+Course published,Curso publicado
+Course unpublished,Curso despublicado
+Course thumbnail,Imagen del curso
+Course updated successfully,Curso actualizado correctamente
+Create Course,Crear curso
+Create a batch,Crear un grupo
+Create a course,Crear un curso
+Create a live class,Crear una clase en vivo
+Create your first batch,Crea tu primer grupo
+Create your first course,Crea tu primer curso
+Create your first quiz,Crea tu primer cuestionario
+Creating a batch,Crear un grupo
+Creating a course,Crear un curso
+Current Streak,Racha actual
+Custom Certificate Templates,Plantillas de certificados personalizadas
+Delete Course,Eliminar curso
+Demo data cleared successfully,Se borraron los datos de demostración correctamente
+Editor,Editor
+Enable this only if you want to upload a SCORM package as a chapter.,Activa esta opción solo si quieres subir un paquete SCORM como módulo.
+Ended,Finalizada
+Enforce Lesson Completion,Exigir completar las lecciones
+Enroll,Matricularme
+Enroll students to track their progress here,Matricula estudiantes para consultar aquí su progreso.
+Enrolled On,Fecha de matrícula
+Error uploading file,Error al subir el archivo
+Get the Payments app,Obtener la aplicación Payments
+Highlight on the homepage.,Destacar en la página de inicio.
+Highlight what makes you unique and show your skills.,Destaca lo que te hace único y muestra tus habilidades.
+How to edit a lesson,Cómo editar una lección
+Import via Data Import Tool,Importar con la herramienta de importación de datos
+Import via ZIP,Importar desde un archivo ZIP
+Invite your team and students,Invita a tu equipo y a tus estudiantes
+Issue a Certificate,Emitir un certificado
+Issue a free certificate when learners complete the course.,Emitir un certificado gratuito cuando los estudiantes completen el curso.
+"Keep going,","¡Sigue así,"
+Learning Consistency,Constancia de aprendizaje
+Learning Paths,Rutas de aprendizaje
+Lesson Completion,Finalización de lecciones
+Lesson Index,Índice de lecciones
+Lesson Progress,Progreso de la lección
+Let users enroll themselves.,Permitir que los usuarios se matriculen por su cuenta.
+Longest Streak,Racha más larga
+Manage templates,Administrar plantillas
+Manage your courses and batches at a glance,Administra tus cursos y grupos de un vistazo.
+Meta keywords,Palabras clave meta
+Monetization,Monetización
+My Batches,Mis grupos
+My Courses,Mis cursos
+Next lesson,Lección siguiente
+No other published courses available,No hay otros cursos publicados disponibles.
+No students enrolled yet,Todavía no hay estudiantes matriculados.
+No students match your search,Ningún estudiante coincide con la búsqueda.
+No thumbnail,Sin imagen
+Not yet open for enrollment.,La matrícula todavía no está abierta.
+Only show courses that offer a certificate,Mostrar solo cursos que ofrecen certificado
+Only zip files are allowed,Solo se permiten archivos ZIP.
+Our Popular Courses,Cursos populares
+Our Upcoming Batches,Próximos grupos
+Paid certificate,Certificado de pago
+Paid course,Curso de pago
+Payments app required,Se requiere la aplicación Payments
+Please upload a SCORM package,Sube un paquete SCORM.
+Powered by Frappe Learning,Desarrollado con Frappe Learning
+Preview video,Vista previa del video
+Previous lesson,Lección anterior
+Pricing and certification,Precios y certificación
+Programming Exercise Progress,Progreso de los ejercicios de programación
+Progress Summary,Resumen del progreso
+Publish course,Publicar curso
+Quiz Progress,Progreso del cuestionario
+Remove file,Quitar archivo
+Remove the image to pick a color instead.,Quita la imagen para elegir un color.
+Resume where you left off,Continúa donde lo dejaste.
+SCORM Package,Paquete SCORM
+Search students,Buscar estudiantes
+See all,Ver todo
+Select a lesson on the right to start editing.,Selecciona una lección a la derecha para empezar a editar.
+Select category,Seleccionar categoría
+Select evaluator,Seleccionar evaluador
+Select instructors,Seleccionar docentes
+Select related courses,Seleccionar cursos relacionados
+Select timezone,Seleccionar zona horaria
+Self enrollment,Matrícula abierta
+Sell an evaluator-graded certificate alongside this free course.,Ofrece un certificado evaluado junto con este curso gratuito.
+"Selling a paid course or certificate needs the Payments app. Install it from the Frappe Marketplace, then turn on pricing here.","Para vender un curso o certificado, necesitas la aplicación Payments. Instálala desde Frappe Marketplace y luego activa los precios aquí."
+Setting up payment gateway,Configurar la pasarela de pago
+Short description,Descripción breve
+Short introduction,Introducción breve
+Skip to main content,Saltar al contenido principal
+Sort by,Ordenar por
+Student View,Vista del estudiante
+Students must complete each lesson before the next one opens.,Los estudiantes deben completar cada lección antes de desbloquear la siguiente.
+There are no courses currently. Create your first course to get started!,Todavía no hay cursos. ¡Crea el primero para empezar!
+These tags help search engines describe and rank your course in results.,Estas etiquetas ayudan a los buscadores a describir y posicionar tu curso en los resultados.
+This class has ended,Esta clase ha finalizado.
+This site is being updated. You will not be able to make any changes. Full access will be restored shortly.,El sitio está en actualización. No podrás hacer cambios por el momento. El acceso completo se restablecerá pronto.
+Try a different name,Prueba con otro nombre.
+Type something,Escribe algo
+Unpublish course,Retirar publicación del curso
+Unpublished,Sin publicar
+Upcoming Live Classes,Próximas clases en vivo
+"Upload a 750×422 image (.jpg, .jpeg, .gif, or .png). Shown on the catalog card and lesson hero.","Sube una imagen de 750 × 422 (.jpg, .jpeg, .gif o .png). Se mostrará en la tarjeta del catálogo y en la cabecera de la lección."
+Upload a ZIP file,Subir un archivo ZIP
+Upload a course thumbnail image,Sube una imagen para el curso.
+Upload an image to replace the color.,Sube una imagen para reemplazar el color.
+Upload image instead,Subir una imagen
+Video Statistics,Estadísticas del video
+View learning streak: {0} days,Ver racha de aprendizaje: {0} días
+You are already certified for this course. Click on the card below to open your certificate.,Ya tienes el certificado de este curso. Haz clic en la tarjeta para abrirlo.
+You are not permitted to create a course.,No tienes permiso para crear cursos.
+You are not permitted to manage chapters.,No tienes permiso para administrar módulos.
+"You can do better,","Puedes hacerlo mejor,"
+You have {0} upcoming {1} and {2} {3} scheduled.,Tienes {0} {1} próximos y {2} {3} programados.
+You have {0} upcoming {1}.,Tienes {0} {1} próximos.
+You have {0} {1} scheduled.,Tienes {0} {1} programados.
+"You rock,","¡Eres genial,"
+"Your learning streak counts the number of days in a row you’ve kept up your learning, whether it’s a lesson, quiz, or assignment. Don’t worry, weekends don’t break your streak.","Tu racha de aprendizaje cuenta los días consecutivos en que has avanzado, ya sea con una lección, un cuestionario o una tarea. No te preocupes: los fines de semana no interrumpen tu racha."
+evaluations,evaluaciones
+live class,clase en vivo
+live classes,clases en vivo
+sections,secciones
+{0} results loaded,Se cargaron {0} resultados
+"<p>Dear {{ member_name }},</p>\\n\\n<p>You have been enrolled in our upcoming batch {{ batch_name }}.</p>\\n\\n<p>Thanks,</p>\\n<p>Frappe Learning</p>","<p>Hola, {{ member_name }}:</p>\\n\\n<p>Te has matriculado en el próximo grupo {{ batch_name }}.</p>\\n\\n<p>Saludos,</p>\\n<p>Frappe Learning</p>"
+"AI assistant (ChatGPT, etc.)","Asistente de IA (ChatGPT, etc.)"
+Add Course to Program,Agregar curso al programa
+Add New Member,Agregar miembro
+Add a course to the batch,Agregar un curso al grupo
+Add pricing and go live.,Configura los precios y publica tu curso.
+Add questions,Agregar preguntas
+Add students to the batch to make an announcement,Agrega estudiantes al grupo para publicar un anuncio.
+"Add your first question and edit it right here. Choices, correct answers and explanations all in one card.","Agrega tu primera pregunta y edítala aquí. Incluye las opciones, respuestas correctas y explicaciones en una sola tarjeta."
+Allow users to view their past quiz attempts.,Permitir que los usuarios consulten sus intentos anteriores del cuestionario.
+Already using Frappe / ERPNext,Ya utilizo Frappe o ERPNext
+"An open-ended question can't be mixed with other types, and live answer-reveal is turned off for this quiz.",No se pueden combinar preguntas abiertas con otros tipos. La revelación de respuestas en vivo está desactivada para este cuestionario.
+Announcement has been sent successfully,El anuncio se envió correctamente.
+Announcement is required,El anuncio es obligatorio.
+Are you sure you want to delete this program? This action cannot be undone.,¿Seguro que quieres eliminar este programa? Esta acción no se puede deshacer.
+Assignment created successfully,La tarea se creó correctamente.
+Assignment updated successfully,La tarea se actualizó correctamente.
+Award my first certificate,Emitir mi primer certificado
+Back to editing,Volver a la edición
+Batch Enrollment Confirmation,Confirmación de matrícula al grupo
+Batch created successfully,El grupo se creó correctamente.
+Bring your learners into a batch.,Reúne a tus estudiantes en un grupo.
+Canvas,Canvas
+Certificates are not enabled for this batch.,Los certificados no están habilitados para este grupo.
+Certificates generated successfully,Los certificados se generaron correctamente.
+Check Submissions,Revisar entregas
+Classplus,Classplus
+Close preview,Cerrar vista previa
+Coaching or Training Institute,Centro de formación o capacitación
+College or University,Instituto o universidad
+Company or Workplace,Empresa o lugar de trabajo
+Configure certification for a course.,Configura la certificación de un curso.
+Could not delete the quiz,No se pudo eliminar el cuestionario.
+Course added to batch successfully,El curso se agregó al grupo correctamente.
+Course added to program successfully,El curso se agregó al programa correctamente.
+Course already added to program,El curso ya está agregado al programa.
+Create Program,Crear programa
+Create an Assignment,Crear una tarea
+Customer Academy,Academia para clientes
+Deduct marks for incorrect answers.,Restar puntos por respuestas incorrectas.
+Delete Program,Eliminar programa
+Delete program,Eliminar programa
+Delete this quiz?,¿Eliminar este cuestionario?
+Deleting this quiz permanently removes it and its submissions. This action cannot be undone. Are you sure you want to continue?,Al eliminar el cuestionario también se borrarán sus entregas de forma permanente. Esta acción no se puede deshacer. ¿Quieres continuar?
+Device,Dispositivo
+Discard changes,Descartar cambios
+Display correct answers after each question is attempted.,Mostrar las respuestas correctas después de cada pregunta.
+"Drag and drop a ZIP file, or upload from your",Arrastra un archivo ZIP o súbelo desde tu
+Edit Assignment,Editar tarea
+Edit Member,Editar miembro
+Edit Program,Editar programa
+Email Template created successfully,La plantilla de correo se creó correctamente.
+Email is required,El correo electrónico es obligatorio.
+Enable Negative Marking,Activar puntuación negativa
+Enable Proctoring,Activar supervisión
+Enable Scheduling,Activar programación
+Enabling this will publish the certificate on the certified participants page.,"Al activar esta opción, el certificado aparecerá en la página de participantes certificados."
+Enforce Course Order,Exigir el orden de los cursos
+Enroll Member to Program,Matricular miembro en el programa
+Error creating batch,No se pudo crear el grupo.
+Error creating email template,No se pudo crear la plantilla de correo.
+Error creating quiz,No se pudo crear el cuestionario.
+File upload failed. Please try again.,No se pudo subir el archivo. Inténtalo de nuevo.
+"Fill in the title on the right. The quiz is created then, and questions can go in.",Escribe el título a la derecha para crear el cuestionario; después podrás agregar preguntas.
+Frappe Cloud Marketplace,Frappe Cloud Marketplace
+Friend or colleague,Amigo o colega
+Generate Certificates,Generar certificados
+Google Classroom,Google Classroom
+Grade submissions,Calificar entregas
+How did you hear about Frappe Learning?,¿Cómo conociste Frappe Learning?
+Hybrid,Híbrido
+Import Course from ZIP,Importar curso desde ZIP
+Just exploring,Solo estoy explorando
+Kajabi,Kajabi
+Keep editing,Seguir editando
+Launch a paid course,Publicar un curso de pago
+LearnDash,LearnDash
+Leave without saving?,¿Salir sin guardar?
+Manual grading,Calificación manual
+Marks to Deduct,Puntos que se restarán
+Max Violations,Máximo de infracciones
+Maximum Attempts,Intentos máximos
+Member added successfully,El miembro se agregó correctamente.
+Member added to program successfully,El miembro se agregó al programa correctamente.
+Member already added to program,El miembro ya está agregado al programa.
+Member updated,Miembro actualizado
+Moodle,Moodle
+Name the quiz first,Primero asigna un nombre al cuestionario.
+New Email Template,Nueva plantilla de correo
+New Programming Exercise,Nuevo ejercicio de programación
+New question,Nueva pregunta
+No LMS yet,Todavía no tengo un LMS
+No courses added yet.,Todavía no se han agregado cursos.
+No members added yet.,Todavía no se han agregado miembros.
+No questions yet,Todavía no hay preguntas.
+No students in this batch,No hay estudiantes en este grupo.
+Non-profit or Government,Organización sin fines de lucro o entidad pública
+Not saved,Sin guardar
+Notion,Notion
+On site,Presencial
+Onboard my existing learners,Incorporar a mis estudiantes actuales
+Open edX,Open edX
+Optional. Leave empty to keep the assignment open after it starts.,Opcional. Déjalo vacío para que la tarea permanezca abierta después de su inicio.
+Optional. Leave empty to keep the quiz open after it starts.,Opcional. Déjalo vacío para que el cuestionario permanezca abierto después de su inicio.
+Personal Business,Negocio personal
+Please enter a title.,Ingresa un título.
+Please enter a valid time in the format HH:mm.,Ingresa una hora válida con el formato HH:mm.
+Please select a conferencing provider and add an account to the batch to create live classes.,Selecciona un servicio de videoconferencia y agrega una cuenta al grupo para crear clases en vivo.
+Please select a course,Selecciona un curso.
+Please select a date.,Selecciona una fecha.
+Please select a duration.,Selecciona una duración.
+Please select a future date and time.,Selecciona una fecha y hora futuras.
+Please select a member,Selecciona un miembro.
+Please select a time.,Selecciona una hora.
+Please select a timezone.,Selecciona una zona horaria.
+Poke around a sample course.,Explora un curso de ejemplo.
+Prefills the learner’s editor. Leave empty for the language default.,Completa de antemano el editor del estudiante. Déjalo vacío para usar el código predeterminado del lenguaje.
+Problem Statement,Enunciado del problema
+Program Member,Miembro del programa
+Program created successfully,El programa se creó correctamente.
+Program deleted successfully,El programa se eliminó correctamente.
+Program updated successfully,El programa se actualizó correctamente.
+Programming Exercise deleted successfully,El ejercicio de programación se eliminó correctamente.
+Programming Exercises,Ejercicios de programación
+Publish my first course,Publicar mi primer curso
+Question bank,Banco de preguntas
+Quiz auto-submits when this many violations are recorded.,El cuestionario se enviará automáticamente al alcanzar este número de infracciones.
+Quiz deleted successfully,El cuestionario se eliminó correctamente.
+Randomize the order of questions for each attempt.,Mostrar las preguntas en orden aleatorio en cada intento.
+Remote,Remoto
+Reply To is required,El campo «Responder a» es obligatorio.
+Require camera access and monitor for violations during the quiz.,Solicitar acceso a la cámara y supervisar infracciones durante el cuestionario.
+Restrict when learners can start and submit this quiz.,Restringir el periodo en que los estudiantes pueden iniciar y enviar este cuestionario.
+Restrict when learners can submit this assignment.,Restringir el periodo en que los estudiantes pueden entregar esta tarea.
+Schedule End,Fin de la programación
+Schedule End must be after Schedule Start.,La fecha de fin debe ser posterior a la fecha de inicio.
+Schedule Start,Inicio de la programación
+Schedule Start is required when scheduling is enabled.,La fecha de inicio es obligatoria cuando la programación está activada.
+School,Escuela
+"Search engine (Google, etc.)","Buscador (Google, etc.)"
+Search questions,Buscar preguntas
+Set up your first course and lessons.,Configura tu primer curso y sus lecciones.
+Skip for now,Omitir por ahora
+Social media,Redes sociales
+Spreadsheets,Hojas de cálculo
+Starter Code,Código inicial
+Students answer in a rich-text editor (image embeds allowed).,Los estudiantes responden en un editor de texto enriquecido que permite insertar imágenes.
+Submission Type,Tipo de entrega
+Submissions,Entregas
+TalentLMS,TalentLMS
+Teachable,Teachable
+Teachmint,Teachmint
+Test Cases,Casos de prueba
+"The questions you have added, removed or reordered are not saved yet. Leaving this page discards them.","Los cambios en las preguntas todavía no se han guardado. Si sales de esta página, se descartarán."
+Thinkific,Thinkific
+This batch has no students to certify.,Este grupo no tiene estudiantes para certificar.
+This helps us personalise your learning experience.,Esto nos ayuda a personalizar tu experiencia de aprendizaje.
+Total Questions,Total de preguntas
+Unable to add member,No se pudo agregar al miembro.
+Unable to generate certificate,No se pudo generar el certificado.
+Unable to update member,No se pudo actualizar al miembro.
+Use HTML content for the email response,Usar contenido HTML para el correo de respuesta
+What are you using today to manage learning?,¿Qué herramienta usas actualmente para gestionar el aprendizaje?
+Where do you want to start?,¿Por dónde quieres empezar?
+Where will you be using Frappe Learning?,¿Dónde usarás Frappe Learning?
+Work Mode,Modalidad de trabajo
+You are not permitted to create a batch.,No tienes permiso para crear grupos.
+You are not permitted to create a live class for this batch.,No tienes permiso para crear una clase en vivo para este grupo.
+You are not permitted to generate certificates for this batch.,No tienes permiso para generar certificados para este grupo.
+You are not permitted to make an announcement for this batch.,No tienes permiso para publicar anuncios en este grupo.
+You are not permitted to manage assignments.,No tienes permiso para administrar tareas.
+You are not permitted to manage members.,No tienes permiso para administrar miembros.
+You are not permitted to manage programming exercises.,No tienes permiso para administrar ejercicios de programación.
+You are not permitted to manage programs.,No tienes permiso para administrar programas.
+You do not have permission to add assessments to this batch.,No tienes permiso para agregar evaluaciones a este grupo.
+You do not have permission to add courses to this batch.,No tienes permiso para agregar cursos a este grupo.
+You do not have permission to create email templates.,No tienes permiso para crear plantillas de correo.
+You do not have permission to enroll students in this batch.,No tienes permiso para matricular estudiantes en este grupo.
+Your enrollment in {{ batch_name }} is confirmed,Tu matrícula en el grupo {{ batch_name }} está confirmada.
+Your workspace is ready,Tu espacio de trabajo está listo.
+{0} Your changes are not saved. Do not close this tab until they are.,{0} Tus cambios no se han guardado. No cierres esta pestaña hasta que se guarden.
+A condition here was written for an older version and can no longer be applied. Remove it and add the condition you want.,Esta condición se creó para una versión anterior y ya no se puede aplicar. Elimínala y agrega la condición que necesitas.
+A line or two about this person,Escribe una o dos líneas sobre esta persona.
+Actions for {0},Acciones para {0}
+Ada Lovelace,Ada Lovelace
+Add Condition,Agregar condición
+Add Condition Group,Agregar grupo de condiciones
+Add at least one course or batch this coupon applies to,Agrega al menos un curso o grupo al que se aplique este cupón.
+Add at least one course or batch.,Agrega al menos un curso o grupo.
+Add link to sidebar,Agregar enlace a la barra lateral
+Add members?,¿Agregar miembros?
+Add one to give this workspace its first members.,Agrega un miembro para iniciar la actividad de este espacio de trabajo.
+Add {0} members,Agregar {0} miembros
+"Add {0}, remove {1}",Agregar {0} y quitar {1}
+Added by rules,Agregados por reglas
+"Address Title, Address Line 1, City and Country are required.","Los campos Título de la dirección, Dirección, Ciudad y País son obligatorios."
+Address created successfully,La dirección se creó correctamente.
+"Address of the LiveCode server that runs the code learners write in programming exercises. Leave it blank to use Frappe's hosted server, or see https://docs.frappe.io/learning/falcon-self-hosting-guide to host your own.",Dirección del servidor LiveCode que ejecuta el código de los estudiantes en los ejercicios de programación. Déjala vacía para usar el servidor alojado por Frappe o consulta https://docs.frappe.io/learning/falcon-self-hosting-guide para alojar uno propio.
+All channels,Todos los canales
+All members,Todos los miembros
+Allows users to pick a profile cover image from Unsplash. https://unsplash.com/documentation#getting-started.,Permite elegir una imagen de portada de perfil de Unsplash. https://unsplash.com/documentation#getting-started.
+"Anyone matching these is kept in this channel, and in its workspace.",Quienes cumplan estas condiciones permanecerán en este canal y en su espacio de trabajo.
+Auto follows the language of the site.,Usar automáticamente el idioma del sitio.
+Brand Settings,Configuración de marca
+Category added successfully,La categoría se agregó correctamente.
+Category deleted successfully,La categoría se eliminó correctamente.
+Category name,Nombre de la categoría
+Category updated successfully,La categoría se actualizó correctamente.
+Change who is a member?,¿Cambiar quiénes son miembros?
+Choose a provider to configure its credentials.,Elige un proveedor para configurar sus credenciales.
+Choose the web page this link opens.,Elige la página web que abrirá este enlace.
+Choose your provider,Elige tu proveedor
+Client ID and Client Secret are required to enable Google API,Se necesitan el ID de cliente y el secreto de cliente para activar la API de Google.
+Client ID is required to enable Google API,Se necesita el ID de cliente para activar la API de Google.
+Client Secret is required to enable Google API,Se necesita el secreto de cliente para activar la API de Google.
+Condition actions,Acciones de condición
+Condition types could not be loaded. Reload the page to try again.,No se pudieron cargar los tipos de condición. Recarga la página e inténtalo de nuevo.
+Could not enable the integration,No se pudo activar la integración.
+Could not load the members,No se pudieron cargar los miembros.
+Could not load the workspace,No se pudo cargar el espacio de trabajo.
+Could not load this workspace,No se pudo cargar este espacio de trabajo.
+Could not set the default,No se pudo establecer como predeterminado.
+Could not update the channel,No se pudo actualizar el canal.
+Coupon,Cupón
+Coupon Code is required,El código del cupón es obligatorio.
+Coupon created successfully,El cupón se creó correctamente.
+Coupon updated successfully,El cupón se actualizó correctamente.
+Custom Server,Servidor personalizado
+Default Incoming account,Cuenta predeterminada para correo entrante
+Default Outgoing account,Cuenta predeterminada para correo saliente
+Default Settings,Configuración predeterminada
+Delete mapping,Eliminar vínculo
+Delete this category?,¿Eliminar esta categoría?
+Discount Amount is required,El importe del descuento es obligatorio.
+Discount Percentage is required,El porcentaje de descuento es obligatorio.
+Discount Type is required,El tipo de descuento es obligatorio.
+Document name,Nombre del documento
+Document type,Tipo de documento
+Edit Category,Editar categoría
+Edit sidebar link,Editar enlace de la barra lateral
+Enable Google API,Activar API de Google
+Enable Raven Integration,Activar integración con Raven
+Enter Brand Name,Escribe el nombre de la marca
+Error creating Address,No se pudo crear la dirección.
+Error loading payment gateway,No se pudo cargar la pasarela de pago.
+Error loading payment providers,No se pudieron cargar los proveedores de pago.
+Error loading provider fields,No se pudieron cargar los campos del proveedor.
+Error saving coupon,No se pudo guardar el cupón.
+Error saving payment gateway,No se pudo guardar la pasarela de pago.
+Error saving sidebar,No se pudo guardar la barra lateral.
+Error saving the link,No se pudo guardar el enlace.
+Error saving transaction,No se pudo guardar la transacción.
+Every member of this workspace was added by a rule.,Todos los miembros de este espacio de trabajo se agregaron mediante una regla.
+Every member of {0} was added by a rule.,Todos los miembros de {0} se agregaron mediante una regla.
+Failed to load email account,No se pudo cargar la cuenta de correo.
+Favicon,Favicon
+Fill in every required field,Completa todos los campos obligatorios.
+Filter by added by rules,Filtrar por forma de incorporación
+Filter by channel,Filtrar por canal
+Filter by payment status,Filtrar por estado de pago
+Filter by role,Filtrar por rol
+Filter by state,Filtrar por estado
+Finish every condition before saving.,Completa todas las condiciones antes de guardar.
+First Name is required,El nombre es obligatorio.
+Google API,API de Google
+Google Calendar authorized,Google Calendar autorizado
+Google Calendar created successfully,Google Calendar se creó correctamente.
+Google Calendar updated successfully,Google Calendar se actualizó correctamente.
+How many times this code has been used so far,Número de veces que se ha usado este código
+Incoming & Outgoing,Entrante y saliente
+Install the {0} app to enable this integration.,Instala la aplicación {0} para activar esta integración.
+"It may have been deleted, or the request did not get through.",Es posible que se haya eliminado o que la solicitud no se haya completado.
+Item,Elemento
+Left to Right,De izquierda a derecha
+Livecode URL,URL de LiveCode
+Managed by {0},Administrado por {0}
+Member Consent,Consentimiento del miembro
+Membership conditions,Condiciones de pertenencia
+New Category,Nueva categoría
+New Channel,Nuevo canal
+New Coupon,Nuevo cupón
+New Google Calendar,Nuevo Google Calendar
+New Payment Gateway,Nueva pasarela de pago
+New Transaction,Nueva transacción
+No default set,No se ha definido un valor predeterminado.
+No member of this workspace was added by a rule.,Ningún miembro de este espacio de trabajo se agregó mediante una regla.
+No member of {0} was added by a rule.,Ningún miembro de {0} se agregó mediante una regla.
+No results,Sin resultados
+Nobody is in a channel of this workspace yet.,Todavía no hay miembros en los canales de este espacio de trabajo.
+Nobody is in {0} anymore.,Ya no hay miembros en {0}.
+Not added by rules,Agregados manualmente
+Not installed,No instalada
+Not linked,Sin vincular
+Outgoing mail is sent from this account.,El correo saliente se envía desde esta cuenta.
+Paid For,Concepto pagado
+Payment for Certificate,Pago del certificado
+Payment gateway created successfully,La pasarela de pago se creó correctamente.
+Payment gateway updated successfully,La pasarela de pago se actualizó correctamente.
+Preferences,Preferencias
+Read from the coupon above every time this is saved.,"Al guardar, se volverá a leer el código del cupón indicado arriba."
+Redeemed,Canjeado
+Remove members?,¿Quitar miembros?
+Remove row,Eliminar fila
+Remove {0} members,Quitar {0} miembros
+Reorder {0},Reordenar {0}
+Replies to your organisation arrive at this account.,Las respuestas dirigidas a tu organización llegarán a esta cuenta.
+Right to Left,De derecha a izquierda
+Save anyway,Guardar de todos modos
+Save the calendar before authorizing it.,Guarda el calendario antes de autorizarlo.
+Save this workspace before adding channels to it.,Guarda este espacio de trabajo antes de agregar canales.
+Save without checking who this affects?,¿Guardar sin revisar a quién afecta?
+"Saved, leave blank to keep it",Guardado; déjalo vacío para conservar el valor actual.
+Search timezone,Buscar zona horaria
+Search workspaces,Buscar espacios de trabajo
+Select a provider,Selecciona un proveedor
+Services settings saved,La configuración de los servicios se guardó.
+Set the name of your brand. Appears in the left sidebar.,Define el nombre de tu marca. Aparecerá en la barra lateral izquierda.
+Setup Email,Configurar correo electrónico
+Sidebar link updated,El enlace de la barra lateral se actualizó.
+Stale,Desactualizado
+Sync members into channels by rule.,Sincronizar miembros en los canales mediante reglas.
+Sync members of {0},Sincronizar miembros de {0}
+System Language,Idioma del sistema
+System Timezone,Zona horaria del sistema
+Text Direction,Dirección del texto
+The address this payment is billed to.,Dirección a la que se factura este pago.
+"The conditions on {0} could not be worked out, so there is no telling who this change adds or removes. It usually means the app that supplies a condition type is no longer installed. Saving applies the change anyway.","No se pudieron evaluar las condiciones de {0}, por lo que no se puede determinar a quién agrega o quita este cambio. Esto suele ocurrir si ya no está instalada la aplicación que proporciona un tipo de condición. Si guardas, el cambio se aplicará de todos modos."
+The coupon this payment was discounted by.,Cupón aplicado a este pago.
+The courses and batches this coupon can be redeemed on,Cursos y grupos en los que se puede canjear este cupón
+The currency the amount above is in.,Moneda del importe indicado arriba.
+The language this site falls back to.,Idioma alternativo del sitio.
+The list did not come through. Try again in a moment.,No se pudo cargar la lista. Inténtalo de nuevo en un momento.
+The timezone new batches and courses start from.,Zona horaria inicial para los grupos y cursos nuevos.
+The user this payment is recorded against.,Usuario al que se registra este pago.
+"These conditions were saved joining some rows with and and others with or. This screen shows one joiner per group, so it cannot draw that. They are written back as they are until you move a joiner or change the rows, either of which sets one joiner for the whole group.",Estas condiciones se guardaron combinando algunas filas con «y» y otras con «o». Esta pantalla solo puede mostrar un operador por grupo. Se conservarán tal como están hasta que cambies un operador o modifiques las filas; cualquiera de esas acciones aplicará un único operador a todo el grupo.
+"This channel is missing in Raven, so its conditions cannot be changed.","Este canal no existe en Raven, por lo que no se pueden cambiar sus condiciones."
+"This deletes the channel mapping and its conditions, and removes everyone those conditions added to the channel. Anyone added by hand in Raven stays. This action cannot be undone.","Esto elimina el vínculo del canal y sus condiciones, además de quitar del canal a todas las personas agregadas por esas condiciones. Se conservarán quienes se agregaron manualmente en Raven. Esta acción no se puede deshacer."
+"This deletes the workspace mapping and every channel mapping under it, with their conditions, and removes everyone those conditions added to its channels. Anyone added by hand in Raven stays. This action cannot be undone.","Esto elimina el vínculo del espacio de trabajo y los vínculos de todos sus canales, junto con sus condiciones. También quita de los canales a las personas agregadas por esas condiciones. Se conservarán quienes se agregaron manualmente en Raven. Esta acción no se puede deshacer."
+"This deletes the {0} mapping and its membership rules, and stops syncing members. This cannot be undone.","Esto elimina el vínculo de {0} y sus reglas de pertenencia, y detiene la sincronización de miembros. Esta acción no se puede deshacer."
+This form has unsaved changes. Leaving now discards them.,"Este formulario tiene cambios sin guardar. Si sales ahora, se descartarán."
+This member has not loaded yet,Este miembro todavía no se ha cargado.
+This will add {0} members to {1} and remove {2}. The removals cannot be undone. Cancel to keep the current membership.,Se agregarán {0} miembros a {1} y se quitarán {2}. No se podrán deshacer las bajas. Cancela para conservar la lista actual.
+This will add {0} members to {1}. Cancel to keep the current membership.,Se agregarán {0} miembros a {1}. Cancela para conservar la lista actual.
+This will remove {0} members from {1}. This cannot be undone.,Se quitarán {0} miembros de {1}. Esta acción no se puede deshacer.
+"This will unlink this category from all courses and batches using it, and then delete it. This cannot be undone.",Se desvinculará esta categoría de todos los cursos y grupos que la usan y luego se eliminará. Esta acción no se puede deshacer.
+Transaction created successfully,La transacción se creó correctamente.
+Transaction updated successfully,La transacción se actualizó correctamente.
+Turns on Google API access for this site.,Activa el acceso a la API de Google en este sitio.
+Unable to add category,No se pudo agregar la categoría.
+Unable to delete category,No se pudo eliminar la categoría.
+Unable to update category,No se pudo actualizar la categoría.
+Unable to update user,No se pudo actualizar el usuario.
+Unlimited,Sin límite
+Usage Limit,Límite de uso
+Visible,Visible
+Visible: {0},Visible: {0}
+Web page added to sidebar,La página web se agregó a la barra lateral.
+What this payment paid for.,Concepto de este pago.
+Where the learner came from.,Origen del estudiante.
+"You have unsaved changes, leave anyway?",Tienes cambios sin guardar. ¿Quieres salir de todos modos?
+You need the System Manager role to manage the Raven integration.,Necesitas el rol de administrador del sistema para gestionar la integración con Raven.
+here,aquí
+{0} icon,Icono de {0}
+Error Uploading File,Error al subir el archivo,
+Getting started,Primeros pasos,
+Continue,Continuar,
+Add PDF,Agregar PDF,
+Add lesson,Agregar lección,
+Add quiz,Agregar cuestionario,
+Add assignment,Agregar tarea,
+All Batches,Todos los grupos,
+All Programs,Todos los programas,
+All types,Todos los tipos,
+All questions have been attempted.,Ya se han respondido todas las preguntas.,
+Allow Guest Access,Permitir acceso de invitados,
+Allow Job Posting,Permitir publicar ofertas laborales,
+Allow users to enroll in this batch on their own.,Permitir que los usuarios se inscriban en este grupo por su cuenta.,
+Applications,Solicitudes,
+Are you sure you want to enroll?,¿Seguro que quieres inscribirte?,
+Are you sure you want to submit the quiz?,¿Seguro que quieres enviar el cuestionario?,
+Attempts,Intentos,
+Auto-graded,Calificación automática,
+Available Slots,Cupos disponibles,
+Back to topics,Volver a los temas,
+Batch End Date,Fecha de finalización del grupo,
+Batch Enrollments,Inscripciones al grupo,
+Batch Feedback,Opiniones del grupo,
+Batch Summary,Resumen del grupo,
+Batch deleted successfully,El grupo se eliminó correctamente,
+Batch has already started.,El grupo ya comenzó.,
+Batch is sold out.,No quedan cupos en el grupo.,
+Batch options,Opciones del grupo,
+Batch overview,Resumen del grupo,
+Batch published,Grupo publicado,
+Batch unpublished,Grupo despublicado,
+Batch updated successfully,Grupo actualizado correctamente,
+Before you start,Antes de comenzar,
+Brief,Descripción breve,
+Camera Setup,Configuración de la cámara,
+Camera access was denied. Please allow camera access and reload.,Se denegó el acceso a la cámara. Permite el acceso y vuelve a cargar la página.,
+Camera disconnected,Cámara desconectada,
+Category is required.,La categoría es obligatoria.,
+Certificate of completion,Certificado de finalización,
+Certified Members,Miembros certificados,
+Changes saved successfully,Cambios guardados correctamente,
+Chapter deleted successfully,Capítulo eliminado correctamente,
+Chapter moved successfully,Capítulo movido correctamente,
+Chapter renamed successfully,Capítulo renombrado correctamente,
+Checkout the batch,Inscribirse al grupo,
+Checkout the course,Inscribirse al curso,
+Close question bank,Cerrar el banco de preguntas,
+Complete Your Enrollment,Completa tu inscripción,
+Complete the previous lesson before marking this one as done.,Completa la lección anterior antes de marcar esta como terminada.,
+Complete the previous lesson to unlock this one,Completa la lección anterior para desbloquear esta,
+Complete the previous lessons to unlock this one,Completa las lecciones anteriores para desbloquear esta,
+Complete the quiz to continue the video.,Completa el cuestionario para continuar con el video.,
+Conduct Evaluation,Realizar evaluación,
+Confirm Cancellation?,¿Confirmar la cancelación?,
+Confirm Your Action,Confirma la acción,
+Confirm your action to delete,Confirma que deseas eliminar,
+Could not load the question,No se pudo cargar la pregunta,
+Could not load your saved progress,No se pudo cargar tu progreso guardado,
+Could not search just now. Try again.,No se pudo realizar la búsqueda. Inténtalo de nuevo.,
+Could not start the payment. Please contact the administrator.,No se pudo iniciar el pago. Ponte en contacto con el administrador.,
+Course Completions,Cursos completados,
+Course Enrollments,Inscripciones a cursos,
+Course Reviews,Reseñas de cursos,
+Courses in this Program,Cursos de este programa,
+Create chapter,Crear capítulo,
+Curriculum,Plan de estudios,
+Delete Chapter,Eliminar capítulo,
+Delete batch,Eliminar grupo,
+Delete selected courses,Eliminar los cursos seleccionados,
+Delete this chapter?,¿Eliminar este capítulo?,
+Delete this lesson?,¿Eliminar esta lección?,
+Details cannot be empty.,Este campo no puede estar vacío.,
+Edit question,Editar pregunta,
+Enroll for Free,Inscribirse gratis,
+Enrollment & Certification,Inscripción y certificación,
+Enrollment in this batch is restricted. Please contact the Administrator.,La inscripción a este grupo está restringida. Ponte en contacto con el administrador.,
+Enter a Coupon Code,Ingresa un código de cupón,
+Error downloading file,Error al descargar el archivo,
+Error loading question,Error al cargar la pregunta,
+Error saving question,Error al guardar la pregunta,
+Evaluation cancelled successfully,Evaluación cancelada correctamente,
+Evaluations,Evaluaciones,
+Exercise deleted successfully,Ejercicio eliminado correctamente,
+Expected Output,Resultado esperado,
+Expiry date cannot be in the past,La fecha de vencimiento no puede ser anterior a hoy,
+Failed to send email,No se pudo enviar el correo electrónico,
+Failed to submit. Please try again. {0},No se pudo enviar. Inténtalo de nuevo. {0},
+Filter by Course,Filtrar por curso,
+Filter by Member,Filtrar por miembro,
+Filter by Quiz,Filtrar por cuestionario,
+Filter by type,Filtrar por tipo,
+Finish the lessons before it to unlock this one.,Completa las lecciones anteriores para desbloquear esta.,
+Get the app on your device for easy access & a better experience!,Instala la aplicación en tu dispositivo para acceder fácilmente y disfrutar de una mejor experiencia.,
+Go now,Ir ahora,
+Grading,Calificación,
+Help us improve by providing your feedback.,Ayúdanos a mejorar compartiendo tu opinión.,
+Import Batch,Importar grupo,
+Install,Instalar,
+Instructor Only,Solo para instructores,
+Join Call,Unirse a la llamada,
+Joined At,Se unió el,
+Keep camera connected,Mantén la cámara conectada,
+Launch File,Abrir archivo,
+Lesson deleted successfully,Lección eliminada correctamente,
+Lesson moved successfully,Lección movida correctamente,
+Lesson not found,No se encontró la lección,
+Loading camera…,Cargando cámara…,
+Log in,Iniciar sesión,
+Log in to see your account.,Inicia sesión para ver tu cuenta.,
+Make Announcement,Crear anuncio,
+Mark at least two correct answers,Marca al menos dos respuestas correctas,
+No file selected,No se seleccionó ningún archivo,
+No results found,No se encontraron resultados,
+Not enrolled,Sin inscripción,
+Optional,Opcional,
+Please try again,Inténtalo de nuevo,
+Published on,Publicado el,
+Save Changes,Guardar cambios,
+Submit Quiz,Enviar cuestionario,
+Update,Actualizar,
+View all,Ver todo,
+Your progress,Tu progreso,
+Your response,Tu respuesta,
+Syllabus,Sí­labo,
+Sílabo y cronograma,Sílabo y cronograma,
+Documento PDF,Documento PDF,
+Aún no se ha agregado este documento.,Aún no se ha agregado este documento.,

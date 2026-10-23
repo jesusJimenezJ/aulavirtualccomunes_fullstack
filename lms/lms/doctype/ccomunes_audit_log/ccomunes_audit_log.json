@@ -1,0 +1,112 @@
+{
+ "doctype": "DocType",
+ "name": "CCOMUNES Audit Log",
+ "module": "LMS",
+ "autoname": "hash",
+ "engine": "InnoDB",
+ "track_changes": 0,
+ "allow_rename": 0,
+ "editable_grid": 0,
+ "field_order": [
+  "action",
+  "event_timestamp",
+  "actor",
+  "reference_doctype",
+  "reference_name",
+  "target_user",
+  "role",
+  "summary",
+  "before_state",
+  "after_state",
+  "source",
+  "request_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "action",
+   "label": "Action",
+   "fieldtype": "Select",
+   "options": "Create\nUpdate\nDelete\nRole Assigned\nRole Revoked",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "event_timestamp",
+   "label": "Event Timestamp",
+   "fieldtype": "Datetime",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "actor",
+   "label": "Actor",
+   "fieldtype": "Link",
+   "options": "User",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "label": "Reference DocType",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "label": "Reference Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "target_user",
+   "label": "Target User",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "role",
+   "label": "Role",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "summary",
+   "label": "Summary",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "before_state",
+   "label": "Before State",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "after_state",
+   "label": "After State",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "source",
+   "label": "Source",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "request_id",
+   "label": "Request ID",
+   "fieldtype": "Data"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0,
+   "write": 0,
+   "create": 0,
+   "delete": 0
+  }
+ ]
+}

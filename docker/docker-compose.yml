@@ -1,0 +1,50 @@
+name: ccomunes-dev
+services:
+  mariadb:
+    image: mariadb:10.8
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?Copia .env.example a .env antes de iniciar}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h localhost -uroot -p${MARIADB_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+  redis:
+    image: redis:alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  frappe:
+    image: frappe/bench:latest
+    init: true
+    restart: on-failure:3
+    command: ["bash", "/workspace/docker/init.sh"]
+    working_dir: /home/frappe
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      SHELL: /bin/bash
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?Copia .env.example a .env antes de iniciar}
+      SITE_ADMIN_PASSWORD: ${SITE_ADMIN_PASSWORD:?Copia .env.example a .env antes de iniciar}
+      SITE_NAME: ${SITE_NAME:-ccomunes.localhost}
+      FRAPPE_BRANCH: ${FRAPPE_BRANCH:-develop}
+    volumes:
+      - ..:/workspace
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:8000"
+      - "127.0.0.1:${SOCKETIO_PORT:-9000}:9000"
+volumes:
+  mariadb-data:

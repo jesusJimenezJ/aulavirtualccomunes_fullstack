@@ -1,0 +1,75 @@
+# Frappe / Bench
+frappe-bench/sites/*
+!frappe-bench/sites/.gitkeep
+frappe-bench/env/
+frappe-bench/apps/frappe/
+frappe-bench/apps/payments/
+frappe-bench/apps/lms/
+frappe-bench/logs/
+frappe-bench/config/
+frappe-bench/Procfile
+frappe-bench/sites/assets/
+frappe-bench/sites/*/private/files/
+frappe-bench/sites/*/public/files/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Entornos
+.env
+.env.*
+!.env.example
+
+# IDE, sistema y logs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+tags
+
+# LMS generado
+lms/docs/current
+lms/public/dist
+lms/public/frontend
+lms/www/lms.html
+lms/www/_lms.html
+frappe-ui
+frappe-semgrep-rules
+test-results
+playwright-report
+blob-report
+playwright/.auth
+
+# Seguridad: configuración privada y respaldos locales
+.github/helper/site_config.json
+**/site_config.json
+.env
+.env.*
+!.env.example
+backups/
+.audit_patch_backups/
+*.backup
+*.backup-*
+*.bak
+*.pre-recovery.bak
+/lms/public/node_modules/
+
+# Dependencias locales de Windows y enlaces de directorios
+lms/public/node_modules

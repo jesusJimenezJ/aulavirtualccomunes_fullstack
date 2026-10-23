@@ -1,0 +1,279 @@
+
+@import 'frappe-ui/style.css';
+@import './styles/blockEditor.css';
+
+/* Fondo global y preferencia de color */
+html {
+	background-color: var(--surface-base);
+	color-scheme: light;
+}
+
+html[data-theme='dark'] {
+	color-scheme: dark;
+	background-color: var(--surface-base);
+}
+
+/* Iconos Lucide */
+svg.lucide {
+	stroke-width: 1.5;
+}
+
+/* Altura de la cabecera */
+:root {
+	--header-frame-h: 3rem;
+}
+
+/* Identidad visual del portal */
+.lms-app {
+	--lms-forest: #123f3a;
+	--lms-teal: #176b60;
+	--lms-teal-soft: #e7f2ee;
+	--lms-sand: #f4eee2;
+	--lms-coral: #d98963;
+	--lms-ink: #18312e;
+	--lms-canvas: #f6f8f5;
+	color: var(--lms-ink);
+}
+
+.lms-app main#main-content {
+	background: var(--lms-canvas);
+	color: var(--lms-ink);
+}
+
+.lms-app .header-frame {
+	background: rgba(255, 255, 255, 0.96);
+	border-color: #e4ebe6;
+	backdrop-filter: blur(12px);
+}
+
+.header-frame {
+	@apply flex shrink-0 items-center border-b border-outline-gray-1 bg-surface-base px-5;
+	min-height: var(--header-frame-h);
+}
+
+/* Evitar que los elementos enfocados queden bajo la cabecera */
+main#scrollContainer,
+main#main-content {
+	scroll-padding-block-start: var(--header-frame-h);
+}
+
+/* Radio seleccionado visible en modo oscuro */
+[data-theme='dark'] [type='radio']:checked {
+	background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23FFFFFF' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+}
+
+/* Superficie de la barra lateral en modo oscuro */
+[data-theme='dark'] {
+	color-scheme: dark;
+	--surface-sidebar: var(--surface-gray-1);
+}
+
+/* Botón de alternancia entre modo día y noche */
+.theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+	min-height: 2.25rem;
+	padding: 0.4rem 0.7rem;
+	border: 1px solid var(--outline-gray-2);
+	border-radius: 0.6rem;
+	background: var(--surface-base);
+	color: var(--ink-gray-9);
+	font-size: 0.875rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color 150ms ease,
+		border-color 150ms ease,
+		color 150ms ease;
+}
+
+.theme-toggle:hover {
+	background: var(--surface-gray-2);
+}
+
+.theme-toggle:focus-visible {
+	outline: 2px solid #176b60;
+	outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+	font-size: 1.15rem;
+	line-height: 1;
+}
+
+@media (max-width: 640px) {
+	.theme-toggle {
+		width: 2.5rem;
+		padding: 0.4rem;
+	}
+
+	.theme-toggle-label {
+		display: none;
+	}
+}
+
+/* Colores de la interfaz en modo oscuro */
+[data-theme='dark'] .lms-app {
+	--lms-canvas: #171d1b;
+	--lms-ink: #edf3ef;
+	--lms-teal-soft: #263b35;
+	--lms-sand: #38352e;
+	color: var(--lms-ink);
+}
+
+[data-theme='dark'] .lms-app main#main-content {
+	background: var(--lms-canvas);
+	color: var(--lms-ink);
+}
+
+[data-theme='dark'] .lms-app .header-frame {
+	background: rgba(23, 29, 27, 0.97);
+	border-color: #394640;
+	color: #edf3ef;
+}
+
+[data-theme='dark'] .theme-toggle {
+	border-color: #53645b;
+	background: #26312c;
+	color: #f1f5f2;
+}
+
+[data-theme='dark'] .theme-toggle:hover {
+	background: #35443c;
+}
+
+[data-theme='dark'] .theme-toggle:focus-visible {
+	outline-color: #8bc8b5;
+}
+
+/* Mejorar el contraste de las tarjetas y bloques claros en modo noche */
+[data-theme='dark'] .lms-app .bg-white,
+[data-theme='dark'] .lms-app .bg-surface-white,
+[data-theme='dark'] .lms-app .bg-surface-base {
+	background-color: #252e2a !important;
+	color: #edf3ef;
+}
+
+/* Asegurar la legibilidad de títulos y textos en tarjetas claras */
+[data-theme='dark'] .lms-app .bg-white h1,
+[data-theme='dark'] .lms-app .bg-white h2,
+[data-theme='dark'] .lms-app .bg-white h3,
+[data-theme='dark'] .lms-app .bg-white p,
+[data-theme='dark'] .lms-app .bg-white span,
+[data-theme='dark'] .lms-app .bg-white label,
+[data-theme='dark'] .lms-app .bg-surface-white h1,
+[data-theme='dark'] .lms-app .bg-surface-white h2,
+[data-theme='dark'] .lms-app .bg-surface-white h3,
+[data-theme='dark'] .lms-app .bg-surface-white p,
+[data-theme='dark'] .lms-app .bg-surface-white span,
+[data-theme='dark'] .lms-app .bg-surface-white label {
+	color: #edf3ef;
+}
+
+/* Textos secundarios en modo noche */
+[data-theme='dark'] .lms-app .bg-white .text-ink-gray-4,
+[data-theme='dark'] .lms-app .bg-white .text-ink-gray-5,
+[data-theme='dark'] .lms-app .bg-white .text-ink-gray-6,
+[data-theme='dark'] .lms-app .bg-white .text-ink-gray-7,
+[data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-4,
+[data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-5,
+[data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-6,
+[data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-7 {
+	color: #c3d0c9 !important;
+}
+
+/* Enlaces dentro de las tarjetas en modo noche */
+[data-theme='dark'] .lms-app .bg-white a,
+[data-theme='dark'] .lms-app .bg-surface-white a {
+	color: #8bc8b5;
+}
+
+[data-theme='dark'] .lms-app .bg-white a:hover,
+[data-theme='dark'] .lms-app .bg-surface-white a:hover {
+	color: #b1e0ce;
+}
+
+/* Bordes visibles en tarjetas oscuras */
+[data-theme='dark'] .lms-app .bg-white,
+[data-theme='dark'] .lms-app .bg-surface-white {
+	border-color: #394640;
+}
+
+/* Mantener accesibles los botones del pie de los desplegables */
+[data-slot='content-body']
+	[data-slot='footer']:has(> [data-popover-footer-sticky]) {
+	position: sticky;
+	bottom: -0.25rem;
+	z-index: 1;
+}
+
+/* Evitar que los menús altos desborden la pantalla */
+.menu-content[data-slot='content'] {
+	max-height: var(--reka-popper-available-height);
+	overflow-y: auto;
+}
+
+/* Ajustar los paneles flotantes en móviles */
+@media (max-width: 639.98px) {
+	[data-slot='content-body'] {
+		max-width: calc(100vw - 2rem);
+	}
+}
+
+/* Mejorar el contraste de las viñetas */
+.prose {
+	--tw-prose-bullets: var(--ink-gray-4);
+}
+
+/* Viñetas legibles en modo noche */
+[data-theme='dark'] .lms-app .prose {
+	--tw-prose-bullets: #aabbb1;
+	--tw-prose-body: #d6e0d9;
+	--tw-prose-headings: #edf3ef;
+	--tw-prose-links: #8bc8b5;
+	--tw-prose-bold: #edf3ef;
+	--tw-prose-counters: #aabbb1;
+	--tw-prose-hr: #394640;
+	--tw-prose-quote-borders: #53645b;
+	--tw-prose-captions: #b9c8bf;
+}
+/* Corrección de contraste en el detalle del curso: modo noche */
+html[data-theme='dark'] .lms-app main#main-content h1,
+html[data-theme='dark'] .lms-app main#main-content h2,
+html[data-theme='dark'] .lms-app main#main-content h3,
+html[data-theme='dark'] .lms-app main#main-content h4,
+html[data-theme='dark'] .lms-app main#main-content p,
+html[data-theme='dark'] .lms-app main#main-content li,
+html[data-theme='dark'] .lms-app main#main-content label,
+html[data-theme='dark'] .lms-app main#main-content dt,
+html[data-theme='dark'] .lms-app main#main-content dd,
+html[data-theme='dark'] .lms-app main#main-content strong {
+	color: #edf3ef;
+}
+
+/* Fondos de tarjetas y secciones en modo noche */
+html[data-theme='dark'] .lms-app main#main-content .bg-white,
+html[data-theme='dark'] .lms-app main#main-content .bg-surface-white,
+html[data-theme='dark'] .lms-app main#main-content .bg-surface-base {
+	background-color: #252e2a !important;
+	border-color: #394640;
+}
+
+/* Texto secundario y resumen del curso */
+html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-4,
+html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-5,
+html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-6,
+html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-7 {
+	color: #c3d0c9 !important;
+}
+
+/* Contenido enriquecido de las descripciones */
+html[data-theme='dark'] .lms-app main#main-content .prose {
+	color: #d6e0d9;
+	--tw-prose-body: #d6e0d9;
+	--tw-prose-headings: #edf3ef;
+	--tw-prose-bold: #edf3ef;
+	--tw-prose-links: #8bc8b5;
+}

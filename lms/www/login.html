@@ -1,0 +1,406 @@
+{% from "templates/includes/login/macros.html" import alert_banner %}
+{% extends "templates/web.html" %}
+
+{% block navbar %}
+	{% if show_language_picker %}
+		{{ super() }}
+	{% endif %}
+{% endblock %}
+
+{% macro email_login_body() -%}
+	{% if not disable_user_pass_login or (ldap_settings and ldap_settings.enabled) %}
+		<div class="page-card-body flex flex-col gap-4">
+			{{ alert_banner("error") }}
+
+			<div class="form-group flex flex-col items-start gap-1.5 mb-0">
+				<label class="text-base text-ink-gray-5 w-full mb-0" for="login_email">
+					{{ _(login_label) if login_label else _("Correo electrónico") }}
+				</label>
+				<div class="email-field">
+					<input
+						type="text"
+						id="login_email"
+						class="form-control"
+						placeholder="{% if login_name_placeholder %}{{ login_name_placeholder }}{% else %}{{ _('correo@ejemplo.com') }}{% endif %}"
+						required
+						autofocus
+						autocomplete="username"
+					>
+				</div>
+				<p class="field-error text-base text-ink-red-8 mb-0"></p>
+			</div>
+
+			<div class="form-group flex flex-col items-start gap-2 mb-0">
+				<div class="flex flex-col items-start gap-1.5 w-full">
+					<label class="text-base text-ink-gray-5 w-full mb-0" for="login_password">
+						{{ _("Contraseña") }}
+					</label>
+					<div class="password-field">
+						<input
+							type="password"
+							id="login_password"
+							class="form-control"
+							placeholder="••••••••"
+							autocomplete="current-password"
+							required
+						>
+						<svg
+							toggle="#login_password"
+							class="icon icon-sm toggle-password"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-label="Mostrar u ocultar contraseña"
+						>
+							<use href="#icon-eye"></use>
+						</svg>
+					</div>
+					<p class="field-error text-base text-ink-red-8 mb-0"></p>
+				</div>
+
+				{% if not disable_user_pass_login %}
+					<p class="text-lg text-right w-full mb-0">
+						<a href="#forgot" class="text-base text-ink-gray-5">
+							{{ _("¿Olvidaste tu contraseña?") }}
+						</a>
+					</p>
+				{% endif %}
+			</div>
+		</div>
+	{% endif %}
+
+	<div class="page-card-actions flex flex-col gap-3">
+		{% if not disable_user_pass_login %}
+			<button class="es-button w-full login-primary-button" data-variant="solid" type="submit">
+				{{ _("Iniciar sesión") }}
+			</button>
+		{% endif %}
+
+		{% if ldap_settings and ldap_settings.enabled %}
+			<button class="es-button w-full btn-ldap-login" data-variant="solid">
+				{{ _("Iniciar sesión con LDAP") }}
+			</button>
+		{% endif %}
+
+		{% if login_with_email_link %}
+			<a
+				href="#login-with-email-link"
+				class="es-button w-full btn-login-option btn-login-with-email-link"
+			>
+				{{ _("Iniciar sesión con enlace de correo") }}
+			</a>
+		{% endif %}
+
+		{% if social_login %}
+			<div class="social-logins text-center text-base">
+				<div class="social-login-buttons">
+					{% for provider in provider_logins %}
+						<div class="login-button-wrapper">
+							<a
+								href="{{ provider.auth_url }}"
+								class="es-button w-full btn-login-option btn-{{ provider.name }}"
+							>
+								{% if provider.icon %}
+									{{ provider.icon }}
+								{% endif %}
+								{{ _("Iniciar sesión con {0}").format(provider.provider_name) }}
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endmacro %}
+
+{% block head_include %}
+	{{ include_style('login.bundle.css') }}
+
+	<style>
+		.for-login {
+			display: grid;
+			min-height: 76vh;
+			place-items: center;
+			padding: 2rem 1rem;
+			background:
+				radial-gradient(ellipse at 90% 10%, rgba(236, 211, 184, 0.42), transparent 34%),
+				linear-gradient(135deg, #edf5ef 0%, #f8f7f1 55%, #eef4f0 100%);
+		}
+
+		.for-login .login-content,
+		.for-email-login .login-content,
+		.for-signup .login-content,
+		.for-forgot .login-content,
+		.for-login-with-email-link .login-content {
+			width: min(100%, 30rem);
+			margin-inline: auto;
+			padding: clamp(1.5rem, 5vw, 2.5rem);
+			border: 1px solid #dce9e1;
+			border-radius: 1.25rem;
+			background: rgba(255, 255, 255, 0.97);
+			box-shadow: 0 20px 55px rgba(24, 49, 46, 0.1);
+		}
+
+
+		.login-brand {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin-bottom: 0.25rem;
+		}
+
+		.login-brand__mark {
+			display: grid;
+			width: 2.75rem;
+			height: 2.75rem;
+			place-items: center;
+			border-radius: 0.85rem;
+			background: #176b60;
+			color: #fff;
+			font-size: 0.9rem;
+			font-weight: 800;
+			letter-spacing: -0.04em;
+		}
+
+		.login-brand__name {
+			color: #18312e;
+			font-size: 0.95rem;
+			font-weight: 700;
+		}
+
+		.page-card-head-text h4 {
+			color: #18312e;
+			letter-spacing: -0.035em;
+		}
+
+		.page-card-subtitle {
+			color: #64736d;
+			line-height: 1.6;
+		}
+
+		.page-card-body .form-control {
+			min-height: 2.9rem;
+			border: 1px solid #d7e2db;
+			border-radius: 0.7rem;
+			background: #fff;
+			box-shadow: none;
+		}
+
+		.page-card-body .form-control:focus {
+			border-color: #176b60;
+			box-shadow: 0 0 0 3px rgba(23, 107, 96, 0.13);
+		}
+
+		.login-primary-button,
+		.for-login .btn-login-option {
+			min-height: 2.9rem;
+			border-radius: 0.7rem;
+			font-weight: 700;
+		}
+
+		.login-primary-button {
+			background: #176b60 !important;
+		}
+
+		.login-primary-button:hover {
+			background: #123f3a !important;
+		}
+
+		.for-login a {
+			color: #176b60;
+		}
+
+		.for-login a:hover {
+			color: #123f3a;
+		}
+
+		@media (max-width: 640px) {
+			.for-login {
+				min-height: 70vh;
+				padding: 1rem;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% macro logo_section(title=null, subtitle=null) %}
+	<div class="page-card-head flex flex-col items-start gap-4 text-left">
+		<div class="login-brand" aria-label="Ccomunes">
+			<span class="login-brand__mark" aria-hidden="true">CC</span>
+			<span class="login-brand__name">Ccomunes</span>
+		</div>
+		<div class="page-card-head-text flex flex-col gap-1.5 w-full">
+			{% if title %}
+				<h4 class="text-3xl-bold text-ink-gray-9 w-full mt-0 mb-0">
+					{{ _(title) }}
+				</h4>
+			{% else %}
+				<h4 class="text-3xl-bold text-ink-gray-9 w-full mt-0 mb-0">
+					{{ _("Iniciar sesión") }}
+				</h4>
+			{% endif %}
+
+			{% if subtitle %}
+				<p class="page-card-subtitle text-p-base text-ink-gray-6 mb-0">
+					{{ _(subtitle) }}
+				</p>
+			{% endif %}
+		</div>
+	</div>
+{% endmacro %}
+
+{% block page_content %}
+	<div>
+		<noscript>
+			<div class="text-center my-5">
+				<h4>{{ _("JavaScript está desactivado en tu navegador") }}</h4>
+				<p class="text-muted">
+					{{ _("Debes activar JavaScript para que la aplicación funcione.") }}
+				</p>
+			</div>
+		</noscript>
+
+		<section class="for-login">
+			<div class="login-content page-card flex flex-col gap-5">
+				{{ logo_section(_("Iniciar sesión"), _("Bienvenido. Inicia sesión para continuar.")) }}
+
+				<form class="form-signin form-login flex flex-col gap-8" role="form" novalidate>
+					{{ email_login_body() }}
+				</form>
+
+				{% if not disable_signup and not disable_user_pass_login %}
+					<div class="text-center sign-up-message text-p-sm text-ink-gray-6 mt-auto mb-0">
+						{{ _("¿No tienes una cuenta?") }}
+						<a href="#signup" class="text-p-sm-semibold text-ink-gray-6">
+							{{ _("Crear cuenta") }}
+						</a>
+					</div>
+				{% endif %}
+			</div>
+		</section>
+
+		{% if social_login %}
+			<section class="for-email-login">
+				<div class="login-content page-card flex flex-col gap-5">
+					{{ logo_section(_("Iniciar sesión"), _("Bienvenido. Inicia sesión para continuar.")) }}
+					<form class="form-signin form-login flex flex-col gap-8" role="form" novalidate>
+						{{ email_login_body() }}
+					</form>
+				</div>
+			</section>
+		{% endif %}
+
+		<section class='for-signup {{ "signup-disabled" if disable_signup else "" }}'>
+			<div class="login-content page-card flex flex-col gap-5">
+				{{ logo_section(_("Crear cuenta"), _("Completa tus datos para crear una cuenta.")) }}
+
+				{% if not disable_signup %}
+					{{ signup_form_template }}
+				{% else %}
+					<div class="signup-disabled-message">
+						<span class="indicator gray">{{ _("Registro desactivado") }}</span>
+						<p class="text-muted text-normal sign-up-message mt-1 mb-8">
+							{{ _("El registro de usuarios está desactivado en este sitio.") }}
+						</p>
+						<div>
+							<a href="/" class="es-button" data-variant="solid">{{ _("Ir al inicio") }}</a>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</section>
+
+		<section class="for-forgot">
+			<div class="login-content page-card flex flex-col gap-5">
+				{{ logo_section(_("Recuperar contraseña"), _("Escribe tu correo y te enviaremos un enlace para restablecerla.")) }}
+
+				<form class="form-signin form-forgot hide flex flex-col gap-8" role="form" novalidate>
+					<div class="page-card-body flex flex-col gap-4">
+						{{ alert_banner("success") }}
+						{{ alert_banner("error") }}
+
+						<div class="form-group flex flex-col items-start gap-1.5 mb-0">
+							<label class="text-base text-ink-gray-5 w-full mb-0" for="forgot_email">
+								{{ _("Correo electrónico") }}
+							</label>
+							<div class="email-field">
+								<input
+									type="email"
+									id="forgot_email"
+									class="form-control"
+									placeholder="{{ _('correo@ejemplo.com') }}"
+									required
+									autofocus
+									autocomplete="username"
+								>
+							</div>
+							<p class="field-error text-base text-ink-red-8 mb-0"></p>
+						</div>
+					</div>
+
+					<div class="page-card-actions flex flex-col gap-3">
+						<button class="es-button w-full btn-forgot" data-variant="solid" type="submit" disabled>
+							{{ _("Enviar enlace") }}
+						</button>
+					</div>
+				</form>
+
+				<div class="text-center sign-up-message text-p-sm text-ink-gray-6 mt-auto mb-0">
+					<a href="#login" class="text-p-sm-semibold text-ink-gray-6">
+						{{ _("Volver al inicio de sesión") }}
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="for-login-with-email-link">
+			<div class="login-content page-card flex flex-col gap-5">
+				{{ logo_section(_("Iniciar sesión"), _("Te enviaremos un enlace de acceso a tu correo.")) }}
+
+				<form class="form-signin form-login-with-email-link hide flex flex-col gap-8" role="form" novalidate>
+					<div class="page-card-body flex flex-col gap-4">
+						{{ alert_banner("success", _("Revisa tu correo electrónico.")) }}
+						{{ alert_banner("error") }}
+
+						<div class="form-group flex flex-col items-start gap-1.5 mb-0">
+							<label class="text-base text-ink-gray-5 w-full mb-0" for="login_with_email_link_email">
+								{{ _("Correo electrónico") }}
+							</label>
+							<div class="email-field">
+								<input
+									type="email"
+									id="login_with_email_link_email"
+									class="form-control"
+									placeholder="{{ _('correo@ejemplo.com') }}"
+									required
+									autofocus
+									autocomplete="username"
+								>
+							</div>
+							<p class="field-error text-base text-ink-red-8 mb-0"></p>
+						</div>
+					</div>
+
+					<div class="page-card-actions flex flex-col gap-3">
+						<p class="resend-link hidden flex items-center gap-2 w-full text-base text-ink-gray-6 mb-0">
+							{{ _("¿No recibiste el enlace?") }}
+							<a href="#" class="btn-resend-link text-base-semibold text-ink-gray-6">
+								{{ _("Reenviar") }}
+							</a>
+						</p>
+						<button class="es-button w-full btn-login-with-email-link" data-variant="solid" type="submit">
+							{{ _("Enviar enlace de acceso") }}
+						</button>
+						<a href="#login" class="es-button w-full btn-login-option">
+							{{ _("Iniciar sesión con contraseña") }}
+						</a>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script>{% include "templates/includes/login/login.js" %}</script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
