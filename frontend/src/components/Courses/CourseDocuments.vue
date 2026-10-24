@@ -41,7 +41,7 @@
 					<a
 						v-for="file in documentsFor(kind.field)"
 						:key="file.name"
-						:href="file.file_url"
+						:href="safeUrl(file.file_url)"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="course-documents__file"
@@ -94,6 +94,7 @@ import {
 } from 'frappe-ui'
 import { computed, watch } from 'vue'
 import { resourceErrorMessage } from '@/utils/resource'
+import { safeUrl } from '@/utils/safeUrl'
 
 interface CourseFile {
 	name: string

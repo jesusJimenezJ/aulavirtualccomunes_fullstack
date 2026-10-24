@@ -17,7 +17,15 @@ bench get-app lms "${GITHUB_WORKSPACE}"
 echo "Setting Up Sites & Database..."
 
 mkdir ~/frappe-bench/sites/lms.test
-cp "${GITHUB_WORKSPACE}/.github/helper/site_config.json" ~/frappe-bench/sites/lms.test/site_config.json
+cat > ~/frappe-bench/sites/lms.test/site_config.json <<'EOF'
+{
+  "db_name": "test_lms",
+  "db_password": "test_lms",
+  "db_type": "mariadb",
+  "db_host": "127.0.0.1",
+  "db_port": 3306
+}
+EOF
 
 
 mariadb --host 127.0.0.1 --port 3306 -u root -p123 -e "SET GLOBAL character_set_server = 'utf8mb4'";

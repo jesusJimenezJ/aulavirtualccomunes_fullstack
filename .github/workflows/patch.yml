@@ -107,7 +107,7 @@ jobs:
           # local ref before get-app clones the workspace; fetching an unadvertised
           # raw SHA from a local Git remote is rejected by upload-pack.
           git -C "$GITHUB_WORKSPACE" update-ref refs/heads/ci-pr-head "$PR_HEAD_SHA"
-          bench get-app --skip-assets --branch v2.0.0 lms "${GITHUB_WORKSPACE}"
+          bench get-app --skip-assets --branch v2.0.0 lms https://github.com/frappe/lms
 
           # bench init clones frappe and payments with their remote named upstream.
           # Keep LMS upstream pointed at the canonical repository for stable rungs,
