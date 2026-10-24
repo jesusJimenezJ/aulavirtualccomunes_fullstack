@@ -11,19 +11,21 @@
 								streakInfo.data?.current_streak < 1
 									? '¡Hoy es un buen día para comenzar!'
 									: streakInfo.data?.current_streak < 10
-										? '¡Sigue avanzando!'
-										: '¡Vas excelente!'
+									? '¡Sigue avanzando!'
+									: '¡Vas excelente!'
 							}}
 						</div>
 
 						<div class="streak-dialog__count">
 							{{ streakInfo.data?.current_streak ?? 0 }}
-							{{ streakInfo.data?.current_streak === 1 ? 'día seguido' : 'días seguidos' }}
+							{{
+								streakInfo.data?.current_streak === 1
+									? 'día seguido'
+									: 'días seguidos'
+							}}
 						</div>
 
-						<p>
-							Cada día que dedicas a aprender te acerca a tus objetivos.
-						</p>
+						<p>Cada día que dedicas a aprender te acerca a tus objetivos.</p>
 					</div>
 				</div>
 

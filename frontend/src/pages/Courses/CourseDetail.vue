@@ -287,7 +287,8 @@ const publishToggle = createResource({
 		course.reload()
 	},
 	onError(err: FrappeResourceError) {
-		const msg = err.messages?.[0] ?? __('No se pudo actualizar el estado de publicación')
+		const msg =
+			err.messages?.[0] ?? __('No se pudo actualizar el estado de publicación')
 		toast.error(msg)
 	},
 }) as Resource<unknown>

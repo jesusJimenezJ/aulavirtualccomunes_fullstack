@@ -4,18 +4,26 @@
 			<div>
 				<p class="course-documents__eyebrow">{{ __('Material académico') }}</p>
 				<h2>{{ __('Sílabo y cronograma') }}</h2>
-					<p class="course-documents__description">
+				<p class="course-documents__description">
 					{{ __('Consulta o descarga los documentos PDF de este curso.') }}
 				</p>
 				<p v-if="canManage" class="course-documents__visibility-note">
-					{{ __('Los PDF se publican para que puedan consultarse desde el catálogo del curso.') }}
+					{{
+						__(
+							'Los PDF se publican para que puedan consultarse desde el catálogo del curso.'
+						)
+					}}
 				</p>
 			</div>
 			<span class="lucide-files size-5 text-ink-gray-6" aria-hidden="true" />
 		</div>
 
 		<div class="course-documents__grid">
-			<article v-for="kind in documentKinds" :key="kind.field" class="course-documents__card">
+			<article
+				v-for="kind in documentKinds"
+				:key="kind.field"
+				class="course-documents__card"
+			>
 				<div class="course-documents__card-heading">
 					<span class="course-documents__icon" aria-hidden="true">
 						<span :class="kind.icon" class="size-5" />
@@ -26,7 +34,10 @@
 					</div>
 				</div>
 
-				<div v-if="documentsFor(kind.field).length" class="course-documents__files">
+				<div
+					v-if="documentsFor(kind.field).length"
+					class="course-documents__files"
+				>
 					<a
 						v-for="file in documentsFor(kind.field)"
 						:key="file.name"
@@ -37,7 +48,10 @@
 					>
 						<span class="lucide-file-text size-4 shrink-0" aria-hidden="true" />
 						<span class="min-w-0 flex-1 truncate">{{ file.file_name }}</span>
-						<span class="lucide-arrow-down-to-line size-4 shrink-0" aria-hidden="true" />
+						<span
+							class="lucide-arrow-down-to-line size-4 shrink-0"
+							aria-hidden="true"
+						/>
 					</a>
 				</div>
 				<p v-else class="course-documents__empty">
@@ -55,7 +69,11 @@
 					@failure="onUploadFailure"
 				>
 					<template #default="{ openFileSelector, uploading }">
-						<Button class="course-documents__upload" :loading="uploading" @click="openFileSelector">
+						<Button
+							class="course-documents__upload"
+							:loading="uploading"
+							@click="openFileSelector"
+						>
 							<span class="lucide-upload size-4" aria-hidden="true" />
 							{{ uploading ? __('Subiendo…') : __('Agregar PDF') }}
 						</Button>
@@ -67,7 +85,13 @@
 </template>
 
 <script setup lang="ts">
-import { Button, FileUploader, UploadError, createResource, toast } from 'frappe-ui'
+import {
+	Button,
+	FileUploader,
+	UploadError,
+	createResource,
+	toast,
+} from 'frappe-ui'
 import { computed, watch } from 'vue'
 import { resourceErrorMessage } from '@/utils/resource'
 
@@ -85,8 +109,16 @@ const props = defineProps<{
 }>()
 
 const documentKinds = [
-	{ field: 'syllabus_pdf', label: __('Sílabo'), icon: 'lucide-book-open-check' },
-	{ field: 'schedule_pdf', label: __('Cronograma'), icon: 'lucide-calendar-days' },
+	{
+		field: 'syllabus_pdf',
+		label: __('Sílabo'),
+		icon: 'lucide-book-open-check',
+	},
+	{
+		field: 'schedule_pdf',
+		label: __('Cronograma'),
+		icon: 'lucide-calendar-days',
+	},
 ]
 
 const files = createResource({
@@ -94,13 +126,22 @@ const files = createResource({
 	auto: false,
 	onError(error) {
 		toast.error(
-			resourceErrorMessage(error, __('No se pudieron cargar los documentos del curso'))
+			resourceErrorMessage(
+				error,
+				__('No se pudieron cargar los documentos del curso')
+			)
 		)
 	},
 	makeParams() {
 		return {
 			doctype: 'File',
-			fields: ['name', 'file_name', 'file_url', 'attached_to_field', 'creation'],
+			fields: [
+				'name',
+				'file_name',
+				'file_url',
+				'attached_to_field',
+				'creation',
+			],
 			filters: {
 				attached_to_doctype: 'LMS Course',
 				attached_to_name: props.courseName,
@@ -113,7 +154,9 @@ const files = createResource({
 	},
 })
 
-const documents = computed<CourseFile[]>(() => (files.data || []) as CourseFile[])
+const documents = computed<CourseFile[]>(
+	() => (files.data || []) as CourseFile[]
+)
 
 watch(
 	() => props.courseName,
@@ -133,7 +176,8 @@ function onUploaded(fileName: string) {
 }
 
 function onUploadFailure(error: unknown) {
-	const message = error instanceof UploadError ? error.message : __('No se pudo subir el PDF')
+	const message =
+		error instanceof UploadError ? error.message : __('No se pudo subir el PDF')
 	toast.error(resourceErrorMessage(error, message))
 }
 </script>

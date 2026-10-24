@@ -57,11 +57,11 @@
 								</div>
 								<Tooltip
 									v-if="getLessonStatus(progress) == 'Complete'"
-							:text="__('Completado')"
+									:text="__('Completado')"
 								>
 									<span class="lucide-check text-ink-green-5 size-4" />
 								</Tooltip>
-				<Tooltip v-else :text="__('Pendiente')">
+								<Tooltip v-else :text="__('Pendiente')">
 									<span class="lucide-minus text-ink-amber-4 size-4" />
 								</Tooltip>
 								<!-- <Badge :theme="getLessonStatusTheme(progress)">
@@ -78,13 +78,13 @@
 						>
 							<div class="grid grid-cols-4 gap-5 text-ink-gray-6 mb-5">
 								<div class="col-span-2">
-								{{ __('Progreso de cuestionarios') }}
+									{{ __('Progreso de cuestionarios') }}
 								</div>
 								<div>
-								{{ __('Puntaje') }}
+									{{ __('Puntaje') }}
 								</div>
 								<div>
-								{{ __('Porcentaje') }}
+									{{ __('Porcentaje') }}
 								</div>
 							</div>
 							<div
@@ -108,7 +108,7 @@
 						>
 							<div>
 								<div class="text-ink-gray-6 mb-5">
-								{{ __('Progreso de tareas') }}
+									{{ __('Progreso de tareas') }}
 								</div>
 							</div>
 							<ul class="list-none">
@@ -134,7 +134,7 @@
 						>
 							<div>
 								<div class="text-ink-gray-6 mb-5">
-								{{ __('Progreso de ejercicios de programación') }}
+									{{ __('Progreso de ejercicios de programación') }}
 								</div>
 							</div>
 							<ul class="list-none">
@@ -200,7 +200,7 @@ const assessmentProgress = createResource({
 const getLessonStatus = (lesson: any) => {
 	return (
 		lessonProgress.data?.find((lp: any) => lp.lesson === lesson.lesson)
-					?.status || __('Pendiente')
+			?.status || __('Pendiente')
 	)
 }
 

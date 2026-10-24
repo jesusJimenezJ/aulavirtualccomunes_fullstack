@@ -12,10 +12,7 @@
 				</p>
 			</div>
 
-			<Button
-				:route="{ name: 'NewCourse' }"
-				class="instructor-home__browse"
-			>
+			<Button :route="{ name: 'NewCourse' }" class="instructor-home__browse">
 				<template #prefix>
 					<span class="lucide-plus size-4" />
 				</template>
@@ -25,9 +22,7 @@
 
 		<!-- Evaluaciones próximas -->
 		<section v-if="evals?.data?.length" class="instructor-home__section">
-			<h2 class="instructor-home__section-title">
-				Evaluaciones próximas
-			</h2>
+			<h2 class="instructor-home__section-title">Evaluaciones próximas</h2>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 				<component
@@ -36,10 +31,7 @@
 					:key="evaluation.name"
 					:to="
 						user?.data?.username
-							? profileRoute(
-									user.data.username,
-									'ProfileEvaluationSchedule',
-								)
+							? profileRoute(user.data.username, 'ProfileEvaluationSchedule')
 							: undefined
 					"
 					class="instructor-home__card"
@@ -61,25 +53,14 @@
 							<span>{{ formatTime(evaluation.start_time) }}</span>
 						</div>
 
-						<div
-							v-if="evaluation.timezone"
-							class="instructor-home__detail"
-						>
+						<div v-if="evaluation.timezone" class="instructor-home__detail">
 							<span class="lucide-globe size-4" />
 							<span>
-								{{
-									formatTimezone(
-										evaluation.timezone,
-										evaluation.date,
-									)
-								}}
+								{{ formatTimezone(evaluation.timezone, evaluation.date) }}
 							</span>
 						</div>
 
-						<div
-							v-if="evaluation.member_name"
-							class="instructor-home__detail"
-						>
+						<div v-if="evaluation.member_name" class="instructor-home__detail">
 							<span class="lucide-graduation-cap size-4" />
 							<span>{{ evaluation.member_name }}</span>
 						</div>
@@ -89,13 +70,8 @@
 		</section>
 
 		<!-- Clases en vivo -->
-		<section
-			v-if="liveClasses?.data?.length"
-			class="instructor-home__section"
-		>
-			<h2 class="instructor-home__section-title">
-				Próximas clases en vivo
-			</h2>
+		<section v-if="liveClasses?.data?.length" class="instructor-home__section">
+			<h2 class="instructor-home__section-title">Próximas clases en vivo</h2>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 				<article
@@ -128,14 +104,10 @@
 							</span>
 						</div>
 
-						<div
-							v-if="canAccessClass(cls)"
-							class="instructor-home__actions"
-						>
+						<div v-if="canAccessClass(cls)" class="instructor-home__actions">
 							<a
 								v-if="
-									(user?.data?.is_moderator ||
-										user?.data?.is_evaluator) &&
+									(user?.data?.is_moderator || user?.data?.is_evaluator) &&
 									cls.start_url
 								"
 								:href="safeUrl(cls.start_url)"
@@ -178,9 +150,7 @@
 			class="instructor-home__section"
 		>
 			<div class="flex items-center justify-between mb-3">
-				<h2 class="instructor-home__section-title">
-					Cursos creados
-				</h2>
+				<h2 class="instructor-home__section-title">Cursos creados</h2>
 
 				<router-link :to="{ name: 'Courses' }">
 					<span class="flex items-center gap-x-1 text-ink-gray-6 text-xs">
@@ -209,9 +179,7 @@
 			class="instructor-home__section"
 		>
 			<div class="flex items-center justify-between mb-3">
-				<h2 class="instructor-home__section-title">
-					Próximos grupos
-				</h2>
+				<h2 class="instructor-home__section-title">Próximos grupos</h2>
 
 				<router-link :to="{ name: 'Batches' }">
 					<span class="flex items-center gap-x-1 text-ink-gray-6 text-xs">
@@ -237,10 +205,7 @@
 
 		<!-- Estado vacío -->
 		<div
-			v-if="
-				!createdCourses.data?.length &&
-				!createdBatches.data?.length
-			"
+			v-if="!createdCourses.data?.length && !createdBatches.data?.length"
 			class="instructor-home__empty"
 		>
 			<span class="lucide-graduation-cap size-10 text-ink-gray-5" />
@@ -250,8 +215,7 @@
 			</h2>
 
 			<p>
-				Aquí aparecerán tus cursos y grupos. Crea tu primer curso para
-				comenzar.
+				Aquí aparecerán tus cursos y grupos. Crea tu primer curso para comenzar.
 			</p>
 
 			<router-link :to="{ name: 'NewCourse' }" class="mt-3">
@@ -304,10 +268,7 @@ const createdBatches = createResource({
 })
 
 function getClassEnd(cls: any) {
-	return dayjs(`${cls.date} ${cls.time}`).add(
-		cls.duration || 0,
-		'minutes',
-	)
+	return dayjs(`${cls.date} ${cls.time}`).add(cls.duration || 0, 'minutes')
 }
 
 function canAccessClass(cls: any) {
@@ -384,9 +345,7 @@ function hasClassEnded(cls: any) {
 	background: #fff;
 	color: inherit;
 	text-decoration: none;
-	transition:
-		border-color 160ms ease,
-		box-shadow 160ms ease,
+	transition: border-color 160ms ease, box-shadow 160ms ease,
 		transform 160ms ease;
 }
 

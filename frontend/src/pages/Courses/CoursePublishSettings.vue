@@ -13,14 +13,18 @@
 					size="sm"
 					v-model="selfEnrollment"
 					:label="__('Permitir inscripción directa')"
-					:description="__('Permitir que los estudiantes se inscriban directamente.')"
+					:description="
+						__('Permitir que los estudiantes se inscriban directamente.')
+					"
 				/>
 				<BooleanSwitch
 					size="sm"
 					v-model="doc.enforce_lesson_completion"
 					:label="__('Requerir completar las lecciones')"
 					:description="
-						__('Los estudiantes deben completar cada lección antes de abrir la siguiente.')
+						__(
+							'Los estudiantes deben completar cada lección antes de abrir la siguiente.'
+						)
 					"
 					@update:modelValue="markDirty()"
 				/>
@@ -33,7 +37,9 @@
 					size="sm"
 					:modelValue="Boolean(doc?.paid_course)"
 					:label="__('Curso de pago')"
-					:description="__('Cobrar una tarifa de matrícula para acceder al curso.')"
+					:description="
+						__('Cobrar una tarifa de matrícula para acceder al curso.')
+					"
 					@update:modelValue="setPaidCourse"
 				/>
 				<template v-if="doc?.paid_course">
@@ -60,7 +66,6 @@
 			</div>
 		</CollapsibleSection>
 	</div>
-
 
 	<Dialog
 		v-model:open="showPaymentsAppModal"
@@ -134,5 +139,4 @@ function setPaidCourse(val: boolean) {
 function openPaymentsApp() {
 	openExternal('https://frappecloud.com/marketplace/apps/payments')
 }
-
 </script>

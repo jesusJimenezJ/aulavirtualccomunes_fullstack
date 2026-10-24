@@ -12,32 +12,47 @@
 			<span v-if="course.category" class="course-card__category">
 				{{ course.category }}
 			</span>
-			<div v-if="!course.image" class="course-card__cover-mark" aria-hidden="true">
+			<div
+				v-if="!course.image"
+				class="course-card__cover-mark"
+				aria-hidden="true"
+			>
 				<span class="lucide-book-open size-8" />
 			</div>
 		</div>
 
 		<div class="course-card__body">
-
 			<div class="course-card__stats">
-                        <Tooltip v-if="course.lessons" :text="__('Cantidad de lecciones del curso')">
-                                <span class="course-card__stat">
-                                        <span class="lucide-book-open size-4" aria-hidden="true" />
-                                        <span aria-hidden="true">{{ course.lessons }} {{ __('lecciones') }}</span>
-                                        <span class="sr-only">{{ lessonCount }}</span>
-                                </span>
-                        </Tooltip>
+				<Tooltip
+					v-if="course.lessons"
+					:text="__('Cantidad de lecciones del curso')"
+				>
+					<span class="course-card__stat">
+						<span class="lucide-book-open size-4" aria-hidden="true" />
+						<span aria-hidden="true"
+							>{{ course.lessons }} {{ __('lecciones') }}</span
+						>
+						<span class="sr-only">{{ lessonCount }}</span>
+					</span>
+				</Tooltip>
 
-                        <Tooltip v-if="course.enrollments" :text="__('Cantidad de estudiantes matriculados')">
-                                <span class="course-card__stat">
-                                        <span class="lucide-users-round size-4" aria-hidden="true" />
-                                        <span aria-hidden="true">{{ formatAmount(course.enrollments) }}</span>
-                                        <span class="sr-only">
-                                                {{ __('Estudiantes matriculados: {0}').format(course.enrollments) }}
-                                        </span>
-                                </span>
-                        </Tooltip>
-                </div>
+				<Tooltip
+					v-if="course.enrollments"
+					:text="__('Cantidad de estudiantes matriculados')"
+				>
+					<span class="course-card__stat">
+						<span class="lucide-users-round size-4" aria-hidden="true" />
+						<span aria-hidden="true">{{
+							formatAmount(course.enrollments)
+						}}</span>
+						<span class="sr-only">
+							{{
+								__('Estudiantes matriculados: {0}').format(course.enrollments)
+							}}
+						</span>
+					</span>
+				</Tooltip>
+			</div>
 			<h3 class="course-card__title">
 				<CardLink :to="to" :external="external">{{ course.title }}</CardLink>
 			</h3>
@@ -50,7 +65,10 @@
 					:progress="course.membership.progress"
 					:label="__('Course progress')"
 				/>
-				<span>{{ Math.ceil(course.membership.progress) }}% {{ __('completado') }}</span>
+				<span
+					>{{ Math.ceil(course.membership.progress) }}%
+					{{ __('completado') }}</span
+				>
 			</div>
 
 			<div class="course-card__footer">
@@ -99,9 +117,9 @@ const props = defineProps({
 })
 
 const lessonCount = computed(() =>
-  props.course.lessons == 1
-    ? __('1 lección')
-    : __('{0} lecciones').format(props.course.lessons)
+	props.course.lessons == 1
+		? __('1 lección')
+		: __('{0} lecciones').format(props.course.lessons)
 )
 
 const gradientColor = computed(() => {
@@ -122,7 +140,8 @@ const gradientColor = computed(() => {
 	background: #fff;
 	color: #18312e;
 	box-shadow: 0 5px 18px rgba(24, 49, 46, 0.045);
-	transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+	transition: border-color 180ms ease, box-shadow 180ms ease,
+		transform 180ms ease;
 }
 
 .course-card:hover {
@@ -146,7 +165,11 @@ const gradientColor = computed(() => {
 .course-card__cover-shade {
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg, rgba(11, 40, 35, 0.05) 12%, rgba(11, 40, 35, 0.76) 100%);
+	background: linear-gradient(
+		180deg,
+		rgba(11, 40, 35, 0.05) 12%,
+		rgba(11, 40, 35, 0.76) 100%
+	);
 	transition: opacity 180ms ease;
 }
 
@@ -307,5 +330,4 @@ const gradientColor = computed(() => {
 .avatar-group.overlap .avatar + .avatar {
 	margin-inline-start: calc(-8px);
 }
-
 </style>

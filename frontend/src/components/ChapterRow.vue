@@ -54,7 +54,11 @@
 				<template v-if="isScormChapterLocked">
 					<span
 						class="lucide-lock-keyhole size-4 text-ink-gray-4"
-						:title="__('Completa las lecciones anteriores para desbloquear este módulo')"
+						:title="
+							__(
+								'Completa las lecciones anteriores para desbloquear este módulo'
+							)
+						"
 						aria-hidden="true"
 					/>
 					<span class="sr-only">{{ __('Locked') }}</span>
@@ -72,7 +76,7 @@
 			<div v-if="allowEdit" class="flex items-center gap-x-4 shrink-0">
 				<Tooltip
 					v-if="chapter.is_scorm_package"
-						:text="__('Editar módulo')"
+					:text="__('Editar módulo')"
 					side="bottom"
 				>
 					<Button
@@ -161,7 +165,7 @@
 									<span
 										class="lucide-lock-keyhole h-4 w-4 text-ink-gray-4 ms-2"
 										:title="
-										__('Completa la lección anterior para desbloquear esta')
+											__('Completa la lección anterior para desbloquear esta')
 										"
 										aria-hidden="true"
 									/>

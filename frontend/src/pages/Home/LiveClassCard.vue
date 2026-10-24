@@ -13,10 +13,7 @@
 			</span>
 		</div>
 
-		<div
-			v-if="canAccessClass(cls)"
-			class="live-class__actions"
-		>
+		<div v-if="canAccessClass(cls)" class="live-class__actions">
 			<a
 				v-if="
 					(user?.data?.is_moderator || user?.data?.is_evaluator) &&
@@ -96,8 +93,7 @@ const canAccessClass = (cls: LiveClassTiming) => {
 	return now.isAfter(start.subtract(15, 'minutes')) && now.isBefore(end)
 }
 
-const hasClassEnded = (cls: LiveClassTiming) =>
-	new Date() > getClassEnd(cls)
+const hasClassEnded = (cls: LiveClassTiming) => new Date() > getClassEnd(cls)
 </script>
 
 <style scoped>

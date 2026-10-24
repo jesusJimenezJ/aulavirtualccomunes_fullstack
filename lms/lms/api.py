@@ -2268,99 +2268,67 @@ def get_certification_details(course: str) -> dict:
 
 @frappe.whitelist()
 def save_role(user: str, role: str, value: int):
-    frappe.only_for("Moderator")
+	frappe.only_for("Moderator")
 
-    if role not in LMS_ROLES:
-        frappe.throw(
-            _("You do not have permission to modify this role."),
-            frappe.PermissionError,
-        )
+	if role not in LMS_ROLES:
+		frappe.throw(
+			_("You do not have permission to modify this role."),
+			frappe.PermissionError,
+		)
 
-    before_assigned = bool(
-        frappe.db.exists("Has Role", {"parent": user, "role": role})
-    )
+	before_assigned = bool(frappe.db.exists("Has Role", {"parent": user, "role": role}))
 
-    if role == "Batch Evaluator":
-        result = save_evaluator_role(user, value)
-        after_assigned = bool(
-            frappe.db.exists("Has Role", {"parent": user, "role": role})
-        )
-        frappe.get_attr("lms.lms.audit.log_role_change")(
-            user, role, before_assigned, after_assigned
-        )
-        return result
+	if role == "Batch Evaluator":
+		result = save_evaluator_role(user, value)
+		after_assigned = bool(frappe.db.exists("Has Role", {"parent": user, "role": role}))
+		frappe.get_attr("lms.lms.audit.log_role_change")(user, role, before_assigned, after_assigned)
+		return result
 
-    if cint(value):
-        if not frappe.db.exists("Has Role", {"parent": user, "role": role}):
-            doc = frappe.new_doc("Has Role")
-            doc.parent = user
-            doc.parenttype = "User"
-            doc.parentfield = "roles"
-            doc.role = role
-            doc.save(ignore_permissions=True)
-    else:
-        frappe.db.delete("Has Role", {"parent": user, "role": role})
+	if cint(value):
+		if not frappe.db.exists("Has Role", {"parent": user, "role": role}):
+			doc = frappe.new_doc("Has Role")
+			doc.parent = user
+			doc.parenttype = "User"
+			doc.parentfield = "roles"
+			doc.role = role
+			doc.save(ignore_permissions=True)
+	else:
+		frappe.db.delete("Has Role", {"parent": user, "role": role})
 
-    frappe.clear_cache(user=user)
+	frappe.clear_cache(user=user)
 
-    after_assigned = bool(
-        frappe.db.exists("Has Role", {"parent": user, "role": role})
-    )
-    frappe.get_attr("lms.lms.audit.log_role_change")(
-        user, role, before_assigned, after_assigned
-    )
-    return True
+	after_assigned = bool(frappe.db.exists("Has Role", {"parent": user, "role": role}))
+	frappe.get_attr("lms.lms.audit.log_role_change")(user, role, before_assigned, after_assigned)
+	return True
 
 
 def save_evaluator_role(user: str, value: int):
-    frappe.only_for("Moderator")
+	frappe.only_for("Moderator")
 
-    if cint(value):
-        if not frappe.db.exists(
-            "Has Role", {"parent": user, "role": "Batch Evaluator"}
-        ):
-            doc = frappe.new_doc("Has Role")
-            doc.parent = user
-            doc.parenttype = "User"
-            doc.parentfield = "roles"
-            doc.role = "Batch Evaluator"
-            doc.save(ignore_permissions=True)
+	if cint(value):
+		if not frappe.db.exists("Has Role", {"parent": user, "role": "Batch Evaluator"}):
+			doc = frappe.new_doc("Has Role")
+			doc.parent = user
+			doc.parenttype = "User"
+			doc.parentfield = "roles"
+			doc.role = "Batch Evaluator"
+			doc.save(ignore_permissions=True)
 
-        if not frappe.db.exists("Course Evaluator", {"evaluator": user}):
-            doc = frappe.new_doc("Course Evaluator")
-            doc.evaluator = user
-            frappe.db.savepoint("save_evaluator")
-            try:
-                doc.save(ignore_permissions=True)
-            except frappe.DuplicateEntryError:
-                frappe.db.rollback(save_point="save_evaluator")
-    else:
-        frappe.db.delete(
-            "Has Role", {"parent": user, "role": "Batch Evaluator"}
-        )
-        if frappe.db.exists("Course Evaluator", {"evaluator": user}):
-            frappe.db.delete("Course Evaluator", {"evaluator": user})
+		if not frappe.db.exists("Course Evaluator", {"evaluator": user}):
+			doc = frappe.new_doc("Course Evaluator")
+			doc.evaluator = user
+			frappe.db.savepoint("save_evaluator")
+			try:
+				doc.save(ignore_permissions=True)
+			except frappe.DuplicateEntryError:
+				frappe.db.rollback(save_point="save_evaluator")
+	else:
+		frappe.db.delete("Has Role", {"parent": user, "role": "Batch Evaluator"})
+		if frappe.db.exists("Course Evaluator", {"evaluator": user}):
+			frappe.db.delete("Course Evaluator", {"evaluator": user})
 
-    frappe.clear_cache(user=user)
-    return True
-
-
-@frappe.whitelist()
-def delete_member(user: str):
-    frappe.only_for("Moderator")
-
-    if not isinstance(user, str):
-        frappe.throw(_("user must be a string"))
-
-    if user in ("Administrator", "Guest", frappe.session.user):
-        frappe.throw(_("This user cannot be deleted."), frappe.PermissionError)
-
-    if not frappe.db.exists("User", user):
-        frappe.throw(_("User {0} does not exist.").format(user))
-
-    frappe.delete_doc("User", user, ignore_permissions=True)
-    frappe.clear_cache(user=user)
-    return True
+	frappe.clear_cache(user=user)
+	return True
 
 
 @frappe.whitelist()

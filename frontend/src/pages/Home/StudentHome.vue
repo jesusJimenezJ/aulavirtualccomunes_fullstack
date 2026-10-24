@@ -58,10 +58,7 @@
 							Unirme a la clase
 						</a>
 
-						<div
-							v-else-if="hasClassEnded(cls)"
-							class="student-home__ended"
-						>
+						<div v-else-if="hasClassEnded(cls)" class="student-home__ended">
 							<span class="lucide-info size-4" />
 							Esta clase ha finalizado
 						</div>
@@ -166,10 +163,7 @@ const myBatches = createResource({
 })
 
 function getClassEnd(cls: any) {
-	return dayjs(`${cls.date} ${cls.time}`).add(
-		cls.duration || 0,
-		'minutes',
-	)
+	return dayjs(`${cls.date} ${cls.time}`).add(cls.duration || 0, 'minutes')
 }
 
 function canAccessClass(cls: any) {
@@ -262,9 +256,7 @@ function hasClassEnded(cls: any) {
 	border: 1px solid #dce8e0;
 	border-radius: 0.9rem;
 	background: #fff;
-	transition:
-		border-color 160ms ease,
-		box-shadow 160ms ease,
+	transition: border-color 160ms ease, box-shadow 160ms ease,
 		transform 160ms ease;
 }
 

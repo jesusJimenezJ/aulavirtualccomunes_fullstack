@@ -25,10 +25,7 @@
 
 				<router-link :to="{ name: 'Courses' }" class="home-heading__link">
 					{{ isInstructor ? 'Ver cursos' : 'Explorar cursos' }}
-					<span
-						class="lucide-arrow-up-right size-4"
-						aria-hidden="true"
-					/>
+					<span class="lucide-arrow-up-right size-4" aria-hidden="true" />
 				</router-link>
 			</div>
 		</header>
@@ -39,10 +36,7 @@
 			:evals="adminEvals"
 		/>
 
-		<StudentHome
-			v-else
-			:my-live-classes="myLiveClasses"
-		/>
+		<StudentHome v-else :my-live-classes="myLiveClasses" />
 	</main>
 </template>
 
@@ -59,8 +53,8 @@ const isInstructor = computed(() =>
 	Boolean(
 		user?.data?.is_moderator ||
 			user?.data?.is_instructor ||
-			user?.data?.is_evaluator,
-	),
+			user?.data?.is_evaluator
+	)
 )
 
 const firstName = computed(() => {
@@ -110,8 +104,7 @@ usePageMeta(() => ({
 	padding: clamp(1.25rem, 3vw, 2rem);
 	border: 1px solid #dce9e1;
 	border-radius: 1.25rem;
-	background:
-		radial-gradient(
+	background: radial-gradient(
 			ellipse at 95% 5%,
 			rgba(240, 210, 178, 0.42),
 			transparent 35%
@@ -185,9 +178,7 @@ usePageMeta(() => ({
 	font-size: 0.875rem;
 	font-weight: 700;
 	text-decoration: none;
-	transition:
-		background-color 150ms ease,
-		transform 150ms ease;
+	transition: background-color 150ms ease, transform 150ms ease;
 }
 
 .home-heading__link:hover {

@@ -19,12 +19,10 @@
 						<span class="catalog-hero__eyebrow-dot" />
 						Aula virtual de Psicología Social Comunitaria
 					</div>
-					<h2 id="catalog-hero-title">
-						Aprendizaje que fortalece comunidades
-					</h2>
+					<h2 id="catalog-hero-title">Aprendizaje que fortalece comunidades</h2>
 					<p>
-						Explora cursos, fundamentos y metodologías para comprender y trabajar
-						con las comunidades.
+						Explora cursos, fundamentos y metodologías para comprender y
+						trabajar con las comunidades.
 					</p>
 					<a class="catalog-hero__cta" href="#course-catalog">
 						Ver cursos
@@ -419,8 +417,11 @@ usePageMeta(() => {
 	border: 1px solid #e2eae3;
 	border-radius: 1.25rem;
 	overflow: hidden;
-	background:
-		radial-gradient(circle at 82% 15%, rgba(217, 137, 99, 0.18), transparent 25%),
+	background: radial-gradient(
+			circle at 82% 15%,
+			rgba(217, 137, 99, 0.18),
+			transparent 25%
+		),
 		linear-gradient(112deg, #f4f1e8 0%, #edf4ef 58%, #e3f0e9 100%);
 	color: #18312e;
 	box-shadow: 0 10px 28px rgba(24, 49, 46, 0.07);

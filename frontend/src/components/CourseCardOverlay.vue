@@ -80,7 +80,7 @@
 			</div>
 			<section v-if="hasCourseStats" class="space-y-3">
 				<div class="text-base text-ink-gray-9 mb-1">
-				{{ __('Este curso incluye:') }}
+					{{ __('Este curso incluye:') }}
 				</div>
 				<div
 					v-if="enrolledLabel"
@@ -94,7 +94,7 @@
 					class="flex items-center gap-3 text-ink-gray-8"
 				>
 					<span class="lucide-monitor-play size-4 shrink-0 text-ink-gray-7" />
-						<span>{{ __('Video del curso') }}</span>
+					<span>{{ __('Video del curso') }}</span>
 				</div>
 				<div
 					v-if="course.data?.lessons"

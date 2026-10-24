@@ -83,14 +83,7 @@ import {
 	Tooltip,
 } from 'frappe-ui'
 import { buildSidebarRows } from '@/utils/sidebarRows'
-import {
-	ref,
-	onMounted,
-	inject,
-	watch,
-	onUnmounted,
-	computed,
-} from 'vue'
+import { ref, onMounted, inject, watch, onUnmounted, computed } from 'vue'
 import UserDropdown from '@/components/Sidebar/UserDropdown.vue'
 import SidebarLink from '@/components/Sidebar/SidebarLink.vue'
 import CommandPalette from '@/components/CommandPalette/CommandPalette.vue'
@@ -161,7 +154,6 @@ const setCollapsed = (collapsed) => {
 	sidebarStore.isSidebarCollapsed = collapsed
 	localStorage.setItem('isSidebarCollapsed', JSON.stringify(collapsed))
 }
-
 
 watch(userResource, async () => {
 	await userResource.promise

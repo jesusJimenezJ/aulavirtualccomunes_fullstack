@@ -2,7 +2,7 @@
 	<FormShell :title="__('Nuevo curso')" size="3xl" @close="close">
 		<template #default>
 			<div v-if="!canCreate" class="p-4 text-base text-ink-gray-6">
-				{{ __('No tienes permiso para crear cursos.') }}
+				{{ __("No tienes permiso para crear cursos.") }}
 			</div>
 			<div v-else data-testid="new-course-fields" class="text-base">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-5 border-b pb-5 mb-5">
@@ -127,46 +127,46 @@ import {
 	createListResource,
 	createResource,
 	toast,
-} from 'frappe-ui'
-import type { FrappeResourceError } from 'frappe-ui'
-import { useOnboarding } from '@framework/ui/components/Onboarding/index'
-import { useTelemetry } from '@framework/ui/telemetry/index'
-import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import FormShell from '@/components/FormShell.vue'
-import HeaderButton from '@/components/HeaderButton.vue'
-import { useFormRoute } from '@/composables/useFormRoute'
-import Link from '@/components/Controls/Link.vue'
-import MultiLink from '@/components/Controls/MultiLink.vue'
-import Uploader from '@/components/Controls/Uploader.vue'
-import NewMemberModal from '@/components/Modals/NewMemberModal.vue'
-import { canCreateCourse, cleanError, createLMSCategory } from '@/utils'
-import { sanitizeStringFields } from '@/utils/sanitizeOnWrite'
-import type { Resource } from '@/types'
-import RichTextEditor from '@/components/RichTextEditor.vue'
-import { InputLabel, useInputLabeling } from 'frappe-ui/experimental'
-import { submitResource } from '@/utils/resource'
+} from "frappe-ui";
+import type { FrappeResourceError } from "frappe-ui";
+import { useOnboarding } from "@framework/ui/components/Onboarding/index";
+import { useTelemetry } from "@framework/ui/telemetry/index";
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import FormShell from "@/components/FormShell.vue";
+import HeaderButton from "@/components/HeaderButton.vue";
+import { useFormRoute } from "@/composables/useFormRoute";
+import Link from "@/components/Controls/Link.vue";
+import MultiLink from "@/components/Controls/MultiLink.vue";
+import Uploader from "@/components/Controls/Uploader.vue";
+import NewMemberModal from "@/components/Modals/NewMemberModal.vue";
+import { canCreateCourse, cleanError, createLMSCategory } from "@/utils";
+import { sanitizeStringFields } from "@/utils/sanitizeOnWrite";
+import type { Resource } from "@/types";
+import RichTextEditor from "@/components/RichTextEditor.vue";
+import { InputLabel, useInputLabeling } from "frappe-ui/experimental";
+import { submitResource } from "@/utils/resource";
 
 interface InstructorOption {
-	label: string
-	value: string
-	image: string
-	description: string
+	label: string;
+	value: string;
+	image: string;
+	description: string;
 }
 interface RawUserHit {
-	label?: string
-	value?: string
-	name?: string
-	user_image?: string
-	description?: string
+	label?: string;
+	value?: string;
+	name?: string;
+	user_image?: string;
+	description?: string;
 }
 
-const { capture } = useTelemetry()
-const { updateOnboardingStep } = useOnboarding('learning')
-const user = inject<any>('$user')
-const courseCreated = ref(false)
-const showMemberModal = ref<boolean>(false)
+const { capture } = useTelemetry();
+const { updateOnboardingStep } = useOnboarding("learning");
+const user = inject<any>("$user");
+const courseCreated = ref(false);
+const showMemberModal = ref<boolean>(false);
 
-const { close, saveAndReplace } = useFormRoute({ name: 'Courses' })
+const { close, saveAndReplace } = useFormRoute({ name: "Courses" });
 
 // Its own list resource, but the cache key is deliberately byte-identical to
 // Courses.vue:152. createListResource hands back whichever instance was cached
@@ -182,107 +182,107 @@ const { close, saveAndReplace } = useFormRoute({ name: 'Courses' })
 // than through constructor options. pageLength/start are matched below so the
 // discard is a no-op whichever caller loses the race.
 const courses = createListResource({
-	doctype: 'LMS Course',
-	url: 'lms.lms.utils.get_courses',
-	cache: ['courses', user.data?.name],
+	doctype: "LMS Course",
+	url: "lms.lms.utils.get_courses",
+	cache: ["courses", user.data?.name],
 	pageLength: 24,
 	start: 0,
-})
+});
 
 // The same gate Courses.vue:18 puts on the Create button. A URL does not go
 // through a button, so the form has to re-check it. This is a UX gate, not an
 // authorization boundary — Frappe's server-side DocPerms on LMS Course insert
 // are that. canCreateCourse() reads userResource.data, which is reactive, so
 // the computed settles once the user resource resolves.
-const canCreate = computed(() => canCreateCourse())
+const canCreate = computed(() => canCreateCourse());
 
 type Course = {
-	title: string
-	short_introduction: string
-	description: string
-	instructors: string[]
-	category?: string
-	image?: string
-}
+	title: string;
+	short_introduction: string;
+	description: string;
+	instructors: string[];
+	category?: string;
+	image?: string;
+};
 
 const course = ref<Course>({
-	title: '',
-	short_introduction: '',
-	description: '',
+	title: "",
+	short_introduction: "",
+	description: "",
 	instructors: [],
 	category: undefined,
 	image: undefined,
-})
+});
 
-const INSTRUCTOR_ROLES = ['Course Creator', 'Batch Evaluator']
-const MAX_VISIBLE_AVATARS = 3
+const INSTRUCTOR_ROLES = ["Course Creator", "Batch Evaluator"];
+const MAX_VISIBLE_AVATARS = 3;
 const thumbnailGuidelines = __(
-	'Sube una imagen de 750 × 422 píxeles (.jpg, .jpeg, .gif o .png). Se mostrará en la tarjeta del catálogo y en la portada de la lección.'
-)
+	"Sube una imagen de 750 × 422 píxeles (.jpg, .jpeg, .gif o .png). Se mostrará en la tarjeta del catálogo y en la portada de la lección."
+);
 const { inputId: descriptionId, labelId: descriptionLabelId } =
-	useInputLabeling({})
+	useInputLabeling({});
 
 const instructorsRef = ref<{
-	optionByValue: Map<string, InstructorOption>
-	reload: () => void
-} | null>(null)
+	optionByValue: Map<string, InstructorOption>;
+	reload: () => void;
+} | null>(null);
 
 function transformUsers(rows: Record<string, unknown>[]): InstructorOption[] {
 	return (rows as RawUserHit[]).map((o) => ({
-		label: o.label || o.value || o.name || '',
-		value: o.value || o.name || '',
-		image: o.user_image || '',
-		description: o.description || o.value || '',
-	}))
+		label: o.label || o.value || o.name || "",
+		value: o.value || o.name || "",
+		image: o.user_image || "",
+		description: o.description || o.value || "",
+	}));
 }
 
 // Hydrate avatars/names for instructor IDs that aren't in the dropdown's
 // current result set (e.g. after a fresh-created member was just added).
-const resolvedDetails = ref<Map<string, InstructorOption>>(new Map())
+const resolvedDetails = ref<Map<string, InstructorOption>>(new Map());
 
 const selectedDetails = createResource({
-	url: 'lms.lms.api.search_users_by_role',
-	method: 'POST',
+	url: "lms.lms.api.search_users_by_role",
+	method: "POST",
 	makeParams: () => ({
 		roles: JSON.stringify(INSTRUCTOR_ROLES),
 		names: JSON.stringify(course.value.instructors),
 	}),
 	onSuccess(rows: RawUserHit[]) {
-		const next = new Map(resolvedDetails.value)
+		const next = new Map(resolvedDetails.value);
 		for (const u of rows) {
-			const value = u.value || u.name || ''
-			if (!value) continue
+			const value = u.value || u.name || "";
+			if (!value) continue;
 			next.set(value, {
 				label: u.label || u.description || value,
 				value,
-				image: u.user_image || '',
+				image: u.user_image || "",
 				description: u.description || value,
-			})
+			});
 		}
-		resolvedDetails.value = next
+		resolvedDetails.value = next;
 	},
-}) as Resource<RawUserHit[] | null>
+}) as Resource<RawUserHit[] | null>;
 
 watch(
 	() => course.value.instructors,
 	(vals) => {
-		const missing = (vals || []).filter((v) => !resolvedDetails.value.has(v))
-		if (missing.length) selectedDetails.reload()
+		const missing = (vals || []).filter((v) => !resolvedDetails.value.has(v));
+		if (missing.length) selectedDetails.reload();
 	}
-)
+);
 
 const resolvedSelected = computed<InstructorOption[]>(() =>
 	course.value.instructors
 		.map((v) => resolvedDetails.value.get(v))
 		.filter((o): o is InstructorOption => Boolean(o))
-)
+);
 
 const optionByValue = computed<Map<string, InstructorOption>>(() => {
-	const merged = new Map<string, InstructorOption>(resolvedDetails.value)
-	const fromMultiLink = instructorsRef.value?.optionByValue
-	if (fromMultiLink) fromMultiLink.forEach((v, k) => merged.set(k, v))
-	return merged
-})
+	const merged = new Map<string, InstructorOption>(resolvedDetails.value);
+	const fromMultiLink = instructorsRef.value?.optionByValue;
+	if (fromMultiLink) fromMultiLink.forEach((v, k) => merged.set(k, v));
+	return merged;
+});
 
 const visibleAvatars = computed<InstructorOption[]>(() =>
 	course.value.instructors
@@ -293,38 +293,38 @@ const visibleAvatars = computed<InstructorOption[]>(() =>
 				({
 					value: v,
 					label: v,
-					image: '',
-					description: '',
+					image: "",
+					description: "",
 				} as InstructorOption)
 		)
 		.filter((o): o is InstructorOption => Boolean(o))
-)
+);
 
 const overflowCount = computed<number>(() =>
 	Math.max(0, course.value.instructors.length - MAX_VISIBLE_AVATARS)
-)
+);
 
 function openMemberModal(close: () => void) {
-	close()
-	showMemberModal.value = true
+	close();
+	showMemberModal.value = true;
 }
 
 const createCategory = (name: string, done: () => void) => {
 	createLMSCategory(name).then((categoryName: string) => {
-		if (!categoryName) return
-		course.value.category = categoryName
-		done()
-	})
-}
+		if (!categoryName) return;
+		course.value.category = categoryName;
+		done();
+	});
+};
 
 const onInstructorCreated = (newUser: any) => {
-	course.value.instructors = [...course.value.instructors, newUser.name]
-	instructorsRef.value?.reload()
-}
+	course.value.instructors = [...course.value.instructors, newUser.name];
+	instructorsRef.value?.reload();
+};
 
 const saveCourse = () => {
-	if (!canCreate.value) return
-	sanitizeStringFields(course.value as Record<string, unknown>)
+	if (!canCreate.value) return;
+	sanitizeStringFields(course.value as Record<string, unknown>);
 	submitResource(
 		courses.insert,
 		{
@@ -335,54 +335,54 @@ const saveCourse = () => {
 		},
 		{
 			onSuccess(data: any) {
-				toast.success(__('Curso creado correctamente.'))
-				capture('course_created')
-				courseCreated.value = true
+				toast.success(__("Curso creado correctamente."));
+				capture("course_created");
+				courseCreated.value = true;
 				// replace, not push: the form's history entry is consumed so Back
 				// reaches the list rather than a stale, empty form.
 				saveAndReplace({
-					name: 'CourseDetail',
+					name: "CourseDetail",
 					params: { courseName: data.name },
-					hash: '#settings',
-				})
+					hash: "#settings",
+				});
 				if (user.data?.is_system_manager) {
-					updateOnboardingStep('create_first_course', true, false, () => {
-						localStorage.setItem('firstCourse', data.name)
-					})
+					updateOnboardingStep("create_first_course", true, false, () => {
+						localStorage.setItem("firstCourse", data.name);
+					});
 				}
 			},
 			onError(err: FrappeResourceError) {
-				toast.error(cleanError(err.messages?.[0]))
-				console.error(err)
+				toast.error(cleanError(err.messages?.[0]));
+				console.error(err);
 			},
 		}
-	)
-}
+	);
+};
 
 const keyboardShortcut = (e: KeyboardEvent) => {
 	if (
-		e.key === 's' &&
+		e.key === "s" &&
 		(e.ctrlKey || e.metaKey) &&
 		e.target &&
 		e.target instanceof HTMLElement &&
-		!e.target.classList.contains('ProseMirror')
+		!e.target.classList.contains("ProseMirror")
 	) {
-		saveCourse()
-		e.preventDefault()
+		saveCourse();
+		e.preventDefault();
 	}
-}
+};
 
 onMounted(() => {
-	window.addEventListener('keydown', keyboardShortcut)
-	capture('course_form_opened')
-})
+	window.addEventListener("keydown", keyboardShortcut);
+	capture("course_form_opened");
+});
 
 onBeforeUnmount(() => {
-	window.removeEventListener('keydown', keyboardShortcut)
+	window.removeEventListener("keydown", keyboardShortcut);
 	if (!courseCreated.value) {
-		capture('course_form_closed', {
+		capture("course_form_closed", {
 			data: course.value,
-		})
+		});
 	}
-})
+});
 </script>

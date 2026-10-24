@@ -68,7 +68,7 @@
 							</span>
 							<span class="sr-only">
 								{{
-									__('{0} enrolled').format(formatAmount(course.enrollments))
+									__("{0} enrolled").format(formatAmount(course.enrollments))
 								}}
 							</span>
 						</span>
@@ -95,7 +95,7 @@
 			/>
 
 			<div v-if="user && course.membership" class="text-sm mt-2 mb-4">
-				{{ Math.ceil(course.membership.progress) }}% {{ __('completed') }}
+				{{ Math.ceil(course.membership.progress) }}% {{ __("completed") }}
 			</div>
 
 			<div class="flex items-center justify-between mt-auto">
@@ -123,16 +123,16 @@
 	</div>
 </template>
 <script setup>
-import { sessionStore } from '@/stores/session'
-import { Tooltip } from 'frappe-ui'
-import { formatAmount } from '@/utils'
-import { computed } from 'vue'
-import CardLink from '@/components/CardLink.vue'
-import CourseInstructors from '@/components/CourseInstructors.vue'
-import UserAvatar from '@/components/UserAvatar.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
+import { sessionStore } from "@/stores/session";
+import { Tooltip } from "frappe-ui";
+import { formatAmount } from "@/utils";
+import { computed } from "vue";
+import CardLink from "@/components/CardLink.vue";
+import CourseInstructors from "@/components/CourseInstructors.vue";
+import UserAvatar from "@/components/UserAvatar.vue";
+import ProgressBar from "@/components/ProgressBar.vue";
 
-const { user } = sessionStore()
+const { user } = sessionStore();
 
 const props = defineProps({
 	course: {
@@ -147,19 +147,19 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
-})
+});
 
 const lessonCount = computed(() =>
 	props.course.lessons == 1
-		? __('1 lesson')
-		: __('{0} lessons').format(props.course.lessons)
-)
+		? __("1 lesson")
+		: __("{0} lessons").format(props.course.lessons)
+);
 
 const gradientColor = computed(() => {
-	let color = props.course.card_gradient?.toLowerCase() || 'blue'
+	let color = props.course.card_gradient?.toLowerCase() || "blue";
 	// token-exempt: card art stays dark in both themes.
-	return `linear-gradient(to top right, black, var(--${color}-400))`
-})
+	return `linear-gradient(to top right, black, var(--${color}-400))`;
+});
 </script>
 <style>
 .avatar-group {

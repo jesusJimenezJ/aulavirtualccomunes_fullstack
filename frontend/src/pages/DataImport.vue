@@ -2,17 +2,20 @@
 	<PageHeader :breadcrumbs="breadcrumbs" />
 	<div class="data-import-host">
 		<DataImportWizard
-                :data-import="dataImport"
-                :on-open-list="openList"
-                :on-new-import="newImport"
-                @open-record="openRecord"
-                @open-imports="openImports"
-/>
+			:data-import="dataImport"
+			:on-open-list="openList"
+			:on-new-import="newImport"
+			@open-record="openRecord"
+			@open-imports="openImports"
+		/>
 	</div>
 </template>
 <script setup lang="ts">
 import { usePageMeta } from 'frappe-ui'
-import { DataImportWizard, useDataImport } from '@framework/ui/components/DataImport/index'
+import {
+	DataImportWizard,
+	useDataImport,
+} from '@framework/ui/components/DataImport/index'
 import PageHeader from '@/components/Layouts/pages/PageHeader.vue'
 import type { Breadcrumb } from '@/types'
 import { sessionStore } from '../stores/session'
@@ -65,40 +68,40 @@ const doctypeMap = {
 const importName = ref<string | null>(null)
 
 watch(
-        importNameParam,
-        (value) => {
-                importName.value = value ?? null
-        },
-        { immediate: true }
+	importNameParam,
+	(value) => {
+		importName.value = value ?? null
+	},
+	{ immediate: true }
 )
 
 const dataImport = useDataImport(importName, {
-        doctype: doctypeParam,
+	doctype: doctypeParam,
 })
 
 function openList(doctype: string) {
-        const destination = doctypeMap[doctype as keyof typeof doctypeMap]
-        router.push(destination?.listRoute ?? '/data-import')
+	const destination = doctypeMap[doctype as keyof typeof doctypeMap]
+	router.push(destination?.listRoute ?? '/data-import')
 }
 
 function newImport(doctype: string) {
-        router.push({
-                name: 'NewDataImport',
-                params: { doctype },
-        })
+	router.push({
+		name: 'NewDataImport',
+		params: { doctype },
+	})
 }
 
 function openRecord(doctype: string, name: string) {
-        const destination = doctypeMap[doctype as keyof typeof doctypeMap]
-        if (destination?.pageRoute) {
-                router.push(destination.pageRoute.replace('docname', name))
-        } else {
-                router.push(destination?.listRoute ?? '/data-import')
-        }
+	const destination = doctypeMap[doctype as keyof typeof doctypeMap]
+	if (destination?.pageRoute) {
+		router.push(destination.pageRoute.replace('docname', name))
+	} else {
+		router.push(destination?.listRoute ?? '/data-import')
+	}
 }
 
 function openImports(_doctype: string) {
-        router.push({ name: 'DataImportList' })
+	router.push({ name: 'DataImportList' })
 }
 // Named here rather than taken from the imported component: its own trail is
 // internal state we cannot reach, and the page still needs a back link on a

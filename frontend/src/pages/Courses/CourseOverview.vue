@@ -33,7 +33,7 @@
 							<div class="flex items-center gap-1.5">
 								<span class="lucide-users-round size-4" />
 								<span
-								>{{ formatAmount(course.data.enrollments) }}
+									>{{ formatAmount(course.data.enrollments) }}
 									{{ __('estudiantes') }}</span
 								>
 							</div>
@@ -81,8 +81,8 @@
 
 				<section class="course-overview__panel">
 					<div class="flex items-baseline justify-between gap-4 mb-4">
-					<h2 class="text-3xl-semibold text-ink-gray-9">
-						{{ __('Contenido del curso') }}
+						<h2 class="text-3xl-semibold text-ink-gray-9">
+							{{ __('Contenido del curso') }}
 						</h2>
 						<div class="text-base text-ink-gray-6">
 							{{ outlineStats }}
@@ -198,7 +198,9 @@ const outlineStats = computed(() => {
 	)
 	const parts: string[] = []
 	if (chapters.length) {
-		parts.push(`${chapters.length} ${chapters.length === 1 ? 'sección' : 'secciones'}`)
+		parts.push(
+			`${chapters.length} ${chapters.length === 1 ? 'sección' : 'secciones'}`
+		)
 	}
 	if (lessonCount) {
 		parts.push(`${lessonCount} ${lessonCount === 1 ? 'lección' : 'lecciones'}`)
@@ -227,8 +229,11 @@ const hasCourseContent = computed(() => {
 	padding: clamp(1.25rem, 3vw, 2rem);
 	border: 1px solid #dce8e0;
 	border-radius: 1.25rem;
-	background:
-		radial-gradient(circle at 95% 8%, rgba(216, 137, 99, 0.16), transparent 25%),
+	background: radial-gradient(
+			circle at 95% 8%,
+			rgba(216, 137, 99, 0.16),
+			transparent 25%
+		),
 		linear-gradient(120deg, #edf5ef 0%, #f8f5ec 100%);
 }
 

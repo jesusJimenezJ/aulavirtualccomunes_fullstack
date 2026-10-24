@@ -1,4 +1,3 @@
-
 <template>
 	<SkeletonLoader v-if="loading" variant="header" />
 
@@ -32,9 +31,7 @@
 				type="button"
 				class="theme-toggle"
 				:aria-label="
-					theme === 'dark'
-						? __('Activar modo día')
-						: __('Activar modo noche')
+					theme === 'dark' ? __('Activar modo día') : __('Activar modo noche')
 				"
 				:title="theme === 'dark' ? __('Modo día') : __('Modo noche')"
 				@click="toggleTheme"

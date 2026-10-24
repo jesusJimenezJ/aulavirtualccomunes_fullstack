@@ -192,9 +192,7 @@ const isEvaluatorOrModerator = () => {
 }
 
 const getTabButtons = () => {
-	let buttons = [
-		{ label: __('About'), value: 'About' },
-	]
+	let buttons = [{ label: __('About'), value: 'About' }]
 	if ($user.data?.is_moderator) {
 		buttons.push({ label: __('Roles'), value: 'Roles' })
 	}
