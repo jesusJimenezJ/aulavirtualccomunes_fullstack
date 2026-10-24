@@ -186,12 +186,12 @@ const student = {
 // a modal by moving this grid wholesale, so pin the set: a field dropped in the
 // move is otherwise invisible to the rest of the suite.
 const FIELD_LABELS = [
-	'Title',
-	'Category',
-	'Instructors',
-	'Course thumbnail',
-	'Short introduction',
-	'Course description',
+	'Título',
+	'Categoría',
+	'Instructores',
+	'Imagen de portada del curso',
+	'Introducción breve',
+	'Descripción del curso',
 ]
 
 // Ctrl/Cmd+S is handled on window, but the handler ignores events whose target
@@ -222,7 +222,7 @@ describe('NewCourseForm as a route', () => {
 		expect(wrapper.find('[data-testid="new-course-fields"]').exists()).toBe(
 			true
 		)
-		expect(wrapper.html()).toContain('New Course')
+		expect(wrapper.html()).toContain('Nuevo curso')
 	})
 
 	it('refuses to render the form for a user who cannot create courses', async () => {
@@ -233,7 +233,9 @@ describe('NewCourseForm as a route', () => {
 		expect(wrapper.find('[data-testid="new-course-fields"]').exists()).toBe(
 			false
 		)
-		expect(wrapper.html()).toContain('not permitted')
+		expect(wrapper.html()).toContain(
+    'No tienes permiso para crear cursos.'
+)
 	})
 
 	it('carries every field of the course form', async () => {
