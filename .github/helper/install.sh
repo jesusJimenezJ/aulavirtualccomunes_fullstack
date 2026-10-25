@@ -14,6 +14,10 @@ echo "Setting Up LMS App..."
 bench get-app "https://github.com/frappe/payments"
 bench get-app lms "${GITHUB_WORKSPACE}"
 
+echo "Applying Frappe onboarding guard patch..."
+git -C ~/frappe-bench/apps/frappe apply --check "${GITHUB_WORKSPACE}/patches/frappe-onboarding-guard.patch"
+git -C ~/frappe-bench/apps/frappe apply "${GITHUB_WORKSPACE}/patches/frappe-onboarding-guard.patch"
+
 echo "Setting Up Sites & Database..."
 
 mkdir ~/frappe-bench/sites/lms.test
