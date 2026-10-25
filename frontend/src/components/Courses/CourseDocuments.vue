@@ -4,18 +4,26 @@
 			<div>
 				<p class="course-documents__eyebrow">{{ __('Material académico') }}</p>
 				<h2>{{ __('Sílabo y cronograma') }}</h2>
-					<p class="course-documents__description">
+				<p class="course-documents__description">
 					{{ __('Consulta o descarga los documentos PDF de este curso.') }}
 				</p>
 				<p v-if="canManage" class="course-documents__visibility-note">
-					{{ __('Los PDF se publican para que puedan consultarse desde el catálogo del curso.') }}
+					{{
+						__(
+							'Los PDF se publican para que puedan consultarse desde el catálogo del curso.'
+						)
+					}}
 				</p>
 			</div>
 			<span class="lucide-files size-5 text-ink-gray-6" aria-hidden="true" />
 		</div>
 
 		<div class="course-documents__grid">
-			<article v-for="kind in documentKinds" :key="kind.field" class="course-documents__card">
+			<article
+				v-for="kind in documentKinds"
+				:key="kind.field"
+				class="course-documents__card"
+			>
 				<div class="course-documents__card-heading">
 					<span class="course-documents__icon" aria-hidden="true">
 						<span :class="kind.icon" class="size-5" />
@@ -26,18 +34,24 @@
 					</div>
 				</div>
 
-				<div v-if="documentsFor(kind.field).length" class="course-documents__files">
+				<div
+					v-if="documentsFor(kind.field).length"
+					class="course-documents__files"
+				>
 					<a
 						v-for="file in documentsFor(kind.field)"
 						:key="file.name"
-						:href="file.file_url"
-						target="_blank"
+						:href="safeUrl(file.file_url)"
+						v-external
 						rel="noopener noreferrer"
 						class="course-documents__file"
 					>
 						<span class="lucide-file-text size-4 shrink-0" aria-hidden="true" />
 						<span class="min-w-0 flex-1 truncate">{{ file.file_name }}</span>
-						<span class="lucide-arrow-down-to-line size-4 shrink-0" aria-hidden="true" />
+						<span
+							class="lucide-arrow-down-to-line size-4 shrink-0"
+							aria-hidden="true"
+						/>
 					</a>
 				</div>
 				<p v-else class="course-documents__empty">
@@ -55,7 +69,11 @@
 					@failure="onUploadFailure"
 				>
 					<template #default="{ openFileSelector, uploading }">
-						<Button class="course-documents__upload" :loading="uploading" @click="openFileSelector">
+						<Button
+							class="course-documents__upload"
+							:loading="uploading"
+							@click="openFileSelector"
+						>
 							<span class="lucide-upload size-4" aria-hidden="true" />
 							{{ uploading ? __('Subiendo…') : __('Agregar PDF') }}
 						</Button>
@@ -67,9 +85,16 @@
 </template>
 
 <script setup lang="ts">
-import { Button, FileUploader, UploadError, createResource, toast } from 'frappe-ui'
+import {
+	Button,
+	FileUploader,
+	UploadError,
+	createResource,
+	toast,
+} from 'frappe-ui'
 import { computed, watch } from 'vue'
 import { resourceErrorMessage } from '@/utils/resource'
+import { safeUrl } from '@/utils/safeUrl'
 
 interface CourseFile {
 	name: string
@@ -85,8 +110,16 @@ const props = defineProps<{
 }>()
 
 const documentKinds = [
-	{ field: 'syllabus_pdf', label: __('Sílabo'), icon: 'lucide-book-open-check' },
-	{ field: 'schedule_pdf', label: __('Cronograma'), icon: 'lucide-calendar-days' },
+	{
+		field: 'syllabus_pdf',
+		label: __('Sílabo'),
+		icon: 'lucide-book-open-check',
+	},
+	{
+		field: 'schedule_pdf',
+		label: __('Cronograma'),
+		icon: 'lucide-calendar-days',
+	},
 ]
 
 const files = createResource({
@@ -94,13 +127,22 @@ const files = createResource({
 	auto: false,
 	onError(error) {
 		toast.error(
-			resourceErrorMessage(error, __('No se pudieron cargar los documentos del curso'))
+			resourceErrorMessage(
+				error,
+				__('No se pudieron cargar los documentos del curso')
+			)
 		)
 	},
 	makeParams() {
 		return {
 			doctype: 'File',
-			fields: ['name', 'file_name', 'file_url', 'attached_to_field', 'creation'],
+			fields: [
+				'name',
+				'file_name',
+				'file_url',
+				'attached_to_field',
+				'creation',
+			],
 			filters: {
 				attached_to_doctype: 'LMS Course',
 				attached_to_name: props.courseName,
@@ -113,7 +155,9 @@ const files = createResource({
 	},
 })
 
-const documents = computed<CourseFile[]>(() => (files.data || []) as CourseFile[])
+const documents = computed<CourseFile[]>(
+	() => (files.data || []) as CourseFile[]
+)
 
 watch(
 	() => props.courseName,
@@ -133,7 +177,8 @@ function onUploaded(fileName: string) {
 }
 
 function onUploadFailure(error: unknown) {
-	const message = error instanceof UploadError ? error.message : __('No se pudo subir el PDF')
+	const message =
+		error instanceof UploadError ? error.message : __('No se pudo subir el PDF')
 	toast.error(resourceErrorMessage(error, message))
 }
 </script>
@@ -141,10 +186,10 @@ function onUploadFailure(error: unknown) {
 <style scoped>
 .course-documents {
 	padding: clamp(1rem, 2.5vw, 1.5rem);
-	border: 1px solid #e2eae4;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 1.1rem;
-	background: #fff;
-	box-shadow: 0 8px 24px rgba(24, 49, 46, 0.04);
+	background: var(--surface-base);
+	box-shadow: 0 8px 24px color-mix(in srgb, var(--ink-base) 4%, transparent);
 }
 
 .course-documents__heading,
@@ -157,7 +202,7 @@ function onUploadFailure(error: unknown) {
 
 .course-documents__eyebrow {
 	margin: 0 0 0.3rem;
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 0.7rem;
 	font-weight: 750;
 	letter-spacing: 0.1em;
@@ -166,7 +211,7 @@ function onUploadFailure(error: unknown) {
 
 .course-documents__heading h2 {
 	margin: 0;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: 1.25rem;
 	font-weight: 750;
 }
@@ -174,13 +219,13 @@ function onUploadFailure(error: unknown) {
 .course-documents__description,
 .course-documents__card-heading p {
 	margin: 0.25rem 0 0;
-	color: #68766f;
+	color: var(--ink-gray-7);
 	font-size: 0.85rem;
 }
 
 .course-documents__visibility-note {
 	margin: 0.4rem 0 0;
-	color: #8a5a31;
+	color: var(--ink-amber-7);
 	font-size: 0.78rem;
 }
 
@@ -194,9 +239,9 @@ function onUploadFailure(error: unknown) {
 .course-documents__card {
 	min-width: 0;
 	padding: 1rem;
-	border: 1px solid #e6ece7;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 0.85rem;
-	background: #fbfcfa;
+	background: var(--surface-base);
 }
 
 .course-documents__card-heading {
@@ -211,13 +256,13 @@ function onUploadFailure(error: unknown) {
 	place-items: center;
 	flex: none;
 	border-radius: 0.7rem;
-	background: #eaf3ed;
-	color: #176b60;
+	background: var(--surface-green-1);
+	color: var(--ink-green-7);
 }
 
 .course-documents__card-heading h3 {
 	margin: 0;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: 0.95rem;
 	font-weight: 700;
 }
@@ -234,22 +279,22 @@ function onUploadFailure(error: unknown) {
 	gap: 0.55rem;
 	min-width: 0;
 	padding: 0.65rem 0.7rem;
-	border: 1px solid #e3eae4;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 0.65rem;
-	background: #fff;
-	color: #176b60;
+	background: var(--surface-base);
+	color: var(--ink-green-7);
 	font-size: 0.82rem;
 	text-decoration: none;
 }
 
 .course-documents__file:hover {
-	border-color: #b9d5c5;
-	background: #f4f8f4;
+	border-color: var(--outline-green-3);
+	background: var(--surface-gray-1);
 }
 
 .course-documents__empty {
 	margin: 0.9rem 0;
-	color: #758179;
+	color: var(--ink-gray-7);
 	font-size: 0.82rem;
 }
 

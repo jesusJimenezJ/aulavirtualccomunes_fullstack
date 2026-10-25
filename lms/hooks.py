@@ -201,28 +201,39 @@ doc_events = {
 
 # CCOMUNES persistent audit logging. Existing hooks above are preserved.
 _AUDIT_EVENTS = {
-    "User", "LMS Course", "Course Chapter", "Course Lesson",
-    "LMS Quiz", "LMS Question", "LMS Assignment",
-    "LMS Batch", "LMS Program", "LMS Enrollment",
-    "LMS Live Class", "Chapter Reference", "Lesson Reference",
-    "LMS Programming Exercise",
+	"User",
+	"LMS Course",
+	"Course Chapter",
+	"Course Lesson",
+	"LMS Quiz",
+	"LMS Question",
+	"LMS Assignment",
+	"LMS Batch",
+	"LMS Program",
+	"LMS Enrollment",
+	"LMS Live Class",
+	"Chapter Reference",
+	"Lesson Reference",
+	"LMS Programming Exercise",
 }
 
+
 def _append_audit_handler(doctype, event, handler):
-    events = doc_events.setdefault(doctype, {})
-    existing = events.get(event)
-    if existing is None:
-        events[event] = [handler]
-    elif isinstance(existing, str):
-        if existing != handler:
-            events[event] = [existing, handler]
-    elif handler not in existing:
-        existing.append(handler)
+	events = doc_events.setdefault(doctype, {})
+	existing = events.get(event)
+	if existing is None:
+		events[event] = [handler]
+	elif isinstance(existing, str):
+		if existing != handler:
+			events[event] = [existing, handler]
+	elif handler not in existing:
+		existing.append(handler)
+
 
 for _doctype in _AUDIT_EVENTS:
-    _append_audit_handler(_doctype, "after_insert", "lms.lms.audit.audit_after_insert")
-    _append_audit_handler(_doctype, "on_update", "lms.lms.audit.audit_on_update")
-    _append_audit_handler(_doctype, "on_trash", "lms.lms.audit.audit_on_trash")
+	_append_audit_handler(_doctype, "after_insert", "lms.lms.audit.audit_after_insert")
+	_append_audit_handler(_doctype, "on_update", "lms.lms.audit.audit_on_update")
+	_append_audit_handler(_doctype, "on_trash", "lms.lms.audit.audit_on_trash")
 
 # Scheduled Tasks
 # ---------------

@@ -10,9 +10,10 @@ that keep a field out of reach. The shipped rows stay in `tabDocPerm` and simply
 applying, so nothing raises and nothing is logged. This has to be looked for.
 """
 
+from pathlib import Path
+
 import click
 import frappe
-from frappe.modules.utils import get_module_list
 
 ALERT_TITLE = "Custom DocPerm rows are shadowing the permlevel permissions LMS ships"
 
@@ -68,13 +69,19 @@ def warn_about_shadowed_permlevels() -> None:
 	)
 
 
+def _get_lms_modules() -> list[str]:
+	"""Read the app modules from modules.txt without relying on Frappe internals."""
+	modules_file = Path(__file__).resolve().parents[1] / "modules.txt"
+	return [line.strip() for line in modules_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
 def _get_lms_doctypes() -> set[str]:
 	# `istable` doctypes are skipped by set_custom_permissions, so a child table cannot be
 	# shadowed. Modules come from lms/modules.txt rather than a LIKE pattern: the app ships
 	# both "LMS" and "Job", and a "%LMS%" filter drops every Job doctype without saying so.
 	doctypes = frappe.get_all(
 		"DocType",
-		filters={"module": ("in", get_module_list("lms")), "custom": 0, "istable": 0},
+		filters={"module": ("in", _get_lms_modules()), "custom": 0, "istable": 0},
 		pluck="name",
 	)
 	return set(doctypes) - set(LMS_MANAGED_CUSTOM_DOCPERM_DOCTYPES)

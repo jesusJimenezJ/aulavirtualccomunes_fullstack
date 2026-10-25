@@ -177,11 +177,13 @@
 			</div>
 		</template>
 	</TabbedDetailPage>
+	<RouterView />
 </template>
+
 <script setup lang="ts">
 import { computed, inject, markRaw, ref, useTemplateRef, watch } from 'vue'
 import type { ComputedRef } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { RouterView, useRoute, useRouter } from 'vue-router'
 import type { Router } from 'vue-router'
 import {
 	Badge,
@@ -287,7 +289,8 @@ const publishToggle = createResource({
 		course.reload()
 	},
 	onError(err: FrappeResourceError) {
-		const msg = err.messages?.[0] ?? __('No se pudo actualizar el estado de publicación')
+		const msg =
+			err.messages?.[0] ?? __('No se pudo actualizar el estado de publicación')
 		toast.error(msg)
 	},
 }) as Resource<unknown>
@@ -431,15 +434,15 @@ usePageMeta(() => {
 
 <style scoped>
 .course-management {
-	background: var(--lms-canvas, #f6f8f5);
+	background: var(--surface-base);
 }
 
 .course-management :deep([role='tablist']) {
-	border-bottom: 1px solid #e1e9e3;
-	background: rgba(255, 255, 255, 0.8);
+	border-bottom: 1px solid var(--outline-gray-2);
+	background: var(--surface-base);
 }
 
 .course-management :deep([role='tab'][aria-selected='true']) {
-	color: #176b60;
+	color: var(--ink-green-7);
 }
 </style>

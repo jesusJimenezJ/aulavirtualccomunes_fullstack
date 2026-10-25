@@ -12,7 +12,9 @@
 				>
 					<span class="lucide-book-open size-8" />
 					<div>
-						{{ __('Selecciona una lección a la derecha para comenzar a editar.') }}
+						{{
+							__('Selecciona una lección a la derecha para comenzar a editar.')
+						}}
 					</div>
 				</div>
 				<LessonForm

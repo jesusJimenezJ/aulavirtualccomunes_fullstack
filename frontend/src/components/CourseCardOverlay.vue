@@ -80,7 +80,7 @@
 			</div>
 			<section v-if="hasCourseStats" class="space-y-3">
 				<div class="text-base text-ink-gray-9 mb-1">
-				{{ __('Este curso incluye:') }}
+					{{ __('Este curso incluye:') }}
 				</div>
 				<div
 					v-if="enrolledLabel"
@@ -94,7 +94,7 @@
 					class="flex items-center gap-3 text-ink-gray-8"
 				>
 					<span class="lucide-monitor-play size-4 shrink-0 text-ink-gray-7" />
-						<span>{{ __('Video del curso') }}</span>
+					<span>{{ __('Video del curso') }}</span>
 				</div>
 				<div
 					v-if="course.data?.lessons"
@@ -229,10 +229,10 @@ const isAdmin = computed<boolean>(() => {
 
 <style scoped>
 .enrollment-panel {
-	border: 1px solid #dfe9e2;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1.1rem;
-	background: #fff;
-	box-shadow: 0 14px 34px rgba(24, 49, 46, 0.09);
+	background: var(--surface-base);
+	box-shadow: 0 14px 34px color-mix(in srgb, var(--ink-base) 9%, transparent);
 }
 
 .enrollment-panel > div:last-child {
@@ -240,14 +240,14 @@ const isAdmin = computed<boolean>(() => {
 }
 
 .enrollment-panel > div:last-child > div:first-child {
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: 1.8rem;
 	letter-spacing: -0.04em;
 }
 
 .enrollment-panel section {
 	padding-top: 1rem;
-	border-top: 1px solid #edf1ed;
+	border-top: 1px solid var(--surface-gray-2);
 }
 
 @media (max-width: 767px) {

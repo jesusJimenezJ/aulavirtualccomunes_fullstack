@@ -7,6 +7,7 @@
 		@update:collapsed="setCollapsed"
 	>
 		<UserDropdown />
+
 		<div class="min-h-0 flex-1 overflow-y-auto px-2 pt-2">
 			<div v-if="sidebarSettings.data" class="flex flex-col gap-0.5">
 				<template v-for="row in sidebarRows" :key="row.key">
@@ -28,13 +29,47 @@
 				</template>
 			</div>
 		</div>
+
 		<div class="mt-auto flex flex-col gap-1 px-2 pb-2">
+			<!-- El aviso sigue disponible para lectores de pantalla
+			     aunque el menú esté contraído. -->
+			<span v-if="readOnlyMode" class="sr-only">
+				{{ readOnlyNotice }}
+			</span>
+
 			<div
 				v-if="readOnlyMode && !sidebarStore.isSidebarCollapsed"
-				class="z-10 m-2 bg-surface-elevation-2 py-2.5 px-3 text-p-xs text-ink-gray-7 rounded-5"
+				class="z-10 m-2 rounded-5 bg-surface-elevation-2 px-3 py-2.5 text-p-xs text-ink-gray-7"
 			>
 				{{ readOnlyNotice }}
 			</div>
+
+			<button
+				type="button"
+				aria-label="Help"
+				class="flex items-center gap-2 rounded px-2 py-2"
+				@click="showHelpModal.value = true"
+			>
+				<span class="lucide-circle-help" aria-hidden="true" />
+				<span v-if="!sidebarStore.isSidebarCollapsed">
+					{{ __('Ayuda') }}
+				</span>
+			</button>
+
+			<a
+				href="https://frappe.io/learning"
+				v-external
+				rel="noopener noreferrer"
+				aria-label="Powered by Frappe Learning"
+				class="px-2 py-1 text-xs"
+			>
+				<span v-if="!sidebarStore.isSidebarCollapsed">
+					Powered by Frappe Learning
+				</span>
+			</a>
+
+			<HelpModal v-if="showHelpModal.value" />
+
 			<template v-if="isStudent && !profileIsComplete">
 				<SidebarItem
 					v-if="sidebarStore.isSidebarCollapsed"
@@ -66,6 +101,7 @@
 			/>
 		</div>
 	</Sidebar>
+
 	<CommandPalette v-model="settingsStore.isCommandPaletteOpen" />
 </template>
 
@@ -80,20 +116,16 @@ import {
 	SidebarCollapseToggle,
 	SidebarItem,
 	SidebarSection,
-	Tooltip,
 } from 'frappe-ui'
 import { buildSidebarRows } from '@/utils/sidebarRows'
-import {
-	ref,
-	onMounted,
-	inject,
-	watch,
-	onUnmounted,
-	computed,
-} from 'vue'
+import { ref, onMounted, inject, watch, onUnmounted, computed } from 'vue'
 import UserDropdown from '@/components/Sidebar/UserDropdown.vue'
 import SidebarLink from '@/components/Sidebar/SidebarLink.vue'
 import CommandPalette from '@/components/CommandPalette/CommandPalette.vue'
+import {
+	HelpModal,
+	showHelpModal,
+} from '@framework/ui/components/Onboarding/index'
 import {
 	loadUnreadCount,
 	unreadCount,
@@ -101,7 +133,7 @@ import {
 } from '@/stores/notifications'
 
 const { userResource } = usersStore()
-let sidebarStore = useSidebar()
+const sidebarStore = useSidebar()
 const socket = inject('$socket')
 const sidebarLinks = ref(null)
 const { sidebarSettings, loadSidebarSettings } = useSettings()
@@ -110,17 +142,17 @@ const readOnlyMode = window.read_only_mode
 const readOnlyNotice = __(
 	'El sitio está en mantenimiento. No podrás realizar cambios hasta que se restablezca el acceso.'
 )
+
 onMounted(() => {
 	addKeyboardShortcut()
 	updateSidebarLinks()
 	loadUnreadCount()
+
 	socket.on('publish_lms_notifications', () => {
 		unreadNotifications.reload()
 	})
 })
 
-// The count lives in stores/notifications now, so the badge follows it rather
-// than being written from the resource's onSuccess.
 watch(unreadCount, () => updateUnreadCount())
 
 const sidebarRows = computed(() =>
@@ -162,7 +194,6 @@ const setCollapsed = (collapsed) => {
 	localStorage.setItem('isSidebarCollapsed', JSON.stringify(collapsed))
 }
 
-
 watch(userResource, async () => {
 	await userResource.promise
 	updateSidebarLinks()
@@ -184,22 +215,19 @@ const updateSidebarLinks = () => {
 	updateUnreadCount()
 }
 
-const isStudent = computed(() => {
-	return userResource.data?.is_student
-})
+const isStudent = computed(() => userResource.data?.is_student)
 
 const profileRoute = computed(() => ({
 	name: 'Profile',
 	params: { username: userResource.data?.username },
 }))
 
-const profileIsComplete = computed(() => {
-	return (
+const profileIsComplete = computed(
+	() =>
 		userResource.data?.user_image &&
 		userResource.data?.headline &&
 		userResource.data?.bio
-	)
-})
+)
 
 onUnmounted(() => {
 	socket.off('publish_lms_notifications')

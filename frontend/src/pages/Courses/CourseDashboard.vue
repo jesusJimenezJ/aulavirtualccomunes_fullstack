@@ -11,7 +11,10 @@
 				:title="__('Tasa promedio de finalización')"
 				:value="averageCompletionRate"
 			/>
-			<NumberChartGraph :title="__('Lecciones')" :value="course.data?.lessons" />
+			<NumberChartGraph
+				:title="__('Lecciones')"
+				:value="course.data?.lessons"
+			/>
 		</div>
 		<div
 			v-if="showStudentsEmptyState"
@@ -39,8 +42,8 @@
 					<div class="flex items-center gap-x-2">
 						<FormControl
 							v-model="searchFilter"
-						:placeholder="__('Buscar')"
-						:aria-label="__('Buscar estudiantes')"
+							:placeholder="__('Buscar')"
+							:aria-label="__('Buscar estudiantes')"
 							type="text"
 						>
 							<template #prefix>
@@ -91,7 +94,7 @@
 						<EmptyStateLayout
 							name="Students"
 							icon="lucide-users"
-						:title="__('No hay estudiantes que coincidan con la búsqueda')"
+							:title="__('No hay estudiantes que coincidan con la búsqueda')"
 							:description="__('Prueba con otro nombre')"
 						/>
 					</div>

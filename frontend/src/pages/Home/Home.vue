@@ -25,10 +25,7 @@
 
 				<router-link :to="{ name: 'Courses' }" class="home-heading__link">
 					{{ isInstructor ? 'Ver cursos' : 'Explorar cursos' }}
-					<span
-						class="lucide-arrow-up-right size-4"
-						aria-hidden="true"
-					/>
+					<span class="lucide-arrow-up-right size-4" aria-hidden="true" />
 				</router-link>
 			</div>
 		</header>
@@ -39,10 +36,7 @@
 			:evals="adminEvals"
 		/>
 
-		<StudentHome
-			v-else
-			:my-live-classes="myLiveClasses"
-		/>
+		<StudentHome v-else :my-live-classes="myLiveClasses" />
 	</main>
 </template>
 
@@ -59,8 +53,8 @@ const isInstructor = computed(() =>
 	Boolean(
 		user?.data?.is_moderator ||
 			user?.data?.is_instructor ||
-			user?.data?.is_evaluator,
-	),
+			user?.data?.is_evaluator
+	)
 )
 
 const firstName = computed(() => {
@@ -108,15 +102,18 @@ usePageMeta(() => ({
 	overflow: hidden;
 	margin-bottom: 1.75rem;
 	padding: clamp(1.25rem, 3vw, 2rem);
-	border: 1px solid #dce9e1;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1.25rem;
-	background:
-		radial-gradient(
+	background: radial-gradient(
 			ellipse at 95% 5%,
-			rgba(240, 210, 178, 0.42),
+			color-mix(in srgb, var(--surface-amber-3) 42%, transparent),
 			transparent 35%
 		),
-		linear-gradient(112deg, #edf5ef 0%, #f8f7f0 100%);
+		linear-gradient(
+			112deg,
+			var(--surface-green-1) 0%,
+			var(--surface-amber-1) 100%
+		);
 }
 
 .home-heading__copy,
@@ -130,7 +127,7 @@ usePageMeta(() => ({
 	align-items: center;
 	gap: 0.45rem;
 	margin-bottom: 0.7rem;
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 0.75rem;
 	font-weight: 750;
 	letter-spacing: 0.09em;
@@ -139,7 +136,7 @@ usePageMeta(() => ({
 
 .home-heading h1 {
 	margin: 0;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: clamp(1.65rem, 3vw, 2.35rem);
 	font-weight: 750;
 	letter-spacing: -0.045em;
@@ -149,7 +146,7 @@ usePageMeta(() => ({
 .home-heading p {
 	max-width: 40rem;
 	margin: 0.65rem 0 0;
-	color: #5c6e67;
+	color: var(--ink-gray-7);
 	font-size: 1rem;
 	line-height: 1.6;
 }
@@ -163,10 +160,10 @@ usePageMeta(() => ({
 
 .home-heading__role {
 	padding: 0.4rem 0.7rem;
-	border: 1px solid rgba(23, 107, 96, 0.2);
+	border: 1px solid color-mix(in srgb, var(--ink-green-7) 20%, transparent);
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.72);
-	color: #176b60;
+	background: color-mix(in srgb, var(--surface-base) 72%, transparent);
+	color: var(--ink-green-7);
 	font-size: 0.75rem;
 	font-weight: 650;
 	white-space: nowrap;
@@ -180,23 +177,21 @@ usePageMeta(() => ({
 	min-height: 2.75rem;
 	padding: 0.65rem 1rem;
 	border-radius: 0.75rem;
-	background: #176b60;
-	color: #fff;
+	background: var(--ink-green-7);
+	color: var(--surface-base);
 	font-size: 0.875rem;
 	font-weight: 700;
 	text-decoration: none;
-	transition:
-		background-color 150ms ease,
-		transform 150ms ease;
+	transition: background-color 150ms ease, transform 150ms ease;
 }
 
 .home-heading__link:hover {
 	transform: translateY(-1px);
-	background: #123f3a;
+	background: var(--ink-green-8);
 }
 
 .home-heading__link:focus-visible {
-	outline: 3px solid #e9b989;
+	outline: 3px solid var(--ink-orange-4);
 	outline-offset: 3px;
 }
 

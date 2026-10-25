@@ -175,10 +175,10 @@ const clickAdd = async (
 	wrapper: ReturnType<typeof mount>,
 	router: Router
 ): Promise<void> => {
-	const add = wrapper
-		.findAll('button')
-		.find((button) => button.text() === 'Add')
-	expect(add).toBeDefined()
+	        const add = wrapper
+                .findAll('button')
+                .find((button) => button.text().trim() === 'Crear módulo')
+        expect(add).toBeDefined()
 	const navigated = nextNavigation(router)
 	await add!.trigger('click')
 	await navigated

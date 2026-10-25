@@ -66,7 +66,9 @@ describe('CoursePublishSettings', () => {
 			},
 		})
 
-		const toggle = wrapper.find('[data-label="Enforce Lesson Completion"]')
+		const toggle = wrapper.find(
+        '[data-label="Requerir completar las lecciones"]'
+)
 		expect(toggle.exists()).toBe(true)
 	})
 
@@ -96,8 +98,8 @@ describe('CoursePublishSettings', () => {
 		})
 
 		await wrapper
-			.find('[data-label="Enforce Lesson Completion"]')
-			.trigger('click')
+        .find('[data-label="Requerir completar las lecciones"]')
+        .trigger('click')
 		expect(markDirty).toHaveBeenCalled()
 	})
 })

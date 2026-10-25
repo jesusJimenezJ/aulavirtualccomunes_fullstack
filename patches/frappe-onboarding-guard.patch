@@ -1,0 +1,79 @@
+--- a/ui/src/components/Onboarding/onboarding.ts
++++ b/ui/src/components/Onboarding/onboarding.ts
+@@ -90,26 +90,35 @@
+   ) {
+     if (isOnboardingStepsCompleted.value) return;
+ 
++    const registeredSteps = onboardings[appName];
++    // Settings can call this before the app's onboarding checklist is registered.
++    if (!registeredSteps) {
++      console.warn(
++        `[Onboarding] Steps for "${appName}" are not registered; skipping update "${step}".`,
++      );
++      return;
++    }
++
+     if (!onboardingSteps.value.length) {
+       if (!onboardingStatus.value[userId]) {
+         onboardingStatus.value[userId] = {};
+       }
+       onboardingStatus.value[userId][appName + "_onboarding_status"] =
+-        onboardings[appName].map((s) => {
++        registeredSteps.map((s) => {
+           return { name: s.name, completed: false };
+         });
+     }
+ 
+-    let index = onboardingSteps.value.findIndex((s) => s.name === step);
++    const index = onboardingSteps.value.findIndex((s) => s.name === step);
+     if (index !== -1) {
+       onboardingSteps.value[index].completed = value;
+-      onboardings[appName][index].completed = value;
++      if (registeredSteps[index]) {
++        registeredSteps[index].completed = value;
++      }
+     }
+ 
+     updateUserOnboardingStatus(onboardingSteps.value);
+-
+     callback?.(step, skipped);
+-
+     minimize.value = false;
+   }
+ 
+@@ -119,13 +128,21 @@
+   ) {
+     if (isOnboardingStepsCompleted.value && value) return;
+ 
++    const registeredSteps = onboardings[appName];
++    if (!registeredSteps) {
++      console.warn(
++        `[Onboarding] Steps for "${appName}" are not registered; skipping bulk update.`,
++      );
++      return;
++    }
++
+     if (!onboardingSteps.value.length) {
+       if (!onboardingStatus.value[userId]) {
+         onboardingStatus.value[userId] = {};
+       }
+ 
+       onboardingStatus.value[userId][appName + "_onboarding_status"] =
+-        onboardings[appName].map((s) => {
++        registeredSteps.map((s) => {
+           return { name: s.name, completed: value };
+         });
+     } else {
+@@ -134,11 +151,10 @@
+       });
+     }
+ 
+-    onboardings[appName].forEach((step) => {
++    registeredSteps.forEach((step) => {
+       step.completed = value;
+     });
+ 
+     updateUserOnboardingStatus(onboardingSteps.value);
+-
+     callback?.(value);
+   }

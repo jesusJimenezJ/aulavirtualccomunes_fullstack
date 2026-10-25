@@ -356,20 +356,20 @@ function updateChapterOrder(e: DraggableEvent) {
 
 <style scoped>
 .course-outline {
-	background: #fbfcfa;
+	background: var(--surface-base);
 }
 
 .course-outline :deep(.chapter-item) {
 	margin-bottom: 0.35rem;
-	border: 1px solid #e5ece6;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 0.75rem;
-	background: #fff;
+	background: var(--surface-base);
 	transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 
 .course-outline :deep(.chapter-item:hover) {
-	border-color: #cbded1;
-	box-shadow: 0 4px 14px rgba(24, 49, 46, 0.05);
+	border-color: var(--outline-green-3);
+	box-shadow: 0 4px 14px color-mix(in srgb, var(--ink-base) 5%, transparent);
 }
 
 .course-outline :deep([data-testid='outline-lesson']) {

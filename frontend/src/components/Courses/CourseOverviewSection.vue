@@ -48,7 +48,11 @@
 			v-model="meta.description"
 			:label="__('Descripción para buscadores')"
 			type="textarea"
-			:placeholder="__('Escribe un resumen breve del curso para los resultados de búsqueda.')"
+			:placeholder="
+				__(
+					'Escribe un resumen breve del curso para los resultados de búsqueda.'
+				)
+			"
 			variant="outline"
 			@input="markDirty()"
 		/>
@@ -70,8 +74,7 @@ import type { CourseFormContext } from '@/types'
 import RichTextEditor from '@/components/RichTextEditor.vue'
 import { InputLabel } from 'frappe-ui/experimental'
 
-const { resource, meta, markDirty } =
-	inject<CourseFormContext>('courseForm')!
+const { resource, meta, markDirty } = inject<CourseFormContext>('courseForm')!
 const doc = computed(() => resource.doc)
 const descriptionId = useId()
 const descriptionLabelId = useId()

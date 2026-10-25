@@ -49,7 +49,9 @@
 			</Button>
 		</div>
 
-		<div class="lesson-experience__layout grid md:grid-cols-[70%,30%] sm:h-[94vh]">
+		<div
+			class="lesson-experience__layout grid md:grid-cols-[70%,30%] sm:h-[94vh]"
+		>
 			<div v-if="lesson.data.no_preview" class="sm:border-e">
 				<div class="shadow rounded-5 w-3/4 mt-10 mx-auto text-center p-4">
 					<div class="flex items-center justify-center mt-4 gap-x-2">
@@ -78,7 +80,11 @@
 						v-else-if="lesson.data.disable_self_learning"
 						class="mt-2"
 					>
-						{{ __('Contacta al equipo académico para matricularte en este curso.') }}
+						{{
+							__(
+								'Contacta al equipo académico para matricularte en este curso.'
+							)
+						}}
 					</Badge>
 					<Button v-else @click="redirectToLogin()">
 						<template #prefix>
@@ -142,8 +148,11 @@
 								v-if="!zenModeEnabled && !isMobile"
 								class="flex items-center gap-x-2 mt-2 md:mt-0"
 							>
-				<Tooltip v-if="canGoZen()" :text="__('Modo de concentración')">
-					<Button @click="goFullScreen()" :label="__('Modo de concentración')">
+								<Tooltip v-if="canGoZen()" :text="__('Modo de concentración')">
+									<Button
+										@click="goFullScreen()"
+										:label="__('Modo de concentración')"
+									>
 										<template #icon>
 											<span class="lucide-focus size-4" />
 										</template>
@@ -163,7 +172,7 @@
 							>
 								<Button
 									@click="showDiscussionsInZenMode()"
-					:label="__('Mostrar u ocultar conversaciones')"
+									:label="__('Mostrar u ocultar conversaciones')"
 								>
 									<template #icon>
 										<span class="lucide-message-circle-question size-4" />
@@ -232,12 +241,12 @@
 							</div>
 							<div class="flex min-w-0 flex-1 flex-col">
 								<span class="text-p-sm-medium text-ink-gray-8">
-								{{ __('No se pudo mostrar esta lección') }}
+									{{ __('No se pudo mostrar esta lección') }}
 								</span>
 								<span class="text-p-sm text-ink-gray-6">
 									{{
 										__(
-										'El contenido está guardado en un formato que no se puede leer. Recarga la página y avisa a tu instructor si el problema continúa.'
+											'El contenido está guardado en un formato que no se puede leer. Recarga la página y avisa a tu instructor si el problema continúa.'
 										)
 									}}
 								</span>
@@ -316,7 +325,7 @@
 				<template #prefix>
 					<span class="lucide-layers size-4" />
 				</template>
-								{{ __('Módulos') }}
+				{{ __('Módulos') }}
 			</Button>
 		</div>
 
@@ -718,7 +727,7 @@ const notes = createListResource({
 })
 
 const breadcrumbs = computed(() => {
-		const crumbs: Crumb[] = [{ label: __('Cursos'), route: { name: 'Courses' } }]
+	const crumbs: Crumb[] = [{ label: __('Cursos'), route: { name: 'Courses' } }]
 	crumbs.push({
 		label: lesson?.data?.course_title,
 		route: { name: 'CourseDetail', params: { courseName: props.courseName } },
@@ -1322,25 +1331,25 @@ usePageMeta(() => {
 <style>
 .lesson-experience {
 	min-height: 100vh;
-	background: #f6f8f5;
+	background: var(--surface-gray-1);
 }
 
 .lesson-experience__layout {
 	margin: 1rem 1.25rem 2rem;
 	overflow: hidden;
-	border: 1px solid #e1e9e3;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 1.25rem;
-	background: #fff;
-	box-shadow: 0 8px 28px rgba(24, 49, 46, 0.06);
+	background: var(--surface-base);
+	box-shadow: 0 8px 28px color-mix(in srgb, var(--ink-base) 6%, transparent);
 }
 
 .lesson-experience__layout > aside {
-	border-inline-start: 1px solid #e8eee9;
-	background: #fbfcfa;
+	border-inline-start: 1px solid var(--surface-green-2);
+	background: var(--surface-base);
 }
 
 .lesson-experience .ProseMirror {
-	color: #354b45;
+	color: var(--ink-gray-8);
 	font-size: 1rem;
 	line-height: 1.8;
 }
@@ -1348,7 +1357,7 @@ usePageMeta(() => {
 .lesson-experience .ProseMirror h1,
 .lesson-experience .ProseMirror h2,
 .lesson-experience .ProseMirror h3 {
-	color: #18312e;
+	color: var(--ink-base);
 	font-weight: 700;
 	line-height: 1.3;
 }

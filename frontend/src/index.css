@@ -25,13 +25,13 @@ svg.lucide {
 
 /* Identidad visual del portal */
 .lms-app {
-	--lms-forest: #123f3a;
-	--lms-teal: #176b60;
-	--lms-teal-soft: #e7f2ee;
-	--lms-sand: #f4eee2;
-	--lms-coral: #d98963;
-	--lms-ink: #18312e;
-	--lms-canvas: #f6f8f5;
+	--lms-forest: var(--ink-green-8);
+	--lms-teal: var(--ink-green-7);
+	--lms-teal-soft: var(--surface-green-1);
+	--lms-sand: var(--surface-amber-1);
+	--lms-coral: var(--ink-orange-5);
+	--lms-ink: var(--ink-base);
+	--lms-canvas: var(--surface-gray-1);
 	color: var(--lms-ink);
 }
 
@@ -41,8 +41,8 @@ svg.lucide {
 }
 
 .lms-app .header-frame {
-	background: rgba(255, 255, 255, 0.96);
-	border-color: #e4ebe6;
+	background: color-mix(in srgb, var(--surface-base) 96%, transparent);
+	border-color: var(--outline-gray-2);
 	backdrop-filter: blur(12px);
 }
 
@@ -94,7 +94,7 @@ main#main-content {
 }
 
 .theme-toggle:focus-visible {
-	outline: 2px solid #176b60;
+	outline: 2px solid var(--ink-green-7);
 	outline-offset: 2px;
 }
 
@@ -116,10 +116,10 @@ main#main-content {
 
 /* Colores de la interfaz en modo oscuro */
 [data-theme='dark'] .lms-app {
-	--lms-canvas: #171d1b;
-	--lms-ink: #edf3ef;
-	--lms-teal-soft: #263b35;
-	--lms-sand: #38352e;
+	--lms-canvas: var(--ink-gray-9);
+	--lms-ink: var(--surface-gray-2);
+	--lms-teal-soft: var(--ink-gray-8);
+	--lms-sand: var(--ink-gray-8);
 	color: var(--lms-ink);
 }
 
@@ -129,31 +129,31 @@ main#main-content {
 }
 
 [data-theme='dark'] .lms-app .header-frame {
-	background: rgba(23, 29, 27, 0.97);
-	border-color: #394640;
-	color: #edf3ef;
+	background: color-mix(in srgb, var(--ink-gray-9) 97%, transparent);
+	border-color: var(--ink-gray-8);
+	color: var(--surface-gray-2);
 }
 
 [data-theme='dark'] .theme-toggle {
-	border-color: #53645b;
-	background: #26312c;
-	color: #f1f5f2;
+	border-color: var(--ink-gray-8);
+	background: var(--ink-gray-8);
+	color: var(--surface-gray-1);
 }
 
 [data-theme='dark'] .theme-toggle:hover {
-	background: #35443c;
+	background: var(--ink-gray-8);
 }
 
 [data-theme='dark'] .theme-toggle:focus-visible {
-	outline-color: #8bc8b5;
+	outline-color: var(--ink-green-4);
 }
 
 /* Mejorar el contraste de las tarjetas y bloques claros en modo noche */
 [data-theme='dark'] .lms-app .bg-white,
 [data-theme='dark'] .lms-app .bg-surface-white,
 [data-theme='dark'] .lms-app .bg-surface-base {
-	background-color: #252e2a !important;
-	color: #edf3ef;
+	background-color: var(--ink-gray-9) !important;
+	color: var(--surface-gray-2);
 }
 
 /* Asegurar la legibilidad de títulos y textos en tarjetas claras */
@@ -169,7 +169,7 @@ main#main-content {
 [data-theme='dark'] .lms-app .bg-surface-white p,
 [data-theme='dark'] .lms-app .bg-surface-white span,
 [data-theme='dark'] .lms-app .bg-surface-white label {
-	color: #edf3ef;
+	color: var(--surface-gray-2);
 }
 
 /* Textos secundarios en modo noche */
@@ -181,24 +181,24 @@ main#main-content {
 [data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-5,
 [data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-6,
 [data-theme='dark'] .lms-app .bg-surface-white .text-ink-gray-7 {
-	color: #c3d0c9 !important;
+	color: var(--outline-gray-3) !important;
 }
 
 /* Enlaces dentro de las tarjetas en modo noche */
 [data-theme='dark'] .lms-app .bg-white a,
 [data-theme='dark'] .lms-app .bg-surface-white a {
-	color: #8bc8b5;
+	color: var(--ink-green-4);
 }
 
 [data-theme='dark'] .lms-app .bg-white a:hover,
 [data-theme='dark'] .lms-app .bg-surface-white a:hover {
-	color: #b1e0ce;
+	color: var(--ink-green-3);
 }
 
 /* Bordes visibles en tarjetas oscuras */
 [data-theme='dark'] .lms-app .bg-white,
 [data-theme='dark'] .lms-app .bg-surface-white {
-	border-color: #394640;
+	border-color: var(--ink-gray-8);
 }
 
 /* Mantener accesibles los botones del pie de los desplegables */
@@ -229,15 +229,15 @@ main#main-content {
 
 /* Viñetas legibles en modo noche */
 [data-theme='dark'] .lms-app .prose {
-	--tw-prose-bullets: #aabbb1;
-	--tw-prose-body: #d6e0d9;
-	--tw-prose-headings: #edf3ef;
-	--tw-prose-links: #8bc8b5;
-	--tw-prose-bold: #edf3ef;
-	--tw-prose-counters: #aabbb1;
-	--tw-prose-hr: #394640;
-	--tw-prose-quote-borders: #53645b;
-	--tw-prose-captions: #b9c8bf;
+	--tw-prose-bullets: var(--ink-gray-5);
+	--tw-prose-body: var(--outline-gray-3);
+	--tw-prose-headings: var(--surface-gray-2);
+	--tw-prose-links: var(--ink-green-4);
+	--tw-prose-bold: var(--surface-gray-2);
+	--tw-prose-counters: var(--ink-gray-5);
+	--tw-prose-hr: var(--ink-gray-8);
+	--tw-prose-quote-borders: var(--ink-gray-8);
+	--tw-prose-captions: var(--outline-gray-3);
 }
 /* Corrección de contraste en el detalle del curso: modo noche */
 html[data-theme='dark'] .lms-app main#main-content h1,
@@ -250,15 +250,15 @@ html[data-theme='dark'] .lms-app main#main-content label,
 html[data-theme='dark'] .lms-app main#main-content dt,
 html[data-theme='dark'] .lms-app main#main-content dd,
 html[data-theme='dark'] .lms-app main#main-content strong {
-	color: #edf3ef;
+	color: var(--surface-gray-2);
 }
 
 /* Fondos de tarjetas y secciones en modo noche */
 html[data-theme='dark'] .lms-app main#main-content .bg-white,
 html[data-theme='dark'] .lms-app main#main-content .bg-surface-white,
 html[data-theme='dark'] .lms-app main#main-content .bg-surface-base {
-	background-color: #252e2a !important;
-	border-color: #394640;
+	background-color: var(--ink-gray-9) !important;
+	border-color: var(--ink-gray-8);
 }
 
 /* Texto secundario y resumen del curso */
@@ -266,14 +266,14 @@ html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-4,
 html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-5,
 html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-6,
 html[data-theme='dark'] .lms-app main#main-content .text-ink-gray-7 {
-	color: #c3d0c9 !important;
+	color: var(--outline-gray-3) !important;
 }
 
 /* Contenido enriquecido de las descripciones */
 html[data-theme='dark'] .lms-app main#main-content .prose {
-	color: #d6e0d9;
-	--tw-prose-body: #d6e0d9;
-	--tw-prose-headings: #edf3ef;
-	--tw-prose-bold: #edf3ef;
-	--tw-prose-links: #8bc8b5;
+	color: var(--outline-gray-3);
+	--tw-prose-body: var(--outline-gray-3);
+	--tw-prose-headings: var(--surface-gray-2);
+	--tw-prose-bold: var(--surface-gray-2);
+	--tw-prose-links: var(--ink-green-4);
 }

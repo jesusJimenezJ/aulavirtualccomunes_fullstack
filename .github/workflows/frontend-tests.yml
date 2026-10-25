@@ -29,6 +29,11 @@ jobs:
           path: apps/frappe
           sparse-checkout: ui
 
+      - name: Apply Frappe onboarding guard patch
+        run: |
+          git -C "$GITHUB_WORKSPACE/apps/frappe" apply --check "$GITHUB_WORKSPACE/apps/lms/patches/frappe-onboarding-guard.patch"
+          git -C "$GITHUB_WORKSPACE/apps/frappe" apply "$GITHUB_WORKSPACE/apps/lms/patches/frappe-onboarding-guard.patch"
+
       - uses: actions/setup-node@v6
         with:
           node-version: 24

@@ -3,6 +3,7 @@
 
 import io
 from contextlib import redirect_stdout
+from unittest.mock import patch
 
 import frappe
 from frappe.tests import IntegrationTestCase
@@ -168,11 +169,9 @@ class TestDocPermShadow(IntegrationTestCase):
 		self.assertIn("LMS Course", stdout.getvalue())
 
 	def test_the_alert_stays_quiet_when_nothing_is_shadowed(self):
-		errors_before = frappe.db.count("Error Log")
-
 		stdout = io.StringIO()
-		with redirect_stdout(stdout):
+		with patch.object(frappe, "log_error") as log_error, redirect_stdout(stdout):
 			warn_about_shadowed_permlevels()
 
-		self.assertEqual(frappe.db.count("Error Log"), errors_before)
+		log_error.assert_not_called()
 		self.assertEqual(stdout.getvalue(), "")

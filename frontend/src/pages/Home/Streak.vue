@@ -11,19 +11,21 @@
 								streakInfo.data?.current_streak < 1
 									? '¡Hoy es un buen día para comenzar!'
 									: streakInfo.data?.current_streak < 10
-										? '¡Sigue avanzando!'
-										: '¡Vas excelente!'
+									? '¡Sigue avanzando!'
+									: '¡Vas excelente!'
 							}}
 						</div>
 
 						<div class="streak-dialog__count">
 							{{ streakInfo.data?.current_streak ?? 0 }}
-							{{ streakInfo.data?.current_streak === 1 ? 'día seguido' : 'días seguidos' }}
+							{{
+								streakInfo.data?.current_streak === 1
+									? 'día seguido'
+									: 'días seguidos'
+							}}
 						</div>
 
-						<p>
-							Cada día que dedicas a aprender te acerca a tus objetivos.
-						</p>
+						<p>Cada día que dedicas a aprender te acerca a tus objetivos.</p>
 					</div>
 				</div>
 
@@ -78,7 +80,7 @@ defineProps<{
 <style scoped>
 .streak-dialog {
 	padding: 0.25rem 0;
-	color: #263d36;
+	color: var(--ink-gray-8);
 }
 
 .streak-dialog__hero {
@@ -86,9 +88,13 @@ defineProps<{
 	flex-direction: column;
 	align-items: center;
 	padding: 1.5rem 1rem;
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1rem;
-	background: linear-gradient(135deg, #edf5ef, #f8f2e8);
+	background: linear-gradient(
+		135deg,
+		var(--surface-green-1),
+		var(--surface-amber-1)
+	);
 	text-align: center;
 }
 
@@ -102,14 +108,14 @@ defineProps<{
 }
 
 .streak-dialog__eyebrow {
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 0.9rem;
 	font-weight: 700;
 }
 
 .streak-dialog__count {
 	margin-top: 0.5rem;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: clamp(1.5rem, 5vw, 2rem);
 	font-weight: 800;
 	letter-spacing: -0.035em;
@@ -118,7 +124,7 @@ defineProps<{
 .streak-dialog__message p {
 	max-width: 25rem;
 	margin: 0.65rem auto 0;
-	color: #5c6e67;
+	color: var(--ink-gray-7);
 	font-size: 0.9rem;
 	line-height: 1.6;
 }
@@ -135,18 +141,18 @@ defineProps<{
 	flex-direction: column;
 	gap: 0.4rem;
 	padding: 1rem;
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 0.85rem;
-	background: #fff;
+	background: var(--surface-base);
 }
 
 .streak-dialog__label {
-	color: #66736e;
+	color: var(--ink-gray-7);
 	font-size: 0.85rem;
 }
 
 .streak-dialog__stat strong {
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 1.15rem;
 	font-weight: 750;
 }
@@ -157,15 +163,15 @@ defineProps<{
 	gap: 0.75rem;
 	margin-top: 1rem;
 	padding: 1rem;
-	border: 1px solid #e7dcc8;
+	border: 1px solid var(--surface-amber-2);
 	border-radius: 0.85rem;
-	background: #fcf8f0;
-	color: #5c6e67;
+	background: var(--surface-amber-1);
+	color: var(--ink-gray-7);
 }
 
 .streak-dialog__tip :deep(.lucide-lightbulb) {
 	flex-shrink: 0;
-	color: #a8752e;
+	color: var(--ink-amber-7);
 }
 
 .streak-dialog__tip p {

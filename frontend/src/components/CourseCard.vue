@@ -12,32 +12,74 @@
 			<span v-if="course.category" class="course-card__category">
 				{{ course.category }}
 			</span>
-			<div v-if="!course.image" class="course-card__cover-mark" aria-hidden="true">
-				<span class="lucide-book-open size-8" />
+			<div
+				v-if="!course.image"
+				class="course-card__cover-mark"
+				aria-hidden="true"
+			>
+				<span class="lucide-book-open size-8" aria-hidden="true" />
 			</div>
 		</div>
 
 		<div class="course-card__body">
-
 			<div class="course-card__stats">
-                        <Tooltip v-if="course.lessons" :text="__('Cantidad de lecciones del curso')">
-                                <span class="course-card__stat">
-                                        <span class="lucide-book-open size-4" aria-hidden="true" />
-                                        <span aria-hidden="true">{{ course.lessons }} {{ __('lecciones') }}</span>
-                                        <span class="sr-only">{{ lessonCount }}</span>
-                                </span>
-                        </Tooltip>
+				<Tooltip
+					v-if="course.lessons"
+					:text="__('Cantidad de lecciones del curso')"
+				>
+					<span class="course-card__stat">
+						<span class="lucide-book-open size-4" aria-hidden="true" />
+						<span aria-hidden="true"
+							>{{ course.lessons }} {{ __('lecciones') }}</span
+						>
+						<span class="sr-only">{{ lessonCount }}</span>
+					</span>
+				</Tooltip>
 
-                        <Tooltip v-if="course.enrollments" :text="__('Cantidad de estudiantes matriculados')">
-                                <span class="course-card__stat">
-                                        <span class="lucide-users-round size-4" aria-hidden="true" />
-                                        <span aria-hidden="true">{{ formatAmount(course.enrollments) }}</span>
-                                        <span class="sr-only">
-                                                {{ __('Estudiantes matriculados: {0}').format(course.enrollments) }}
-                                        </span>
-                                </span>
-                        </Tooltip>
-                </div>
+				<!-- Valoración accesible del curso -->
+				<span v-if="course.rating != null" class="course-card__stat">
+					<span class="lucide-star size-4" aria-hidden="true"></span>
+					<span aria-hidden="true">
+						{{ Number(course.rating).toFixed(1) }}
+					</span>
+					<span class="sr-only">
+						{{
+							__('Valoración: {0} de 5').format(
+								(Math.round(Number(course.rating) * 10) / 10).toFixed(1)
+							)
+						}}
+					</span>
+				</span>
+
+				<!-- Indicador de curso destacado -->
+				<span v-if="course.featured" class="course-card__stat">
+					<span class="lucide-badge-check size-4" aria-hidden="true"></span>
+					<span class="sr-only">{{ __('Curso destacado') }}</span>
+				</span>
+
+				<!-- Indicador de certificación -->
+				<span v-if="course.enable_certification" class="course-card__stat">
+					<span class="lucide-award size-4" aria-hidden="true"></span>
+					<span class="sr-only">{{ __('Certificación disponible') }}</span>
+				</span>
+
+				<Tooltip
+					v-if="course.enrollments"
+					:text="__('Cantidad de estudiantes matriculados')"
+				>
+					<span class="course-card__stat">
+						<span class="lucide-users-round size-4" aria-hidden="true" />
+						<span aria-hidden="true">{{
+							formatAmount(course.enrollments)
+						}}</span>
+						<span class="sr-only">
+							{{
+								__('Estudiantes matriculados: {0}').format(course.enrollments)
+							}}
+						</span>
+					</span>
+				</Tooltip>
+			</div>
 			<h3 class="course-card__title">
 				<CardLink :to="to" :external="external">{{ course.title }}</CardLink>
 			</h3>
@@ -50,7 +92,10 @@
 					:progress="course.membership.progress"
 					:label="__('Course progress')"
 				/>
-				<span>{{ Math.ceil(course.membership.progress) }}% {{ __('completado') }}</span>
+				<span
+					>{{ Math.ceil(course.membership.progress) }}%
+					{{ __('completado') }}</span
+				>
 			</div>
 
 			<div class="course-card__footer">
@@ -99,9 +144,9 @@ const props = defineProps({
 })
 
 const lessonCount = computed(() =>
-  props.course.lessons == 1
-    ? __('1 lección')
-    : __('{0} lecciones').format(props.course.lessons)
+	props.course.lessons == 1
+		? __('1 lección')
+		: __('{0} lecciones').format(props.course.lessons)
 )
 
 const gradientColor = computed(() => {
@@ -117,18 +162,19 @@ const gradientColor = computed(() => {
 	min-height: 100%;
 	flex-direction: column;
 	overflow: hidden;
-	border: 1px solid #e1e9e3;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 1.1rem;
-	background: #fff;
-	color: #18312e;
-	box-shadow: 0 5px 18px rgba(24, 49, 46, 0.045);
-	transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+	background: var(--surface-base);
+	color: var(--ink-base);
+	box-shadow: 0 5px 18px color-mix(in srgb, var(--ink-base) 5%, transparent);
+	transition: border-color 180ms ease, box-shadow 180ms ease,
+		transform 180ms ease;
 }
 
 .course-card:hover {
 	transform: translateY(-4px);
-	border-color: #c2d9ce;
-	box-shadow: 0 18px 38px rgba(24, 49, 46, 0.12);
+	border-color: var(--outline-gray-3);
+	box-shadow: 0 18px 38px color-mix(in srgb, var(--ink-base) 12%, transparent);
 }
 
 .course-card__cover {
@@ -140,13 +186,17 @@ const gradientColor = computed(() => {
 	overflow: hidden;
 	background-position: center;
 	background-size: cover;
-	background-color: #176b60;
+	background-color: var(--ink-green-7);
 }
 
 .course-card__cover-shade {
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg, rgba(11, 40, 35, 0.05) 12%, rgba(11, 40, 35, 0.76) 100%);
+	background: linear-gradient(
+		180deg,
+		color-mix(in srgb, var(--ink-base) 5%, transparent) 12%,
+		color-mix(in srgb, var(--ink-base) 76%, transparent) 100%
+	);
 	transition: opacity 180ms ease;
 }
 
@@ -160,10 +210,10 @@ const gradientColor = computed(() => {
 	left: 0.9rem;
 	max-width: calc(100% - 1.8rem);
 	padding: 0.35rem 0.65rem;
-	border: 1px solid rgba(255, 255, 255, 0.55);
+	border: 1px solid color-mix(in srgb, var(--surface-base) 55%, transparent);
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.92);
-	color: #195348;
+	background: color-mix(in srgb, var(--surface-base) 92%, transparent);
+	color: var(--ink-green-8);
 	font-size: 0.7rem;
 	font-weight: 700;
 	line-height: 1.2;
@@ -180,10 +230,10 @@ const gradientColor = computed(() => {
 	width: 4.6rem;
 	height: 4.6rem;
 	place-items: center;
-	border: 1px solid rgba(255, 255, 255, 0.42);
+	border: 1px solid color-mix(in srgb, var(--surface-base) 42%, transparent);
 	border-radius: 1.4rem;
-	background: rgba(255, 255, 255, 0.14);
-	color: #fff;
+	background: color-mix(in srgb, var(--surface-base) 14%, transparent);
+	color: var(--surface-base);
 	transform: translate(-50%, -58%) rotate(-7deg);
 	backdrop-filter: blur(6px);
 }
@@ -200,7 +250,7 @@ const gradientColor = computed(() => {
 	min-height: 1.5rem;
 	align-items: center;
 	gap: 0.9rem;
-	color: #61736c;
+	color: var(--ink-gray-7);
 	font-size: 0.75rem;
 }
 
@@ -211,12 +261,12 @@ const gradientColor = computed(() => {
 }
 
 .course-card__stat svg {
-	color: #176b60;
+	color: var(--ink-green-7);
 }
 
 .course-card__title {
 	margin: 0.55rem 0 0;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: 1.12rem;
 	font-weight: 700;
 	letter-spacing: -0.015em;
@@ -238,7 +288,7 @@ const gradientColor = computed(() => {
 	min-height: 3.4rem;
 	margin: 0.45rem 0 1rem;
 	overflow: hidden;
-	color: #5c6e67;
+	color: var(--ink-gray-7);
 	font-size: 0.88rem;
 	line-height: 1.55;
 	-webkit-box-orient: vertical;
@@ -247,7 +297,7 @@ const gradientColor = computed(() => {
 
 .course-card__progress {
 	margin: auto 0 1rem;
-	color: #61736c;
+	color: var(--ink-gray-7);
 	font-size: 0.75rem;
 }
 
@@ -264,7 +314,7 @@ const gradientColor = computed(() => {
 	gap: 0.75rem;
 	margin-top: auto;
 	padding-top: 0.8rem;
-	border-top: 1px solid #edf1ed;
+	border-top: 1px solid var(--surface-gray-2);
 }
 
 .course-card__instructor,
@@ -276,7 +326,7 @@ const gradientColor = computed(() => {
 
 .course-card__instructor {
 	gap: 0.5rem;
-	color: #40574f;
+	color: var(--ink-gray-8);
 	font-size: 0.78rem;
 	font-weight: 600;
 }
@@ -290,7 +340,7 @@ const gradientColor = computed(() => {
 }
 
 .course-card__price {
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 0.95rem;
 	font-weight: 750;
 }
@@ -307,5 +357,4 @@ const gradientColor = computed(() => {
 .avatar-group.overlap .avatar + .avatar {
 	margin-inline-start: calc(-8px);
 }
-
 </style>

@@ -13,8 +13,10 @@ export interface NavLink {
 // Primaries are picked out of the admin-configured sidebar links, so disabling
 // a link in settings drops its tab too.
 export const PRIMARY_LABELS: readonly string[] = [
-	'Inicio',
-	'Cursos',
+    'Home',
+    'Courses',
+    'Batches',
+    'Programs',
 ]
 
 // Hardcoded rather than matched against `sidebarLinks`, which arrive
@@ -22,15 +24,31 @@ export const PRIMARY_LABELS: readonly string[] = [
 // settings call resolved. Mirrors CRM's components/Mobile/MobileSidebar.vue.
 // `pickPrimaryTabs` still hides any the admin has switched off.
 export const GUEST_TABS: readonly NavLink[] = [
-	{
-		label: 'Cursos',
-		icon: 'BookOpen',
-		to: 'Courses',
-		activeFor: ['Courses', 'CourseDetail', 'Lesson'],
-	},
-	// No route: it leaves the SPA, so MobileLayout sends this one to Frappe's
-	// server-rendered /login rather than through vue-router.
-	{ label: 'Log in', icon: 'LogIn' },
+    {
+        label: 'Courses',
+        icon: 'BookOpen',
+        to: 'Courses',
+        activeFor: ['Courses', 'CourseDetail', 'Lesson'],
+    },
+    {
+        label: 'Batches',
+        icon: 'Users',
+        to: 'Batches',
+        activeFor: ['Batches'],
+    },
+    {
+        label: 'Jobs',
+        icon: 'Briefcase',
+        to: 'Jobs',
+        activeFor: ['Jobs'],
+    },
+    {
+        label: 'Statistics',
+        icon: 'ChartNoAxesColumn',
+        to: 'Statistics',
+        activeFor: ['Statistics'],
+    },
+    { label: 'Log in', icon: 'LogIn' },
 ]
 
 // The last slot on the bar. It is the user's own face rather than a glyph,
@@ -45,7 +63,8 @@ const YOU_TAB: NavLink = {
 }
 
 // Three slots: Inicio, Cursos, and the user's account tab.
-const MAX_PRIMARY_TABS = 3
+// Cinco pestañas: Home, Courses, Batches, Programs y You.
+const MAX_PRIMARY_TABS = 5
 
 const SECTION_MAP: Record<string, readonly string[]> = {
 	LEARN: [

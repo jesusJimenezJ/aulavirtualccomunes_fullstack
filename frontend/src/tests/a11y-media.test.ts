@@ -83,15 +83,16 @@ describe('icon-only states', () => {
 		const wrapper = mount(CourseCard, { props: { course }, global })
 
 		expect(wrapper.findAll('.sr-only').map((node) => node.text())).toEqual([
-			'12 lessons',
-			'40 enrolled',
-			'Rated 4.5 out of 5',
-			'Featured',
-			'Get Certified',
-		])
+    '12 lecciones',
+    'Valoración: 4.5 de 5',
+    'Curso destacado',
+    'Certificación disponible',
+    'Estudiantes matriculados: 40',
+])
+
 		const icons = wrapper.findAll('svg, [class*="lucide-"]')
 		expect(icons.map((icon) => icon.attributes('aria-hidden'))).toEqual(
-			Array(5).fill('true')
+			Array(6).fill('true')
 		)
 	})
 

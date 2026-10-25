@@ -9,19 +9,19 @@ from lms.lms.test_helpers import BaseTestUtils
 from lms.lms.utils import get_assignment
 from lms.patches.v2_0 import reconcile_custom_docperm_permlevels
 
-# What frappe.get_roles answers for each actor, read live in setUp. LMS Student is
-# on every one of them: lms.lms.user.add_lms_student_role is registered on
-# User.before_insert and appends it unconditionally. Asserted rather than declared
-# because BaseTestUtils._create_user returns a pre-existing User and ignores its
-# `roles` argument entirely (lms/lms/test_helpers.py:43-44), so the hash suffix on
-# every email below is what makes the declaration true and the assertion is what
-# proves it.
+# What frappe.get_roles answers for each actor, read live in setUp. The
+# lms.lms.user.add_lms_student_role hook adds LMS Student to Website Users;
+# the System Manager actor is a System User, so it does not receive that role.
+# Asserted rather than declared because BaseTestUtils._create_user returns a
+# pre-existing User and ignores its `roles` argument entirely
+# (lms/lms/test_helpers.py:43-44), so the hash suffix on every email below is
+# what makes the declaration true and the assertion is what proves it.
 ACTOR_ROLES = {
 	"student": {"All", "Guest", "LMS Student"},
 	"creator": {"All", "Course Creator", "Guest", "LMS Student"},
 	"evaluator": {"All", "Batch Evaluator", "Guest", "LMS Student"},
 	"moderator": {"All", "Guest", "LMS Student", "Moderator"},
-	"sysmanager": {"All", "Desk User", "Guest", "LMS Student", "System Manager"},
+	"sysmanager": {"All", "Desk User", "Guest", "System Manager"},
 }
 
 GRADING_ACTORS = ("creator", "evaluator", "moderator", "sysmanager")

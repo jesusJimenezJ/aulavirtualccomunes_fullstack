@@ -33,7 +33,7 @@
 							<div class="flex items-center gap-1.5">
 								<span class="lucide-users-round size-4" />
 								<span
-								>{{ formatAmount(course.data.enrollments) }}
+									>{{ formatAmount(course.data.enrollments) }}
 									{{ __('estudiantes') }}</span
 								>
 							</div>
@@ -81,8 +81,8 @@
 
 				<section class="course-overview__panel">
 					<div class="flex items-baseline justify-between gap-4 mb-4">
-					<h2 class="text-3xl-semibold text-ink-gray-9">
-						{{ __('Contenido del curso') }}
+						<h2 class="text-3xl-semibold text-ink-gray-9">
+							{{ __('Contenido del curso') }}
 						</h2>
 						<div class="text-base text-ink-gray-6">
 							{{ outlineStats }}
@@ -198,7 +198,9 @@ const outlineStats = computed(() => {
 	)
 	const parts: string[] = []
 	if (chapters.length) {
-		parts.push(`${chapters.length} ${chapters.length === 1 ? 'sección' : 'secciones'}`)
+		parts.push(
+			`${chapters.length} ${chapters.length === 1 ? 'sección' : 'secciones'}`
+		)
 	}
 	if (lessonCount) {
 		parts.push(`${lessonCount} ${lessonCount === 1 ? 'lección' : 'lecciones'}`)
@@ -225,11 +227,18 @@ const hasCourseContent = computed(() => {
 .course-overview__intro {
 	position: relative;
 	padding: clamp(1.25rem, 3vw, 2rem);
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1.25rem;
-	background:
-		radial-gradient(circle at 95% 8%, rgba(216, 137, 99, 0.16), transparent 25%),
-		linear-gradient(120deg, #edf5ef 0%, #f8f5ec 100%);
+	background: radial-gradient(
+			circle at 95% 8%,
+			color-mix(in srgb, var(--ink-orange-5) 16%, transparent),
+			transparent 25%
+		),
+		linear-gradient(
+			120deg,
+			var(--surface-green-1) 0%,
+			var(--surface-amber-1) 100%
+		);
 }
 
 .course-overview__category {
@@ -237,10 +246,10 @@ const hasCourseContent = computed(() => {
 	align-items: center;
 	gap: 0.4rem;
 	padding: 0.4rem 0.7rem;
-	border: 1px solid #d0e1d7;
+	border: 1px solid var(--outline-green-3);
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.72);
-	color: #176b60;
+	background: color-mix(in srgb, var(--surface-base) 72%, transparent);
+	color: var(--ink-green-7);
 	font-size: 0.75rem;
 	font-weight: 700;
 }
@@ -261,10 +270,10 @@ const hasCourseContent = computed(() => {
 
 .course-overview__panel {
 	padding: 1.25rem;
-	border: 1px solid #e2eae4;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 1.1rem;
-	background: #fff;
-	box-shadow: 0 8px 24px rgba(24, 49, 46, 0.04);
+	background: var(--surface-base);
+	box-shadow: 0 8px 24px color-mix(in srgb, var(--ink-base) 4%, transparent);
 }
 
 .course-overview__panel h2 {
@@ -273,8 +282,8 @@ const hasCourseContent = computed(() => {
 }
 
 .course-overview__outline {
-	border-color: #e2eae4;
-	background: #fbfcfa;
+	border-color: var(--outline-gray-2);
+	background: var(--surface-base);
 }
 
 @media (max-width: 640px) {

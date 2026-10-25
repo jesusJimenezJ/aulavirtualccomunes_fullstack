@@ -107,7 +107,7 @@ jobs:
           # local ref before get-app clones the workspace; fetching an unadvertised
           # raw SHA from a local Git remote is rejected by upload-pack.
           git -C "$GITHUB_WORKSPACE" update-ref refs/heads/ci-pr-head "$PR_HEAD_SHA"
-          bench get-app --skip-assets --branch v2.0.0 lms "${GITHUB_WORKSPACE}"
+          bench get-app --skip-assets --branch v2.0.0 lms https://github.com/frappe/lms
 
           # bench init clones frappe and payments with their remote named upstream.
           # Keep LMS upstream pointed at the canonical repository for stable rungs,
@@ -132,10 +132,16 @@ jobs:
             exit 1
           fi
 
+
           bench set-config -g db_host 127.0.0.1
           bench new-site "$SITE" \
             --mariadb-root-password 123 \
             --admin-password admin
+
+          # Razorpay in LMS v2.0.0 requires pkg_resources.
+          # Keep setuptools below version 81 in the Python 3.11 bench environment.
+          bench pip install "setuptools<81"
+
           bench --site "$SITE" install-app lms
 
           (cd sites && "$PY" \
@@ -278,7 +284,9 @@ jobs:
           # The PR's own code, with frappe and payments on the line it targets.
           frappe_ref="$(pick_branch apps/frappe "$base_version")"
           payments_ref="$(pick_branch apps/payments "$base_version")"
-          python_bin="$(python_for "$base_version")"
+          # The PR head may require a newer Python than the v15 fixture.
+          # Use Python 3.14 for the current LMS dependency set.
+          python_bin="$(which python3.14)"
 
           hop "head" "$frappe_ref" "$payments_ref" "pr/head" "$python_bin"
 

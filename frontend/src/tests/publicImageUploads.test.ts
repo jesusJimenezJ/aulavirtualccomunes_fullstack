@@ -33,6 +33,21 @@ vi.mock('frappe-ui', () => ({
 	toast: { success: vi.fn(), error: vi.fn() },
 }))
 
+vi.mock('frappe-ui/experimental', () => ({
+        InputLabel: { template: '<label />' },
+        InputDescription: { template: '<div />' },
+        InputError: { template: '<div />' },
+        useInputLabeling: () => ({
+                inputId: 'test-input',
+                labelId: 'test-label',
+                descriptionId: 'test-description',
+                errorMessageId: 'test-error',
+                hasError: false,
+                errorLines: [],
+                showDescription: false,
+        }),
+}))
+
 vi.mock('@/utils', () => ({ validateFile: () => undefined }))
 
 vi.stubGlobal('__', (s: string) => s)
@@ -289,6 +304,7 @@ const MANIFEST: Record<string, Privacy[]> = {
 	'components/Modals/EditCoverImage.vue': ['public'],
 	'components/UnsplashImageBrowser.vue': ['public'],
 	'components/Courses/CourseThumbnailField.vue': ['public', 'public'],
+	'components/Courses/CourseDocuments.vue': ['public'],
 	// Deliberately not readable by other users.
 	'components/Assignment.vue': ['private', 'private', 'private'],
 	'components/Modals/JobApplicationModal.vue': ['private'],
