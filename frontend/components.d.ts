@@ -93,6 +93,7 @@ declare module 'vue' {
     LockedLessonNotice: typeof import('./src/components/LockedLessonNotice.vue')['default']
     LucideChevronLeft: typeof import('~icons/lucide/chevron-left')['default']
     LucideChevronRight: typeof import('~icons/lucide/chevron-right')['default']
+    LucideStar: typeof import('~icons/lucide/star')['default']
     LucideX: typeof import('~icons/lucide/x')['default']
     MassRemovalConfirmDialog: typeof import('./src/components/Settings/Raven/MassRemovalConfirmDialog.vue')['default']
     MemberForm: typeof import('./src/components/Settings/Members/MemberForm.vue')['default']

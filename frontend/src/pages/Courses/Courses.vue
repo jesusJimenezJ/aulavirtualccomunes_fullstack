@@ -97,9 +97,16 @@
 				v-model="currentCategory"
 				:options="categories.data.filter((c) => c.value)"
 				:placeholder="__('Categoría')"
-				:ariaLabel="__('Categoría')"
+				:aria-label="__('Categoría')"
 				@update:modelValue="updateCourses()"
 			/>
+
+			<Checkbox
+    :model-value="certification"
+    :label="__('Solo cursos con certificación')"
+    @update:model-value="setCertification"
+/>
+
 		</template>
 
 		<template #card="{ row }">
@@ -114,13 +121,14 @@
 </template>
 <script setup>
 import {
-	Button,
-	createListResource,
-	createResource,
-	Dropdown,
-	FormControl,
-	TabButtons,
-	usePageMeta,
+    Button,
+    Checkbox,
+    createListResource,
+    createResource,
+    Dropdown,
+    FormControl,
+    TabButtons,
+    usePageMeta,
 } from 'frappe-ui'
 import ClearableCombobox from '@/components/Controls/ClearableCombobox.vue'
 import ListPage from '@/components/Layouts/pages/ListPage.vue'
@@ -414,17 +422,17 @@ usePageMeta(() => {
 	gap: 1.5rem;
 	margin: 1.25rem 1.5rem 0;
 	padding: clamp(1.5rem, 3vw, 2.25rem);
-	border: 1px solid #e2eae3;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1.25rem;
 	overflow: hidden;
 	background: radial-gradient(
 			circle at 82% 15%,
-			rgba(217, 137, 99, 0.18),
+			color-mix(in srgb, var(--ink-orange-5) 18%, transparent),
 			transparent 25%
 		),
-		linear-gradient(112deg, #f4f1e8 0%, #edf4ef 58%, #e3f0e9 100%);
-	color: #18312e;
-	box-shadow: 0 10px 28px rgba(24, 49, 46, 0.07);
+		linear-gradient(112deg, var(--surface-amber-1) 0%, var(--surface-green-1) 58%, var(--surface-green-1) 100%);
+	color: var(--ink-base);
+	box-shadow: 0 10px 28px color-mix(in srgb, var(--ink-base) 7%, transparent);
 }
 
 .catalog-hero__copy {
@@ -438,7 +446,7 @@ usePageMeta(() => {
 	align-items: center;
 	gap: 0.55rem;
 	margin-bottom: 0.7rem;
-	color: #35685d;
+	color: var(--ink-green-7);
 	font-size: 0.75rem;
 	font-weight: 700;
 	letter-spacing: 0.1em;
@@ -449,8 +457,8 @@ usePageMeta(() => {
 	width: 0.5rem;
 	height: 0.5rem;
 	border-radius: 50%;
-	background: #d98963;
-	box-shadow: 0 0 0 4px rgba(217, 137, 99, 0.14);
+	background: var(--ink-orange-5);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink-orange-5) 14%, transparent);
 }
 
 .catalog-hero h2 {
@@ -465,7 +473,7 @@ usePageMeta(() => {
 .catalog-hero p {
 	max-width: 38rem;
 	margin: 0.7rem 0 1rem;
-	color: #526963;
+	color: var(--ink-gray-7);
 	font-size: 0.98rem;
 	line-height: 1.55;
 }
@@ -477,8 +485,8 @@ usePageMeta(() => {
 	min-height: 2.65rem;
 	padding: 0.65rem 1rem;
 	border-radius: 0.75rem;
-	background: #176b60;
-	color: #fff;
+	background: var(--ink-green-7);
+	color: var(--surface-base);
 	font-weight: 700;
 	text-decoration: none;
 	transition: transform 160ms ease, box-shadow 160ms ease;
@@ -486,7 +494,7 @@ usePageMeta(() => {
 
 .catalog-hero__cta:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+	box-shadow: 0 8px 22px color-mix(in srgb, var(--ink-base) 16%, transparent);
 }
 
 .catalog-hero__art {
@@ -500,7 +508,7 @@ usePageMeta(() => {
 
 .catalog-hero__orbit {
 	position: absolute;
-	border: 1px solid rgba(23, 107, 96, 0.18);
+	border: 1px solid color-mix(in srgb, var(--ink-green-7) 18%, transparent);
 	border-radius: 50%;
 }
 
@@ -524,16 +532,16 @@ usePageMeta(() => {
 	justify-content: center;
 	gap: 0.7rem;
 	padding: 1rem;
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	border: 1px solid color-mix(in srgb, var(--surface-base) 30%, transparent);
 	border-radius: 1rem;
-	background: #176b60;
-	color: #fff;
-	box-shadow: 0 14px 30px rgba(18, 63, 58, 0.2);
+	background: var(--ink-green-7);
+	color: var(--surface-base);
+	box-shadow: 0 14px 30px color-mix(in srgb, var(--ink-green-8) 20%, transparent);
 	transform: rotate(5deg);
 }
 
 .catalog-hero__art-card > span:first-child {
-	color: #dcece5;
+	color: var(--surface-green-2);
 }
 
 .catalog-hero__art-card > span:nth-child(2) {
@@ -552,12 +560,12 @@ usePageMeta(() => {
 	width: 100%;
 	height: 0.25rem;
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.28);
+	background: color-mix(in srgb, var(--surface-base) 28%, transparent);
 }
 
 .catalog-hero__art-lines i:nth-child(2) {
 	width: 72%;
-	background: #e7b48f;
+	background: var(--ink-orange-4);
 }
 
 .catalog-hero__art-lines i:nth-child(3) {
@@ -569,10 +577,10 @@ usePageMeta(() => {
 	right: -0.25rem;
 	bottom: 0.1rem;
 	padding: 0.45rem 0.65rem;
-	border: 1px solid rgba(23, 107, 96, 0.2);
+	border: 1px solid color-mix(in srgb, var(--ink-green-7) 20%, transparent);
 	border-radius: 999px;
-	background: #fff;
-	color: #195348;
+	background: var(--surface-base);
+	color: var(--ink-green-8);
 	font-size: 0.72rem;
 	font-weight: 650;
 	backdrop-filter: blur(8px);

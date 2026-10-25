@@ -62,10 +62,9 @@ export const routes = [
 	},
 	{
 		path: '/courses/:courseName/certification',
-		redirect: (to) => ({
-			name: 'CourseDetail',
-			params: { courseName: to.params.courseName },
-		}),
+		name: 'CourseCertification',
+		component: () => import('@/pages/Courses/CourseCertification.vue'),
+		props: true,
 	},
 	{
 		path: '/courses/:courseName/learn/:chapterName',
@@ -167,11 +166,9 @@ export const routes = [
 				component: () => import('@/pages/ProfileAbout.vue'),
 			},
 			{
+				name: 'ProfileCertificates',
 				path: 'certificates',
-				redirect: (to) => ({
-					name: 'ProfileAbout',
-					params: { username: to.params.username },
-				}),
+				component: () => import('@/pages/ProfileCertificates.vue'),
 			},
 			{
 				name: 'ProfileRoles',

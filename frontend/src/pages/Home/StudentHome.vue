@@ -191,13 +191,13 @@ function hasClassEnded(cls: any) {
 	gap: 1.5rem;
 	margin-top: 1.5rem;
 	padding: 1.5rem clamp(1.2rem, 3vw, 2rem);
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1.15rem;
-	background: linear-gradient(110deg, #eaf3ed, #f8f2e8);
+	background: linear-gradient(110deg, var(--surface-green-1), var(--surface-amber-1));
 }
 
 .student-home__eyebrow {
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 0.72rem;
 	font-weight: 750;
 	letter-spacing: 0.12em;
@@ -206,7 +206,7 @@ function hasClassEnded(cls: any) {
 
 .student-home__welcome h2 {
 	margin: 0.4rem 0 0.35rem;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: clamp(1.3rem, 2.5vw, 1.8rem);
 	font-weight: 750;
 	letter-spacing: -0.03em;
@@ -215,7 +215,7 @@ function hasClassEnded(cls: any) {
 .student-home__welcome p {
 	max-width: 42rem;
 	margin: 0;
-	color: #5c6e67;
+	color: var(--ink-gray-7);
 	line-height: 1.55;
 }
 
@@ -226,7 +226,7 @@ function hasClassEnded(cls: any) {
 	gap: 0.5rem;
 	padding: 0.75rem 1rem;
 	border-radius: 0.7rem;
-	background: #176b60;
+	background: var(--ink-green-7);
 	color: white;
 	font-size: 0.85rem;
 	font-weight: 700;
@@ -234,7 +234,7 @@ function hasClassEnded(cls: any) {
 }
 
 .student-home__browse:hover {
-	background: #123f3a;
+	background: var(--ink-green-8);
 }
 
 .student-home__section {
@@ -243,7 +243,7 @@ function hasClassEnded(cls: any) {
 
 .student-home__section-title {
 	margin-bottom: 0.85rem;
-	color: #263d36;
+	color: var(--ink-gray-8);
 	font-size: 1.1rem;
 	font-weight: 700;
 }
@@ -253,22 +253,22 @@ function hasClassEnded(cls: any) {
 	height: 100%;
 	flex-direction: column;
 	padding: 1rem;
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 0.9rem;
-	background: #fff;
+	background: var(--surface-base);
 	transition: border-color 160ms ease, box-shadow 160ms ease,
 		transform 160ms ease;
 }
 
 .student-home__card:hover {
-	border-color: #8eb8a6;
-	box-shadow: 0 8px 22px rgb(18 63 58 / 8%);
+	border-color: var(--ink-green-4);
+	box-shadow: 0 8px 22px color-mix(in srgb, var(--ink-green-8) 8%, transparent);
 	transform: translateY(-2px);
 }
 
 .student-home__card-title {
 	margin: 0 0 0.8rem;
-	color: #263d36;
+	color: var(--ink-gray-8);
 	font-size: 1rem;
 	font-weight: 700;
 	line-height: 1.4;
@@ -276,7 +276,7 @@ function hasClassEnded(cls: any) {
 
 .student-home__description {
 	margin: 0 0 1rem;
-	color: #66736e;
+	color: var(--ink-gray-7);
 	font-size: 0.9rem;
 	line-height: 1.5;
 }
@@ -286,7 +286,7 @@ function hasClassEnded(cls: any) {
 	flex-direction: column;
 	gap: 0.75rem;
 	margin-top: auto;
-	color: #5e6d66;
+	color: var(--ink-gray-7);
 	font-size: 0.875rem;
 }
 
@@ -303,28 +303,28 @@ function hasClassEnded(cls: any) {
 	gap: 0.45rem;
 	padding: 0.6rem 0.8rem;
 	border-radius: 0.55rem;
-	background: #176b60;
-	color: #fff;
+	background: var(--ink-green-7);
+	color: var(--surface-base);
 	font-weight: 650;
 	text-decoration: none;
 }
 
 .student-home__join:hover {
-	background: #123f3a;
+	background: var(--ink-green-8);
 }
 
 .student-home__ended {
 	display: flex;
 	align-items: center;
 	gap: 0.45rem;
-	color: #98651b;
+	color: var(--ink-amber-7);
 }
 
 .student-home__pending {
 	display: flex;
 	align-items: center;
 	gap: 0.45rem;
-	color: #66736e;
+	color: var(--ink-gray-7);
 }
 
 @media (max-width: 640px) {

@@ -296,14 +296,14 @@ function hasClassEnded(cls: any) {
 	gap: 1.5rem;
 	margin-top: 1.5rem;
 	padding: 1.5rem clamp(1.2rem, 3vw, 2rem);
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 1.15rem;
-	background: linear-gradient(110deg, #123f3a, #26776a);
-	color: #fff;
+	background: linear-gradient(110deg, var(--ink-green-8), var(--ink-green-7));
+	color: var(--surface-base);
 }
 
 .instructor-home__eyebrow {
-	color: #d9ebe2;
+	color: var(--surface-green-2);
 	font-size: 0.72rem;
 	font-weight: 750;
 	letter-spacing: 0.1em;
@@ -320,7 +320,7 @@ function hasClassEnded(cls: any) {
 .instructor-home__welcome p {
 	max-width: 42rem;
 	margin: 0;
-	color: rgba(255, 255, 255, 0.8);
+	color: color-mix(in srgb, var(--surface-base) 80%, transparent);
 	line-height: 1.55;
 }
 
@@ -330,7 +330,7 @@ function hasClassEnded(cls: any) {
 
 .instructor-home__section-title {
 	margin-bottom: 0.85rem;
-	color: #263d36;
+	color: var(--ink-gray-8);
 	font-size: 1.1rem;
 	font-weight: 700;
 }
@@ -340,9 +340,9 @@ function hasClassEnded(cls: any) {
 	flex-direction: column;
 	height: 100%;
 	padding: 1rem;
-	border: 1px solid #dce8e0;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 0.9rem;
-	background: #fff;
+	background: var(--surface-base);
 	color: inherit;
 	text-decoration: none;
 	transition: border-color 160ms ease, box-shadow 160ms ease,
@@ -350,14 +350,14 @@ function hasClassEnded(cls: any) {
 }
 
 .instructor-home__card:hover {
-	border-color: #8eb8a6;
-	box-shadow: 0 8px 22px rgb(18 63 58 / 8%);
+	border-color: var(--ink-green-4);
+	box-shadow: 0 8px 22px color-mix(in srgb, var(--ink-green-8) 8%, transparent);
 	transform: translateY(-2px);
 }
 
 .instructor-home__card-title {
 	margin: 0 0 0.8rem;
-	color: #263d36;
+	color: var(--ink-gray-8);
 	font-size: 1rem;
 	font-weight: 700;
 	line-height: 1.4;
@@ -368,7 +368,7 @@ function hasClassEnded(cls: any) {
 	flex-direction: column;
 	gap: 0.7rem;
 	margin-top: auto;
-	color: #5e6d66;
+	color: var(--ink-gray-7);
 	font-size: 0.875rem;
 }
 
@@ -384,7 +384,7 @@ function hasClassEnded(cls: any) {
 
 .instructor-home__description {
 	margin: 0 0 1rem;
-	color: #66736e;
+	color: var(--ink-gray-7);
 	font-size: 0.9rem;
 	line-height: 1.5;
 }
@@ -403,22 +403,22 @@ function hasClassEnded(cls: any) {
 	gap: 0.4rem;
 	padding: 0.45rem 0.7rem;
 	border-radius: 0.5rem;
-	background: #eaf3ee;
-	color: #174b40;
+	background: var(--surface-green-1);
+	color: var(--ink-green-8);
 	font-size: 0.85rem;
 	font-weight: 600;
 	text-decoration: none;
 }
 
 .instructor-home__action:hover {
-	background: #d8e9df;
+	background: var(--surface-green-2);
 }
 
 .instructor-home__ended {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	color: #98651b;
+	color: var(--ink-amber-7);
 }
 
 .instructor-home__empty {
@@ -430,16 +430,16 @@ function hasClassEnded(cls: any) {
 	gap: 0.6rem;
 	margin-top: 2.5rem;
 	padding: 2rem;
-	border: 1px dashed #c8d9cd;
+	border: 1px dashed var(--outline-green-3);
 	border-radius: 1rem;
-	background: #fbfcfa;
+	background: var(--surface-base);
 	text-align: center;
 }
 
 .instructor-home__empty p {
 	max-width: 38rem;
 	margin: 0;
-	color: #66736e;
+	color: var(--ink-gray-7);
 	line-height: 1.55;
 }
 

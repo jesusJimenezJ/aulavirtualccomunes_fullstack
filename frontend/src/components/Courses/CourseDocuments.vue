@@ -42,7 +42,7 @@
 						v-for="file in documentsFor(kind.field)"
 						:key="file.name"
 						:href="safeUrl(file.file_url)"
-						target="_blank"
+						v-external
 						rel="noopener noreferrer"
 						class="course-documents__file"
 					>
@@ -186,10 +186,10 @@ function onUploadFailure(error: unknown) {
 <style scoped>
 .course-documents {
 	padding: clamp(1rem, 2.5vw, 1.5rem);
-	border: 1px solid #e2eae4;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 1.1rem;
-	background: #fff;
-	box-shadow: 0 8px 24px rgba(24, 49, 46, 0.04);
+	background: var(--surface-base);
+	box-shadow: 0 8px 24px color-mix(in srgb, var(--ink-base) 4%, transparent);
 }
 
 .course-documents__heading,
@@ -202,7 +202,7 @@ function onUploadFailure(error: unknown) {
 
 .course-documents__eyebrow {
 	margin: 0 0 0.3rem;
-	color: #176b60;
+	color: var(--ink-green-7);
 	font-size: 0.7rem;
 	font-weight: 750;
 	letter-spacing: 0.1em;
@@ -211,7 +211,7 @@ function onUploadFailure(error: unknown) {
 
 .course-documents__heading h2 {
 	margin: 0;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: 1.25rem;
 	font-weight: 750;
 }
@@ -219,13 +219,13 @@ function onUploadFailure(error: unknown) {
 .course-documents__description,
 .course-documents__card-heading p {
 	margin: 0.25rem 0 0;
-	color: #68766f;
+	color: var(--ink-gray-7);
 	font-size: 0.85rem;
 }
 
 .course-documents__visibility-note {
 	margin: 0.4rem 0 0;
-	color: #8a5a31;
+	color: var(--ink-amber-7);
 	font-size: 0.78rem;
 }
 
@@ -239,9 +239,9 @@ function onUploadFailure(error: unknown) {
 .course-documents__card {
 	min-width: 0;
 	padding: 1rem;
-	border: 1px solid #e6ece7;
+	border: 1px solid var(--surface-green-2);
 	border-radius: 0.85rem;
-	background: #fbfcfa;
+	background: var(--surface-base);
 }
 
 .course-documents__card-heading {
@@ -256,13 +256,13 @@ function onUploadFailure(error: unknown) {
 	place-items: center;
 	flex: none;
 	border-radius: 0.7rem;
-	background: #eaf3ed;
-	color: #176b60;
+	background: var(--surface-green-1);
+	color: var(--ink-green-7);
 }
 
 .course-documents__card-heading h3 {
 	margin: 0;
-	color: #18312e;
+	color: var(--ink-base);
 	font-size: 0.95rem;
 	font-weight: 700;
 }
@@ -279,22 +279,22 @@ function onUploadFailure(error: unknown) {
 	gap: 0.55rem;
 	min-width: 0;
 	padding: 0.65rem 0.7rem;
-	border: 1px solid #e3eae4;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 0.65rem;
-	background: #fff;
-	color: #176b60;
+	background: var(--surface-base);
+	color: var(--ink-green-7);
 	font-size: 0.82rem;
 	text-decoration: none;
 }
 
 .course-documents__file:hover {
-	border-color: #b9d5c5;
-	background: #f4f8f4;
+	border-color: var(--outline-green-3);
+	background: var(--surface-gray-1);
 }
 
 .course-documents__empty {
 	margin: 0.9rem 0;
-	color: #758179;
+	color: var(--ink-gray-7);
 	font-size: 0.82rem;
 }
 

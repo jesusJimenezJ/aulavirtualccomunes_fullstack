@@ -102,7 +102,7 @@ const hasClassEnded = (cls: LiveClassTiming) => new Date() > getClassEnd(cls)
 	flex-direction: column;
 	gap: 0.8rem;
 	margin-top: auto;
-	color: #5c6e67;
+	color: var(--ink-gray-7);
 	font-size: 0.875rem;
 }
 
@@ -127,8 +127,8 @@ const hasClassEnded = (cls: LiveClassTiming) => new Date() > getClassEnd(cls)
 	gap: 0.45rem;
 	padding: 0.6rem 0.75rem;
 	border-radius: 0.55rem;
-	background: #176b60;
-	color: #fff;
+	background: var(--ink-green-7);
+	color: var(--surface-base);
 	font-weight: 650;
 	text-align: center;
 	text-decoration: none;
@@ -136,11 +136,11 @@ const hasClassEnded = (cls: LiveClassTiming) => new Date() > getClassEnd(cls)
 }
 
 .live-class__button:hover {
-	background: #123f3a;
+	background: var(--ink-green-8);
 }
 
 .live-class__button:focus-visible {
-	outline: 3px solid #e9b989;
+	outline: 3px solid var(--ink-orange-4);
 	outline-offset: 3px;
 }
 
@@ -148,13 +148,13 @@ const hasClassEnded = (cls: LiveClassTiming) => new Date() > getClassEnd(cls)
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	color: #98651b;
+	color: var(--ink-amber-7);
 }
 
 .live-class__pending {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	color: #66736e;
+	color: var(--ink-gray-7);
 }
 </style>

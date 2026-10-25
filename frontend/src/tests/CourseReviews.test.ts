@@ -115,12 +115,13 @@ beforeEach(() => {
 
 describe('CourseReviews date rendering', () => {
 	it('renders the true relative age of each review', async () => {
-		expect(await renderedDates()).toEqual([
-			'Today',
-			'1 day ago',
-			'5 days ago',
-			'2 months ago',
-		])
+
+expect(await renderedDates()).toEqual([
+    'Hoy',
+    'Hace 1 día',
+    'Hace 5 días',
+    'Hace 2 meses',
+])
 	})
 
 	it('does not collapse old reviews to "Today" (the pretty_date regression)', async () => {
@@ -169,7 +170,7 @@ describe('CourseReviews list rendering', () => {
 
 		const viewAll = wrapper
 			.findAll('button')
-			.find((b) => b.text() === 'View all reviews')!
+			.find((b) => b.text().trim() === 'Ver todas las reseñas')!
 		await viewAll.trigger('click')
 		expect(wrapper.findAll('article')).toHaveLength(6)
 	})
@@ -189,8 +190,9 @@ describe('CourseReviews list rendering', () => {
 		await flushPromises()
 		const header = wrapper.text()
 		expect(header).toContain('4.5')
-		expect(header).toContain('1 user rating')
-		expect(header).not.toContain('user ratings')
+
+expect(header).toContain('1 valoración')
+expect(header).not.toContain('valoraciones')
 	})
 
 	it('clamps long review text behind a "See more" toggle', async () => {

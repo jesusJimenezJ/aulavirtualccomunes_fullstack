@@ -259,15 +259,19 @@ describe('ChapterRow keyboard access', () => {
 	it('makes delete a button outside the header and the lesson link', async () => {
 		const wrapper = mountRow(done)
 
-		for (const label of ['Delete Chapter', 'Delete Lesson']) {
+
+		for (const label of ['Eliminar módulo', 'Eliminar lección']) {
 			const button = wrapper.get(`button[label="${label}"]`)
+
 			expect(button.element.parentElement!.closest('a, button')).toBeNull()
 		}
-		await wrapper.get('button[label="Delete Lesson"]').trigger('click')
+
+		await wrapper.get('button[label="Eliminar lección"]').trigger('click')
 		expect(wrapper.emitted('delete-lesson')).toEqual([
 			[{ lesson: 'LESSON-1', chapter: 'CH-2' }],
 		])
-		expect(wrapper.get('a').get('.sr-only').text()).toBe('Completed')
+
+		expect(wrapper.get('a').get('.sr-only').text()).toBe('Completado')
 	})
 
 	it('renders an inline-select lesson as a button', async () => {

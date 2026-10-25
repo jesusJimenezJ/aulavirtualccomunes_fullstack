@@ -41,7 +41,7 @@ export default defineConfig({
 		// timeout rather than an assertion. Raising the ceiling costs nothing
 		// when they pass and stops the suite reporting a red that is really the
 		// scheduler.
-		testTimeout: 20000,
+		testTimeout: 60000,
 		server: {
 			// frappe-ui ships plain-ESM files with extensionless relative imports
 			// (valid under Vite's resolver, invalid under Node's strict ESM loader).

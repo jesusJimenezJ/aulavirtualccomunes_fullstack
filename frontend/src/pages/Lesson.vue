@@ -1331,25 +1331,25 @@ usePageMeta(() => {
 <style>
 .lesson-experience {
 	min-height: 100vh;
-	background: #f6f8f5;
+	background: var(--surface-gray-1);
 }
 
 .lesson-experience__layout {
 	margin: 1rem 1.25rem 2rem;
 	overflow: hidden;
-	border: 1px solid #e1e9e3;
+	border: 1px solid var(--outline-gray-2);
 	border-radius: 1.25rem;
-	background: #fff;
-	box-shadow: 0 8px 28px rgba(24, 49, 46, 0.06);
+	background: var(--surface-base);
+	box-shadow: 0 8px 28px color-mix(in srgb, var(--ink-base) 6%, transparent);
 }
 
 .lesson-experience__layout > aside {
-	border-inline-start: 1px solid #e8eee9;
-	background: #fbfcfa;
+	border-inline-start: 1px solid var(--surface-green-2);
+	background: var(--surface-base);
 }
 
 .lesson-experience .ProseMirror {
-	color: #354b45;
+	color: var(--ink-gray-8);
 	font-size: 1rem;
 	line-height: 1.8;
 }
@@ -1357,7 +1357,7 @@ usePageMeta(() => {
 .lesson-experience .ProseMirror h1,
 .lesson-experience .ProseMirror h2,
 .lesson-experience .ProseMirror h3 {
-	color: #18312e;
+	color: var(--ink-base);
 	font-weight: 700;
 	line-height: 1.3;
 }
