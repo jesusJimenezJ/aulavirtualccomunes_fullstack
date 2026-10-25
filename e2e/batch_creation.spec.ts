@@ -232,21 +232,21 @@ await expectMemberFormClosed(page);
       .click();
 
     // Localizar los campos por su nombre accesible.
-const batchDialog = page;
+const batchDialog = page.getByRole("dialog");
 await batchDialog
-  .getByLabel(/Fecha de inicio/i)
+  .getByLabel(/Start Date|Fecha de inicio/i)
   .fill("2030-10-01");
 
 await batchDialog
-  .getByLabel(/Fecha Final|Fecha de finalización|Fecha de fin/i)
+  .getByLabel(/End Date|Fecha Final|Fecha de finalización|Fecha de fin/i)
   .fill("2030-10-31");
 
 await batchDialog
-  .getByLabel(/Hora de inicio/i)
+  .getByLabel(/Start Time|Hora de inicio/i)
   .fill("10:00");
 
 await batchDialog
-  .getByLabel(/Hora de finalización|Hora de fin/i)
+  .getByLabel(/End Time|Hora de finalización|Hora de fin/i)
   .fill("11:00");
 
     // Select the timezone.
