@@ -363,6 +363,7 @@ console.log("[QUIZ DEBUG] Estado del cuestionario:", {
 				name: quizButtonNames.submit,
 			}).first();
 
+                        await submitButton.waitFor({ state: "visible", timeout: 15000 }).catch(() => {});
 			if (!(await submitButton.isVisible().catch(() => false))) {
 				console.log(
 					"[QUIZ DEBUG] Botones visibles:",
