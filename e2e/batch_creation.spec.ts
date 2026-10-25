@@ -469,11 +469,9 @@ await batchDialog
       .locator('div[role="dialog"]')
       .first();
 
-    const studentField = enrollDialog
-      .locator("label")
-      .filter({ hasText: /^Student$/ })
-      .locator("xpath=..")
-      .locator("input");
+    const studentField = enrollDialog.getByRole("combobox", {
+      name: /^(Student|Estudiante)/i,
+    });
 
     await expect(studentField).toHaveCount(1);
     await studentField.fill(randomStudent);
