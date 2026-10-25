@@ -284,7 +284,9 @@ jobs:
           # The PR's own code, with frappe and payments on the line it targets.
           frappe_ref="$(pick_branch apps/frappe "$base_version")"
           payments_ref="$(pick_branch apps/payments "$base_version")"
-          python_bin="$(python_for "$base_version")"
+          # The PR head may require a newer Python than the v15 fixture.
+          # Use Python 3.14 for the current LMS dependency set.
+          python_bin="$(which python3.14)"
 
           hop "head" "$frappe_ref" "$payments_ref" "pr/head" "$python_bin"
 
