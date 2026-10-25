@@ -242,6 +242,10 @@ const field = (label: RegExp) =>
     .first()
     .locator("xpath=..");
 await batchDialog
+  .getByRole("textbox", { name: /^(Title|Título)/i })
+  .fill("Test Batch");
+
+await batchDialog
   .getByLabel(/Start Date|Fecha de inicio/i)
   .fill("2030-10-01");
 
