@@ -49,7 +49,10 @@ bench start &> bench_start.log &
 CI=Yes bench build &
 build_pid=$!
 
-bench --site lms.test reinstall --yes
+bench --site lms.test reinstall \
+  --mariadb-root-password 123 \
+  --admin-password admin \
+  --yes
 bench --site lms.test install-app lms
 
 wait $build_pid
