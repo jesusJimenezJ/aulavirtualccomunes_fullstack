@@ -132,10 +132,16 @@ jobs:
             exit 1
           fi
 
+
           bench set-config -g db_host 127.0.0.1
           bench new-site "$SITE" \
             --mariadb-root-password 123 \
             --admin-password admin
+
+          # Razorpay in LMS v2.0.0 requires pkg_resources.
+          # Keep setuptools below version 81 in the Python 3.11 bench environment.
+          bench pip install "setuptools<81"
+
           bench --site "$SITE" install-app lms
 
           (cd sites && "$PY" \
