@@ -23,7 +23,9 @@ const openUsersSettings = async (page: Page) => {
 		.getByRole("navigation", { name: "Main" })
 		.locator('[data-slot="sidebar-header"] button')
 		.click();
-	await page.getByRole("menuitem", { name: "Settings" }).click();
+	await page
+    .getByRole("menuitem", { name: /^(Settings|Ajustes)$/ })
+    .click();
 	await page
 		.locator("[data-dismissable-layer]")
 		.locator("button")

@@ -20,10 +20,10 @@ const description =
 // Both a button and a [role=tab] can host the same label depending on
 // screen size (CourseDetail's tab bar collapses to a dropdown on mobile).
 const settingsTab = (page: import("@playwright/test").Page) =>
-	page
-		.getByRole("button")
-		.or(page.getByRole("tab"))
-		.filter({ hasText: "Settings" });
+        page
+                .getByRole("button")
+                .or(page.getByRole("tab"))
+                .filter({ hasText: /^(Settings|Configuración)$/ });
 
 test.describe("Course Creation", () => {
 	test("creates a new course with settings", async ({ page }) => {
@@ -169,7 +169,7 @@ test.describe("Course Creation", () => {
 		await page
 			.getByRole("button")
 			.or(page.getByRole("tab"))
-			.filter({ hasText: "Course editor" })
+			.filter({ hasText: /^(Course editor|Editor del curso|Editor)$/ })
 			.click();
 		await closeOnboardingModal(page);
 		await outlineResponse;
