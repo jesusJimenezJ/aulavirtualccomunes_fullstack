@@ -193,7 +193,11 @@ function hasClassEnded(cls: any) {
 	padding: 1.5rem clamp(1.2rem, 3vw, 2rem);
 	border: 1px solid var(--surface-green-2);
 	border-radius: 1.15rem;
-	background: linear-gradient(110deg, var(--surface-green-1), var(--surface-amber-1));
+	background: linear-gradient(
+		110deg,
+		var(--surface-green-1),
+		var(--surface-amber-1)
+	);
 }
 
 .student-home__eyebrow {

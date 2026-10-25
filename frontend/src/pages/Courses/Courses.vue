@@ -102,11 +102,10 @@
 			/>
 
 			<Checkbox
-    :model-value="certification"
-    :label="__('Solo cursos con certificación')"
-    @update:model-value="setCertification"
-/>
-
+				:model-value="certification"
+				:label="__('Solo cursos con certificación')"
+				@update:model-value="setCertification"
+			/>
 		</template>
 
 		<template #card="{ row }">
@@ -121,14 +120,14 @@
 </template>
 <script setup>
 import {
-    Button,
-    Checkbox,
-    createListResource,
-    createResource,
-    Dropdown,
-    FormControl,
-    TabButtons,
-    usePageMeta,
+	Button,
+	Checkbox,
+	createListResource,
+	createResource,
+	Dropdown,
+	FormControl,
+	TabButtons,
+	usePageMeta,
 } from 'frappe-ui'
 import ClearableCombobox from '@/components/Controls/ClearableCombobox.vue'
 import ListPage from '@/components/Layouts/pages/ListPage.vue'
@@ -430,7 +429,12 @@ usePageMeta(() => {
 			color-mix(in srgb, var(--ink-orange-5) 18%, transparent),
 			transparent 25%
 		),
-		linear-gradient(112deg, var(--surface-amber-1) 0%, var(--surface-green-1) 58%, var(--surface-green-1) 100%);
+		linear-gradient(
+			112deg,
+			var(--surface-amber-1) 0%,
+			var(--surface-green-1) 58%,
+			var(--surface-green-1) 100%
+		);
 	color: var(--ink-base);
 	box-shadow: 0 10px 28px color-mix(in srgb, var(--ink-base) 7%, transparent);
 }
@@ -536,7 +540,8 @@ usePageMeta(() => {
 	border-radius: 1rem;
 	background: var(--ink-green-7);
 	color: var(--surface-base);
-	box-shadow: 0 14px 30px color-mix(in srgb, var(--ink-green-8) 20%, transparent);
+	box-shadow: 0 14px 30px
+		color-mix(in srgb, var(--ink-green-8) 20%, transparent);
 	transform: rotate(5deg);
 }
 

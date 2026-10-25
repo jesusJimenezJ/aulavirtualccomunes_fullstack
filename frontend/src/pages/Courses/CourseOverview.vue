@@ -234,7 +234,11 @@ const hasCourseContent = computed(() => {
 			color-mix(in srgb, var(--ink-orange-5) 16%, transparent),
 			transparent 25%
 		),
-		linear-gradient(120deg, var(--surface-green-1) 0%, var(--surface-amber-1) 100%);
+		linear-gradient(
+			120deg,
+			var(--surface-green-1) 0%,
+			var(--surface-amber-1) 100%
+		);
 }
 
 .course-overview__category {

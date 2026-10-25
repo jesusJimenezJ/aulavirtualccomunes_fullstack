@@ -109,7 +109,11 @@ usePageMeta(() => ({
 			color-mix(in srgb, var(--surface-amber-3) 42%, transparent),
 			transparent 35%
 		),
-		linear-gradient(112deg, var(--surface-green-1) 0%, var(--surface-amber-1) 100%);
+		linear-gradient(
+			112deg,
+			var(--surface-green-1) 0%,
+			var(--surface-amber-1) 100%
+		);
 }
 
 .home-heading__copy,

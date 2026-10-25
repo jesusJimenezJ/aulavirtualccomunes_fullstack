@@ -11,11 +11,7 @@
 		<div class="min-h-0 flex-1 overflow-y-auto px-2 pt-2">
 			<div v-if="sidebarSettings.data" class="flex flex-col gap-0.5">
 				<template v-for="row in sidebarRows" :key="row.key">
-					<div
-						v-if="row.kind === 'gap'"
-						class="h-2.5"
-						aria-hidden="true"
-					/>
+					<div v-if="row.kind === 'gap'" class="h-2.5" aria-hidden="true" />
 					<SidebarSection
 						v-else-if="row.kind === 'accordion'"
 						:label="__(row.label)"
@@ -122,14 +118,7 @@ import {
 	SidebarSection,
 } from 'frappe-ui'
 import { buildSidebarRows } from '@/utils/sidebarRows'
-import {
-	ref,
-	onMounted,
-	inject,
-	watch,
-	onUnmounted,
-	computed,
-} from 'vue'
+import { ref, onMounted, inject, watch, onUnmounted, computed } from 'vue'
 import UserDropdown from '@/components/Sidebar/UserDropdown.vue'
 import SidebarLink from '@/components/Sidebar/SidebarLink.vue'
 import CommandPalette from '@/components/CommandPalette/CommandPalette.vue'

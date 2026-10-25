@@ -90,7 +90,11 @@ defineProps<{
 	padding: 1.5rem 1rem;
 	border: 1px solid var(--surface-green-2);
 	border-radius: 1rem;
-	background: linear-gradient(135deg, var(--surface-green-1), var(--surface-amber-1));
+	background: linear-gradient(
+		135deg,
+		var(--surface-green-1),
+		var(--surface-amber-1)
+	);
 	text-align: center;
 }
 

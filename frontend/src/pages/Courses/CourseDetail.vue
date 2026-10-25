@@ -176,7 +176,6 @@
 				</div>
 			</div>
 		</template>
-
 	</TabbedDetailPage>
 	<RouterView />
 </template>
@@ -435,15 +434,15 @@ usePageMeta(() => {
 
 <style scoped>
 .course-management {
-        background: var(--surface-base);
+	background: var(--surface-base);
 }
 
 .course-management :deep([role='tablist']) {
-        border-bottom: 1px solid var(--outline-gray-2);
-        background: var(--surface-base);
+	border-bottom: 1px solid var(--outline-gray-2);
+	background: var(--surface-base);
 }
 
 .course-management :deep([role='tab'][aria-selected='true']) {
-        color: var(--ink-green-7);
+	color: var(--ink-green-7);
 }
 </style>

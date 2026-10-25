@@ -36,30 +36,32 @@
 					</span>
 				</Tooltip>
 
-					<!-- Valoración accesible del curso -->
-<span v-if="course.rating != null" class="course-card__stat">
-    <span class="lucide-star size-4" aria-hidden="true"></span>
-    <span aria-hidden="true">
-        {{ Number(course.rating).toFixed(1) }}
-    </span>
-    <span class="sr-only">
-        {{ __('Valoración: {0} de 5').format(
-            (Math.round(Number(course.rating) * 10) / 10).toFixed(1)
-        ) }}
-    </span>
-</span>
+				<!-- Valoración accesible del curso -->
+				<span v-if="course.rating != null" class="course-card__stat">
+					<span class="lucide-star size-4" aria-hidden="true"></span>
+					<span aria-hidden="true">
+						{{ Number(course.rating).toFixed(1) }}
+					</span>
+					<span class="sr-only">
+						{{
+							__('Valoración: {0} de 5').format(
+								(Math.round(Number(course.rating) * 10) / 10).toFixed(1)
+							)
+						}}
+					</span>
+				</span>
 
-<!-- Indicador de curso destacado -->
-<span v-if="course.featured" class="course-card__stat">
-    <span class="lucide-badge-check size-4" aria-hidden="true"></span>
-    <span class="sr-only">{{ __('Curso destacado') }}</span>
-</span>
+				<!-- Indicador de curso destacado -->
+				<span v-if="course.featured" class="course-card__stat">
+					<span class="lucide-badge-check size-4" aria-hidden="true"></span>
+					<span class="sr-only">{{ __('Curso destacado') }}</span>
+				</span>
 
-<!-- Indicador de certificación -->
-<span v-if="course.enable_certification" class="course-card__stat">
-    <span class="lucide-award size-4" aria-hidden="true"></span>
-    <span class="sr-only">{{ __('Certificación disponible') }}</span>
-</span>
+				<!-- Indicador de certificación -->
+				<span v-if="course.enable_certification" class="course-card__stat">
+					<span class="lucide-award size-4" aria-hidden="true"></span>
+					<span class="sr-only">{{ __('Certificación disponible') }}</span>
+				</span>
 
 				<Tooltip
 					v-if="course.enrollments"
