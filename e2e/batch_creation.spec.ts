@@ -159,6 +159,8 @@ test.describe("Batch Creation", () => {
     expect(insertResult.ok, "No se detectó la petición de inserción del usuario").toBeTruthy();
     expect(roleResult.ok, "No se detectó la petición de asignación del rol").toBeTruthy();
 
+    if (!insertResult.ok) throw insertResult.error;
+    if (!roleResult.ok) throw roleResult.error;
     expect(insertResult.response.ok()).toBeTruthy();
     expect(roleResult.response.ok()).toBeTruthy();
 
@@ -233,6 +235,12 @@ await expectMemberFormClosed(page);
 
     // Localizar los campos por su nombre accesible.
 const batchDialog = page.getByRole("dialog");
+const field = (label: RegExp) =>
+  batchDialog
+    .locator("label")
+    .filter({ hasText: label })
+    .first()
+    .locator("xpath=..");
 await batchDialog
   .getByLabel(/Start Date|Fecha de inicio/i)
   .fill("2030-10-01");
@@ -273,7 +281,7 @@ await batchDialog
       .first()
       .click();
 
-    await field(/^(Seat Count|Número de plazas|Cupos)$/i)
+    await field(/^(Seat Count|Número de plazas|Cupos)/i)
       .locator("input")
       .fill("10");
 
@@ -292,7 +300,7 @@ await batchDialog
     );
 
     // Select the evaluator as the batch instructor.
-    const instructorField = field(/^(Instructors|Instructores)$/i);
+    const instructorField = field(/^(Instructors|Instructores)/i);
 
     await instructorField
       .locator("button:visible")
@@ -392,7 +400,7 @@ await batchDialog
     ).toBeVisible();
 
     await expect(
-      batchCard.getByText("10 Seats Left")
+      batchCard.getByText(/10 (Seats Left|plazas restantes|cupos disponibles)/i)
     ).toBeVisible();
 
     await batchLink.click();
@@ -430,7 +438,7 @@ await batchDialog
     ).toBeVisible();
 
     await expect(
-      overlay.getByText("10 Seats Left")
+      overlay.getByText(/10 (Seats Left|plazas restantes|cupos disponibles)/i)
     ).toBeVisible();
 
     await expect(
@@ -490,7 +498,7 @@ await batchDialog
       .first();
 
     await expect(
-      overlayAfterEnroll.getByText("9 Seats Left")
+      overlayAfterEnroll.getByText(/9 (Seats Left|plazas restantes|cupos disponibles)/i)
     ).toBeVisible({ timeout: 10000 });
   });
 });
