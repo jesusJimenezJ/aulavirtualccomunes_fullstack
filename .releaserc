@@ -1,4 +1,5 @@
 {
+	"repositoryUrl": "https://github.com/jesusJimenezJ/aulavirtualccomunes_fullstack.git",
 	"branches": ["main"],
 	"plugins": [
 		"@semantic-release/commit-analyzer", {
@@ -7,7 +8,7 @@
 		"@semantic-release/release-notes-generator",
 		[
 			"@semantic-release/exec", {
-				"prepareCmd": 'sed -ir "s/[0-9]*\.[0-9]*\.[0-9]*/${nextRelease.version}/" lms/__init__.py'
+				"prepareCmd": 'sed -ir "s/[0-9]*\\.[0-9]*\\.[0-9]*/${nextRelease.version}/" lms/__init__.py'
 			}
 		],
 		[
