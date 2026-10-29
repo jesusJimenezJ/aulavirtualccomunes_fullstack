@@ -1,0 +1,18 @@
+{
+  "v1.0.0": {
+    "lms_commit": "f242a01281f968deb3161c873bc0aa4efd4ecfa4",
+    "frappe": {
+      "branch": "develop",
+      "commit": "a58c5f0da701618a26b58f9a836340f264947acb",
+      "version": "17.0.0-dev"
+    },
+    "payments": {
+      "branch": "develop",
+      "commit": "7411976eaefdcb69c06642932e568dbbbc58ec8b",
+      "version": "0.0.1"
+    },
+    "frappe_docker_commit": "2e6c8573a2af9882df705ce4247a26eb69c4f597",
+    "frappe_build_image": "frappe/build@sha256:26dc77475e9ed3e8a54f09d00f387e12ba05456db08496f7472fae316d944bfe",
+    "frappe_base_image": "frappe/base@sha256:411492f4359ced6d9b985681c3d1a1d51ebc42c8b2d592218e60076b400bf685"
+  }
+}

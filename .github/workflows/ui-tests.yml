@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -92,8 +92,6 @@ jobs:
           bash ${GITHUB_WORKSPACE}/.github/helper/install_dependencies.sh
           bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
         env:
-          BEFORE: ${{ env.GITHUB_EVENT_PATH.before }}
-          AFTER: ${{ env.GITHUB_EVENT_PATH.after }}
           TYPE: ui
           DB: mariadb
 

@@ -1,47 +1,81 @@
-**Step 1:** Clone the repo
+# Docker installation
 
-```
-$ git clone https://github.com/frappe/lms.git
+This guide describes the Docker setup used by the Ccomunes project. Run the commands from the repository root. The active Compose file is `docker/docker-compose.yml`; the root-level `docker-compose.yml` is not used by these instructions.
 
-$ cd lms
+## Requirements
 
-$ cd docker
-```
+- Git.
+- Docker Desktop with WSL 2 integration (Windows), or Docker Engine and Docker Compose v2 (Linux).
+- At least 8 GB of memory available to Docker.
+- An internet connection for the first installation.
 
-**Step 2:** Run docker-compose
+On Windows, install Docker Desktop, enable integration with your Ubuntu distribution, and run the commands below from an Ubuntu terminal.
 
-```
-$ docker-compose up
-```
+## Prepare the project
 
-**Step 3:** Visit the website at http://localhost:8000/
+Clone the project and enter its directory:
 
-You'll have to go through the setup wizard to setup the website for the first time you access it. Login using the following credentials to complete the setup wizard.
-
-```
-Username: Administrator
-password: admin
+```bash
+git clone --branch sprint1/completo --single-branch https://github.com/jesusJimenezJ/aula-virtual-ccomunes.git
+cd aula-virtual-ccomunes
 ```
 
-These credentials are intended for local development only. Change the administrator password before using the site outside a local test environment.
+Create your local environment file:
 
-## Loading demo data
-
-The LMS app creates demo data when the setup wizard completes. If you need to recreate the demo course after clearing it, run the following command from another terminal while the Docker services are running:
-
-```
-$ docker-compose exec frappe bash -lc "cd frappe-bench && bench --site lms.localhost execute lms.demo.demo_data.create_demo_data"
+```bash
+cp .env.example .env
 ```
 
-This creates the sample course, instructor, learners, lessons, quizzes, and progress records used for local evaluation. To remove the demo course later, open the user menu in the LMS interface and choose **Clear Demo Data**.
+Keep `.env` local and do not commit it. The Docker startup script installs Frappe and the Ccomunes application automatically on first startup; this setup does not use the upstream LMS setup wizard.
 
-## Stopping the server
+## Start Ccomunes
 
-Press `ctrl+c` in the terminal to stop the server. You can also run `docker-compose down` in another terminal to stop it.
+Start the services:
 
-To completely reset the instance, do the following:
-
+```bash
+docker compose --env-file .env -f docker/docker-compose.yml up -d
 ```
-$ docker-compose down --volumes
-$ docker-compose up
+
+Follow the Frappe service logs while the first startup completes:
+
+```bash
+docker compose --env-file .env -f docker/docker-compose.yml logs -f frappe
 ```
+
+The first startup downloads images and installs the application, so it can take several minutes. Check the service status with:
+
+```bash
+docker compose --env-file .env -f docker/docker-compose.yml ps
+```
+
+When Bench is ready, open [http://ccomunes.localhost:8080/lms](http://ccomunes.localhost:8080/lms). Sign in as `Administrator` using the password configured locally in `.env`.
+
+If port 8080 is already in use, set `WEB_PORT` in `.env` and use `http://ccomunes.localhost:<port>/lms` with that port.
+
+## Load demo data
+
+After the services are running, you can recreate the LMS demo course from another terminal:
+
+```bash
+docker compose --env-file .env -f docker/docker-compose.yml exec frappe bash -lc 'cd /home/frappe/frappe-bench && bench --site ccomunes.localhost execute lms.demo.demo_data.create_demo_data'
+```
+
+The demo data includes a sample course, instructor, learners, lessons, quizzes, and progress records. To remove the demo course, use **Clear Demo Data** from the user menu in the LMS interface.
+
+## Stop the services
+
+Stopping the containers preserves the data:
+
+```bash
+docker compose --env-file .env -f docker/docker-compose.yml down
+```
+
+To start them again, run the `up -d` command above.
+
+To remove the database and all local data, run:
+
+```bash
+docker compose --env-file .env -f docker/docker-compose.yml down -v
+```
+
+This setup is intended for local development, not production.
