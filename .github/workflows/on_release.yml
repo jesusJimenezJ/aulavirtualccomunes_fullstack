@@ -1,17 +1,27 @@
 name: Generate Semantic Release
 on:
   workflow_dispatch:
+    inputs:
+      dispatch_diagnostic:
+        description: Check workflow dispatch permissions without creating a release or building an image
+        required: false
+        type: boolean
+        default: false
   push:
     branches:
       - main
 
 permissions:
+  actions: write
   contents: write
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ inputs.dispatch_diagnostic && format('dispatch-diagnostic-{0}', github.repository) || format('semantic-release-{0}', github.repository) }}
+      cancel-in-progress: false
     steps:
       - name: Checkout Entire Repository
         uses: actions/checkout@v4
@@ -19,13 +29,25 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
       - name: Setup Node.js
+        if: github.event_name != 'workflow_dispatch' || !inputs.dispatch_diagnostic
         uses: actions/setup-node@v6
         with:
           node-version: 24
       - name: Setup dependencies
+        if: github.event_name != 'workflow_dispatch' || !inputs.dispatch_diagnostic
         run: |
           npm install @semantic-release/git @semantic-release/exec --no-save
+      - name: Check workflow access and dispatch permission
+        if: github.event_name == 'workflow_dispatch' && inputs.dispatch_diagnostic
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/build.yml" --jq '.state' >/dev/null
+          gh workflow run dispatch_diagnostic.yml --ref main
+
       - name: Create Release
+        if: github.event_name != 'workflow_dispatch' || !inputs.dispatch_diagnostic
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

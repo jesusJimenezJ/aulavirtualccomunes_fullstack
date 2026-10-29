@@ -38,3 +38,48 @@ class TestLMSEnrollment(BaseTestUtils):
 		frappe.delete_doc("LMS Enrollment", enrollment.name, force=True)
 		after_delete = frappe.db.get_value("LMS Course", self.course.name, "enrollments")
 		self.assertEqual(after_delete, after_insert - 1)
+
+	def test_duplicate_enrollment_is_rejected(self):
+		student = self._new_student()
+		self._create_enrollment(student.email, self.course.name)
+
+		duplicate = frappe.get_doc(
+			{
+				"doctype": "LMS Enrollment",
+				"member": student.email,
+				"course": self.course.name,
+			}
+		)
+
+		with self.assertRaises(frappe.ValidationError):
+			# nosemgrep: lms-unjustified-ignore-permissions - Bypass role permissions to assert duplicate enrollment validation.
+			duplicate.insert(ignore_permissions=True)
+
+	def test_student_can_enroll_in_different_courses(self):
+		student = self._new_student()
+		self._create_enrollment(student.email, self.course.name)
+
+		second_course = self._create_course(
+			title=f"Second Course {frappe.generate_hash(length=6)}",
+			instructor=self.instructor.email,
+		)
+
+		enrollment = frappe.get_doc(
+			{
+				"doctype": "LMS Enrollment",
+				"member": student.email,
+				"course": second_course.name,
+			}
+		)
+		# nosemgrep: lms-unjustified-ignore-permissions - Create the enrollment directly to test enrollment across different courses.
+		enrollment.insert(ignore_permissions=True)
+
+		self.assertTrue(
+			frappe.db.exists(
+				"LMS Enrollment",
+				{
+					"member": student.email,
+					"course": second_course.name,
+				},
+			)
+		)

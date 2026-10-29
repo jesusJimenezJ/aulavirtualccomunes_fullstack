@@ -1,0 +1,13 @@
+name: Workflow Dispatch Diagnostic
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  diagnostic:
+    name: Confirm no-op dispatch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm diagnostic workflow ran
+        run: echo "Workflow dispatch permission check completed; no release or image build was run."

@@ -1,26 +1,136 @@
 name: Build Container Image
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    tags:
-      - "*"
+    inputs:
+      release_tag:
+        description: Published stable release tag to build (for example v1.2.3)
+        required: true
+        type: string
+      publish_image:
+        description: Publish the validated release image to GHCR
+        required: false
+        type: boolean
+        default: false
+      update_stable:
+        description: Also update the stable alias (intended for the newest release)
+        required: false
+        type: boolean
+        default: false
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        arch: [amd64, arm64]
+    concurrency:
+      group: ghcr-release-publish-${{ github.repository }}
+      cancel-in-progress: false
 
     permissions:
+      contents: read
       packages: write
 
     steps:
       - name: Checkout Entire Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate official stable release tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          if [[ "$GITHUB_REF_TYPE" != "branch" || "$GITHUB_REF_NAME" != "main" ]]; then
+            echo "::error::Run this workflow from main so the current validation and concurrency rules are used."
+            exit 1
+          fi
+
+          if [[ ! "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "::error::Builds require a stable vMAJOR.MINOR.PATCH release tag."
+            exit 1
+          fi
+
+          if ! release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}" 2>/dev/null)"; then
+            echo "::error::No published GitHub release exists for ${RELEASE_TAG}."
+            exit 1
+          fi
+
+          release_tag="$(jq -r '.tag_name // empty' <<< "$release_json")"
+          is_draft="$(jq -r '.draft' <<< "$release_json")"
+          is_prerelease="$(jq -r '.prerelease' <<< "$release_json")"
+
+          if [[ "$release_tag" != "$RELEASE_TAG" || "$is_draft" != "false" || "$is_prerelease" != "false" ]]; then
+            echo "::error::${RELEASE_TAG} is not the matching published stable release."
+            exit 1
+          fi
+
+          if ! git fetch --no-tags origin "refs/tags/${RELEASE_TAG}:refs/tags/${RELEASE_TAG}"; then
+            echo "::error::Cannot fetch the Git tag for ${RELEASE_TAG}."
+            exit 1
+          fi
+
+          if ! git fetch --no-tags origin main; then
+            echo "::error::Cannot fetch main to verify the release ancestry."
+            exit 1
+          fi
+
+          release_commit="$(git rev-parse --verify "${RELEASE_TAG}^{commit}")"
+          if ! git merge-base --is-ancestor "$release_commit" origin/main; then
+            echo "::error::${RELEASE_TAG} does not resolve to a commit contained in main."
+            exit 1
+          fi
+
+          if ! source_lock="$(jq -ce --arg tag "$RELEASE_TAG" '.[$tag] // empty' .github/docker-image-lock.json)"; then
+            echo "::error::No verified source lock exists for ${RELEASE_TAG}; refusing to build."
+            exit 1
+          fi
+
+          expected_lms_commit="$(jq -r '.lms_commit // empty' <<< "$source_lock")"
+          frappe_commit="$(jq -r '.frappe.commit // empty' <<< "$source_lock")"
+          frappe_branch="$(jq -r '.frappe.branch // empty' <<< "$source_lock")"
+          payments_commit="$(jq -r '.payments.commit // empty' <<< "$source_lock")"
+          payments_branch="$(jq -r '.payments.branch // empty' <<< "$source_lock")"
+          frappe_docker_commit="$(jq -r '.frappe_docker_commit // empty' <<< "$source_lock")"
+          frappe_build_image="$(jq -r '.frappe_build_image // empty' <<< "$source_lock")"
+          frappe_base_image="$(jq -r '.frappe_base_image // empty' <<< "$source_lock")"
+
+          if [[ "$release_commit" != "$expected_lms_commit" ]]; then
+            echo "::error::${RELEASE_TAG} resolves to ${release_commit}, but its source lock expects ${expected_lms_commit}."
+            exit 1
+          fi
+
+          for value in "$frappe_commit" "$payments_commit" "$frappe_docker_commit"; do
+            if [[ ! "$value" =~ ^[0-9a-f]{40}$ ]]; then
+              echo "::error::The source lock contains an invalid Git commit."
+              exit 1
+            fi
+          done
+
+          for image in "$frappe_build_image" "$frappe_base_image"; do
+            if [[ ! "$image" =~ ^frappe/(base|build)@sha256:[0-9a-f]{64}$ ]]; then
+              echo "::error::The source lock contains an invalid base/build image digest."
+              exit 1
+            fi
+          done
+
+          if [[ -z "$frappe_branch" || -z "$payments_branch" ]]; then
+            echo "::error::The source lock is missing a source branch used to retrieve the pinned commits."
+            exit 1
+          fi
+
+          source_lock_sha="$(jq -S -c . <<< "$source_lock" | sha256sum | cut -d ' ' -f 1)"
+          {
+            echo "RELEASE_TAG=$release_tag"
+            echo "LMS_COMMIT=$release_commit"
+            echo "FRAPPE_COMMIT=$frappe_commit"
+            echo "FRAPPE_BRANCH=$frappe_branch"
+            echo "PAYMENTS_COMMIT=$payments_commit"
+            echo "PAYMENTS_BRANCH=$payments_branch"
+            echo "FRAPPE_DOCKER_COMMIT=$frappe_docker_commit"
+            echo "FRAPPE_BUILD_IMAGE=$frappe_build_image"
+            echo "FRAPPE_BASE_IMAGE=$frappe_base_image"
+            echo "SOURCE_LOCK_SHA=$source_lock_sha"
+            echo "LMS_REF=$RELEASE_TAG"
+          } >> "$GITHUB_ENV"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -28,9 +138,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          platforms: linux/${{ matrix.arch }}
+          platforms: linux/amd64,linux/arm64
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+        if: inputs.publish_image
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -38,29 +149,198 @@ jobs:
 
       - name: Set Branch
         run: |
-          export APPS_JSON='[{"url": "https://github.com/frappe/payments","branch": "version-15"},{"url": "https://github.com/frappe/lms","branch": "main"}]'
-          echo "APPS_JSON_BASE64=$(echo "$APPS_JSON" | base64 -w 0)" >> "$GITHUB_ENV"
-          echo "FRAPPE_BRANCH=version-16" >> "$GITHUB_ENV"
+          apps_json="$(jq -cn \
+            --arg lms_url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
+            --arg lms_ref "$LMS_REF" \
+            --arg payments_ref "$PAYMENTS_BRANCH" \
+            '[{"url":"https://github.com/frappe/payments","branch":$payments_ref},{"url":$lms_url,"branch":$lms_ref}]')"
+          echo "APPS_JSON=$apps_json" >> "$GITHUB_ENV"
           echo "IMAGE_REPO=ghcr.io/$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
 
       - name: Set Image Tag
-        run: |
-          echo "IMAGE_TAG=stable" >> "$GITHUB_ENV"
+        run: echo "IMAGE_TAG=${IMAGE_REPO}:${RELEASE_TAG}" >> "$GITHUB_ENV"
 
       - uses: actions/checkout@v4
         with:
           repository: frappe/frappe_docker
+          ref: ${{ env.FRAPPE_DOCKER_COMMIT }}
           path: builds
 
+      - name: Verify pinned frappe_docker checkout
+        env:
+          EXPECTED_COMMIT: ${{ env.FRAPPE_DOCKER_COMMIT }}
+        run: |
+          set -euo pipefail
+
+          actual_commit="$(git -C builds rev-parse --verify HEAD)"
+          if [[ "$actual_commit" != "$EXPECTED_COMMIT" ]]; then
+            echo "::error::frappe_docker checkout did not resolve to its locked commit."
+            exit 1
+          fi
+
+      - name: Install pinned layered build recipe
+        run: |
+          cp .github/docker/layered.Containerfile builds/images/layered/Containerfile
+          cp .github/docker/pin-app-commits.sh builds/resources/core/pin-app-commits.sh
+
       - name: Build and push
+        id: image
         uses: docker/build-push-action@v6
         with:
-          push: true
+          push: ${{ inputs.publish_image }}
           context: builds
           file: builds/images/layered/Containerfile
-          tags: |
-            ${{ env.IMAGE_REPO }}:${{ github.ref_name }}
-            ${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }}
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ env.IMAGE_TAG }}
+          secret-envs: |
+            apps_json=APPS_JSON
           build-args: |
             FRAPPE_BRANCH=${{ env.FRAPPE_BRANCH }}
-            APPS_JSON_BASE64=${{ env.APPS_JSON_BASE64 }}
+            FRAPPE_PATH=https://github.com/frappe/frappe
+            FRAPPE_COMMIT=${{ env.FRAPPE_COMMIT }}
+            PAYMENTS_BRANCH=${{ env.PAYMENTS_BRANCH }}
+            PAYMENTS_COMMIT=${{ env.PAYMENTS_COMMIT }}
+            LMS_REF=${{ env.LMS_REF }}
+            LMS_COMMIT=${{ env.LMS_COMMIT }}
+            FRAPPE_IMAGE_PREFIX=frappe
+            FRAPPE_BUILD_IMAGE=${{ env.FRAPPE_BUILD_IMAGE }}
+            FRAPPE_BASE_IMAGE=${{ env.FRAPPE_BASE_IMAGE }}
+            CACHE_BUST=${{ env.SOURCE_LOCK_SHA }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ env.LMS_COMMIT }}
+            io.ccomunes.source-lock=${{ env.SOURCE_LOCK_SHA }}
+            io.ccomunes.frappe.commit=${{ env.FRAPPE_COMMIT }}
+            io.ccomunes.payments.commit=${{ env.PAYMENTS_COMMIT }}
+          provenance: mode=max
+
+      - name: Verify traced image output
+        if: inputs.publish_image
+        env:
+          IMAGE_DIGEST: ${{ steps.image.outputs.digest }}
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$IMAGE_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]; then
+            echo "::error::The image build did not return a valid registry digest."
+            exit 1
+          fi
+
+          if [[ "$(git rev-parse --verify "${RELEASE_TAG}^{commit}")" != "$LMS_COMMIT" ]]; then
+            echo "::error::The release tag changed after source validation."
+            exit 1
+          fi
+
+          echo "IMAGE_DIGEST=$IMAGE_DIGEST" >> "$GITHUB_ENV"
+          echo "IMAGE_TRACEABILITY_VERIFIED=true" >> "$GITHUB_ENV"
+
+      - name: Update stable alias for latest release
+        if: inputs.publish_image && inputs.update_stable && env.IMAGE_TRACEABILITY_VERIFIED == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ env.RELEASE_TAG }}
+          IMAGE_REPO: ${{ env.IMAGE_REPO }}
+          IMAGE_DIGEST: ${{ env.IMAGE_DIGEST }}
+        run: |
+          set -euo pipefail
+
+          if ! latest_release_tag="$(gh api "repos/${GITHUB_REPOSITORY}/releases/latest" --jq '.tag_name' 2>/dev/null)"; then
+            echo "::error::Could not verify the latest stable release; refusing to change stable."
+            exit 1
+          fi
+
+          if [[ "$latest_release_tag" != "$RELEASE_TAG" ]]; then
+            echo "::warning::Skipping the stable alias because ${RELEASE_TAG} is no longer the latest stable release."
+            exit 0
+          fi
+
+          package_owner="${GITHUB_REPOSITORY%%/*}"
+          package_name="${GITHUB_REPOSITORY#*/}"
+          package_name="$(printf '%s' "$package_name" | tr '[:upper:]' '[:lower:]')"
+
+          if ! owner_type="$(gh api "repos/${GITHUB_REPOSITORY}" --jq '.owner.type' 2>/dev/null)"; then
+            echo "::error::Cannot determine the GHCR package owner type; refusing to change stable."
+            exit 1
+          fi
+
+          case "$owner_type" in
+            Organization) package_endpoint="orgs/${package_owner}/packages/container/${package_name}/versions?per_page=100" ;;
+            User) package_endpoint="users/${package_owner}/packages/container/${package_name}/versions?per_page=100" ;;
+            *)
+              echo "::error::Unexpected package owner type ${owner_type}; refusing to change stable."
+              exit 1
+              ;;
+          esac
+
+          if ! package_versions="$(gh api --paginate --slurp "$package_endpoint" 2>/dev/null)"; then
+            echo "::error::Cannot inspect GHCR tags; refusing to change stable."
+            exit 1
+          fi
+
+          if ! jq -e 'type == "array" and all(.[]; type == "array") and all(.[][]; type == "object" and (.metadata.container.tags | type == "array"))' <<< "$package_versions" >/dev/null; then
+            echo "::error::GHCR package metadata is incomplete or malformed; refusing to change stable."
+            exit 1
+          fi
+
+          stable_records="$(jq -c '[.[][] | select((.metadata.container.tags // []) | index("stable")) | {tags: (.metadata.container.tags // [])}]' <<< "$package_versions")"
+          stable_record_count="$(jq 'length' <<< "$stable_records")"
+
+          if [[ "$stable_record_count" == "0" ]]; then
+            echo "No existing stable tag is present in GHCR; promoting the validated latest release."
+          elif [[ "$stable_record_count" != "1" ]]; then
+            echo "::error::GHCR returned ambiguous stable tag metadata; refusing to change stable."
+            exit 1
+          else
+            stable_version_tags="$(jq -c '.[0].tags | map(select(test("^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"))) | unique' <<< "$stable_records")"
+            stable_version_count="$(jq 'length' <<< "$stable_version_tags")"
+            if [[ "$stable_version_count" != "1" ]]; then
+              echo "::error::Cannot identify exactly one version tag for the existing stable digest; refusing to change stable."
+              exit 1
+            fi
+            stable_version="$(jq -r '.[0]' <<< "$stable_version_tags")"
+
+            if ! version_comparison="$(python3 - "$stable_version" "$RELEASE_TAG" <<'PY'
+          import re
+          import sys
+
+          pattern = re.compile(r"^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")
+          current = pattern.fullmatch(sys.argv[1])
+          candidate = pattern.fullmatch(sys.argv[2])
+          if not current or not candidate:
+              raise SystemExit(1)
+          current_version = tuple(map(int, current.groups()))
+          candidate_version = tuple(map(int, candidate.groups()))
+          print((current_version > candidate_version) - (current_version < candidate_version))
+          PY
+          )"; then
+              echo "::error::Cannot compare the stable version reliably; refusing to change stable."
+              exit 1
+            fi
+
+            if [[ "$version_comparison" == "1" ]]; then
+              echo "::error::GHCR stable already points to newer ${stable_version}; refusing to downgrade it to ${RELEASE_TAG}."
+              exit 1
+            fi
+
+            if [[ "$version_comparison" == "0" ]]; then
+              echo "Stable already points to ${RELEASE_TAG}; no promotion is needed."
+              exit 0
+            fi
+          fi
+
+          if ! final_latest_release_tag="$(gh api "repos/${GITHUB_REPOSITORY}/releases/latest" --jq '.tag_name' 2>/dev/null)"; then
+            echo "::error::Could not recheck the latest stable release; refusing to change stable."
+            exit 1
+          fi
+
+          if [[ "$final_latest_release_tag" != "$RELEASE_TAG" ]]; then
+            echo "::warning::Skipping stable because ${RELEASE_TAG} stopped being the latest stable release during promotion checks."
+            exit 0
+          fi
+
+          if [[ ! "$IMAGE_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]; then
+            echo "::error::No verified image digest is available; refusing to update stable."
+            exit 1
+          fi
+
+          docker buildx imagetools create --tag "${IMAGE_REPO}:stable" "${IMAGE_REPO}@${IMAGE_DIGEST}"

@@ -60,7 +60,10 @@ export default defineConfig(async ({ mode }) => {
 				workbox: {
 					cleanupOutdatedCaches: true,
 					maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-					globDirectory: '/assets/lms/frontend',
+					globDirectory: path.resolve(
+						__dirname,
+						'../lms/public/frontend'
+					),
 					globPatterns: ['**/*.{js,ts,css,html,svg}'],
 					runtimeCaching: [
 						{
