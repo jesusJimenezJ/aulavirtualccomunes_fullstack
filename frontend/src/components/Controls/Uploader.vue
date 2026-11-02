@@ -9,7 +9,7 @@
 		/>
 		<FileUploader
 			:fileTypes="[fileType]"
-			:private="false"
+			:private="private"
 			:validateFile="(file: File) => validateFile(file, false, type)"
 			@success="(file: { file_url: string }) => saveFile(file)"
 			@failure="onUploadFailure"
@@ -98,6 +98,7 @@ const props = withDefaults(
 		label?: string
 		type?: 'image' | 'video'
 		required?: boolean
+                private?: boolean
 		shape?: 'square' | 'circle'
 		description?: string
 		error?: string
@@ -105,6 +106,7 @@ const props = withDefaults(
 	{
 		type: 'image',
 		required: true,
+                private: false,
 		shape: 'square',
 	}
 )

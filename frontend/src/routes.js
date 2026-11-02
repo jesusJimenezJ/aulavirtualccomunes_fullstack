@@ -1,3 +1,4 @@
+
 // The route table lives in its own module, separate from router.js, so it can
 // be imported without pulling in frappe-ui or the pinia stores that router.js
 // wires up around it (the beforeEach guard, the persona check). That keeps
@@ -141,6 +142,12 @@ export const routes = [
 				props: true,
 			},
 		],
+	},
+	{
+		path: '/yape-payment/:paymentName',
+		name: 'YapePayment',
+		component: () => import('@/pages/YapePayment.vue'),
+		props: true,
 	},
 	{
 		path: '/billing/:type/:name',

@@ -54,6 +54,7 @@ def get_payment_link(
 	coupon_code: str | None = None,
 	country: str | None = None,
 ):
+	payment_mode = frappe.db.get_single_value("LMS Settings", "payment_mode") or "Gateway"
 	payment_gateway = get_payment_gateway()
 	address = frappe._dict(address)
 	redirect_to = get_redirect_url(doctype, docname, payment_for_certificate)
@@ -80,7 +81,12 @@ def get_payment_link(
 	# Resolve the controller before writing anything: get_controller validates the
 	# gateway and fails with an actionable message, so a misconfigured gateway
 	# doesn't leave an orphan Address / LMS Payment row behind.
-	controller = get_controller(payment_gateway) if total_amount > 0 else None
+	if payment_mode == "Gateway":
+	    controller = get_controller(payment_gateway) if total_amount > 0 else None
+	elif payment_mode == "Yape manual":
+	    controller = None
+	else:
+	    frappe.throw(_("Unsupported payment mode configured in LMS Settings."))
 
 	payment = record_payment(
 		address,
@@ -100,6 +106,13 @@ def get_payment_link(
 		frappe.db.set_value("LMS Payment", payment.name, "payment_received", 1)
 		complete_enrollment(payment.name, doctype, docname)
 		return redirect_to
+
+	if payment_mode == "Yape manual":
+	    frappe.db.set_value(
+	        "LMS Payment", payment.name,
+	        {"payment_method": "Yape", "payment_status": "Pending"},
+	    )
+	    return get_lms_route(f"yape-payment/{payment.name}")
 
 	payment_details = {
 		"amount": total_amount,
